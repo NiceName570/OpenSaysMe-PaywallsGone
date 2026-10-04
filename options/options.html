@@ -4,52 +4,46 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Bypass Paywalls Clean Options</title>
-  <style>
-    #bypass_sites label {
-      display: block;
-    }
-    body {
-      font-size: 100%;
-    }
-    * {
-      box-sizing: border-box;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+<div class="page">
   <h1>Options | <small><span id="version"></span><br><span id="version_new"></span></small></h1>
-  <br><a href="https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean/-/blob/master/changelog.txt" style="color:black" target="_blank">Changelog</a>
-  <div style="width:90%;">
+  <a href="https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean/-/blob/master/changelog.txt" target="_blank">Changelog</a>
+  <div class="card">
     <br>Most selected sites will have their cookies cleared (not all though).<br>
     You should uncheck the sites (or add to excluded sites) for which you have an account or else you will be logged out at every visit.<br><br>
     If you want to also block general paywall-scripts for non-listed sites you have to opt-in to custom sites (permission for access to all sites is needed).<br>
     To view some sites (check list) a necessary cookie has to be set (enable this in opt-in).
   </div>
-  <br>
-  <div style='float:left'>
-    <small><button><a href="options_custom.html" style="text-decoration:none;color:inherit">Custom sites</a></button></small>
-    <small><button id="sites_updated">Updated sites?</button></small>
-    <small><button><a href="optin/opt-in.html" style="text-decoration:none;color:inherit">Opt-in</a></button></small>
-    <small><button><a href="options_excluded.html" style="text-decoration:none;color:inherit">Excluded sites</a></button></small>
-    <small><button><a href="#save" style="text-decoration:none;color:inherit">Go to save</a></button></small>
+  <div class="nav">
+    <a class="btn" href="options_custom.html">Custom sites</a>
+    <button id="sites_updated"><small>Updated sites?</small></button>
+    <a class="btn" href="optin/opt-in.html">Opt-in</a>
+    <a class="btn" href="options_excluded.html">Excluded sites</a>
+    <a class="btn" href="#save">Go to save</a>
   </div>
   <strong><div id="perm-custom"></div></strong>
-  <div style="clear:both;"></div>
-  <br>
+    <br>
+  <div class="searchbar">
+    <input type="search" id="site_search" placeholder="Search a site or domain to check if it is already added..." autocomplete="off">
+    <div id="search_result" class="search-result"></div>
+  </div>
   <div id='bypass_sites'></div>
   <br>
   <div id="status"></div>
   <div id="error"></div>
-  <span style='float:left;padding-bottom:50px'>
-    <button id="save">Save</button>
+  <div class="actions">
+    <button class="primary" id="save">Save</button>
     <button id="select-all">Select all</button>
     <button id="select-none">Select none</button>
-    <button><a href="options_custom.html" style="text-decoration:none;color:inherit">Custom sites</a></button>
-    <button><a href="options_excluded.html" style="text-decoration:none;color:inherit">Excluded sites</a></button>
+    <a class="btn" href="options_custom.html">Custom sites</a>
+    <a class="btn" href="options_excluded.html">Excluded sites</a>
     <button id="button-close">Close</button>
-  </span>
+  </div>
   <script src="../sites.js"></script>
   <script src="options.js"></script>
   <script src="version.js"></script>
+</div>
 </body>
 </html>

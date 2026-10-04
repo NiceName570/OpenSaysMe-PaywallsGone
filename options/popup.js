@@ -80,3 +80,59 @@ function getCookiePermDomain(hostname) {
 }
 
 document.getElementById("button-close").addEventListener('click', closeButton);
+
+// add current site to custom sites with one click
+function setAddStatus(text, isError) {
+  var el = document.getElementById('add_status');
+  el.textContent = text;
+  el.classList.toggle('error', !!isError);
+}
+
+function addCurrentSite() {
+  ext_api.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function (tabs) {
+    if (!tabs || !tabs[0] || !tabs[0].url || !tabs[0].url.startsWith('http')) {
+      setAddStatus('Open a news site first.', true);
+      return;
+    }
+    let domain = new URL(tabs[0].url).hostname.replace(/^(www|amp(html)?|m|wap)(\d)?\./, '').toLowerCase();
+    let origins = ["*://*." + domain + "/*"];
+    // permission request must start from the click
+    ext_api.permissions.request({
+      origins: origins
+    }, function (granted) {
+      if (!granted) {
+        setAddStatus('Permission needed to add this site.', true);
+        return;
+      }
+      ext_api.storage.local.get({
+        sites_custom: {}
+      }, function (items) {
+        let sites_custom = items.sites_custom;
+        if (typeof defaultSites_domains !== 'undefined' && defaultSites_domains.includes(domain) ||
+            Object.values(sites_custom).some(x => x.domain === domain)) {
+          setAddStatus(domain + ' is already supported.');
+          return;
+        }
+        let title = domain.split('.').slice(-2, -1)[0] || domain;
+        title = title.charAt(0).toUpperCase() + title.slice(1);
+        if (sites_custom[title])
+          title = domain;
+        setAddStatus('Detecting paywall type...');
+        detectSiteRule(tabs[0].id, domain, function (res) {
+          sites_custom[title] = res.rule;
+          ext_api.storage.local.set({
+            sites_custom: sites_custom
+          }, function () {
+            setAddStatus('✓ Added ' + domain + ' (' + res.found.join(', ') + '). Reload the page.');
+            document.getElementById('add_site_btn').disabled = true;
+          });
+        });
+      });
+    });
+  });
+}
+
+document.getElementById("add_site_btn").addEventListener('click', addCurrentSite);

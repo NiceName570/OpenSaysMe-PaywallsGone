@@ -9,6 +9,9 @@
     "description": "Bypass Paywalls of news sites",
     "homepage_url": "https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean/-/blob/master/README.md",
     "icons": {
+        "16": "icon16.png",
+        "32": "icon32.png",
+        "48": "icon48.png",
         "128": "bypass.png"
     },
     "manifest_version": 2,

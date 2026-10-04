@@ -99,49 +99,46 @@ function _imp() {
 // Add custom site to ext_api.storage
 function add_options() {
   var inputEls = document.querySelectorAll('#add_site input, #add_site select');
-  var sites_custom = {};
-  
+  var rule = {};
+  var title = '';
+
   for (let elem of inputEls) {
     if (elem.dataset.key === 'title') {
-      var title = capitalize(elem.value);
-      if (title === '')
-        break;
-      sites_custom[title] = {};
-    } else {
-      if (elem.dataset.value) {
-        if (elem.checked)
-          sites_custom[title][elem.dataset.key] = parseInt(elem.dataset.value);
-      } else if (elem.value)
-        sites_custom[title][elem.dataset.key] = elem.value;
+      title = capitalize(elem.value.trim());
+    } else if (elem.type === 'checkbox') {
+      if (elem.checked)
+        rule[elem.dataset.key] = elem.dataset.on ? elem.dataset.on : parseInt(elem.dataset.value);
+    } else if (elem.value.trim()) {
+      rule[elem.dataset.key] = elem.value.trim();
     }
   }
-  
-  if (title && sites_custom[title]['domain']) {
-    sites_custom[title]['domain'] = sites_custom[title]['domain'].replace(/(http(s)?:\/\/|\/$)/g, '').replace(/^(www|amp(html)?|m|wap)(\d)?\./, '').toLowerCase();
-    
-    // add new site to local storage
-    ext_api.storage.local.get({
-      sites_custom: {}
-    }, function (items) {
-      var sites_custom_old = items.sites_custom;
-      
-      for (var key in sites_custom) {
-        sites_custom_old[key] = sites_custom[key];
-      }
-      
-      ext_api.storage.local.set({
-        sites_custom: sites_custom_old
-      }, function () {
-        // Update status to let user know new custom site was added.
-        var status_add = document.getElementById('status_add');
-        status_add.textContent = 'Site added.';
-        setTimeout(function () {
-          //status.textContent = '';
-          renderOptions();
-        }, 800);
-      });
-    });
+
+  var status_add = document.getElementById('status_add');
+  if (!rule.domain) {
+    status_add.textContent = 'Enter the site (domain) first.';
+    return;
   }
+  rule.domain = rule.domain.replace(/(http(s)?:\/\/|\/.*$)/g, '').replace(/^(www|amp(html)?|m|wap)(\d)?\./, '').toLowerCase();
+  if (!title) {
+    title = capitalize(rule.domain.split('.').slice(-2, -1)[0] || rule.domain);
+  }
+
+  // add new site to local storage
+  ext_api.storage.local.get({
+    sites_custom: {}
+  }, function (items) {
+    var sites_custom = items.sites_custom;
+    sites_custom[title] = rule;
+    ext_api.storage.local.set({
+      sites_custom: sites_custom
+    }, function () {
+      // Update status to let user know new custom site was added.
+      status_add.textContent = 'Site added.';
+      setTimeout(function () {
+        renderOptions();
+      }, 800);
+    });
+  });
 }
 
 // Delete custom site from ext_api.storage
@@ -183,18 +180,21 @@ function edit_options() {
   }, function (items) {
     sites_custom = items.sites_custom;
     var edit_site = sites_custom[title];
-    document.querySelector('input[data-key="title"]').value = title;
-    document.querySelector('input[data-key="domain"]').value = edit_site.domain;
-    document.querySelector('select[data-key="useragent"]').selectedIndex = (edit_site.googlebot > 0) ? 1 : useragent_options.indexOf(edit_site.useragent);
-    document.querySelector('input[data-key="allow_cookies"]').checked = (edit_site.allow_cookies > 0);
-    document.querySelector('input[data-key="block_javascript"]').checked = (edit_site.block_javascript > 0);
-    document.querySelector('input[data-key="block_javascript_ext"]').checked = (edit_site.block_javascript_ext > 0);
-    document.querySelector('input[data-key="block_regex"]').value = edit_site.block_regex ? edit_site.block_regex : '';
-    document.querySelector('input[data-key="amp_unhide"]').checked = (edit_site.amp_unhide > 0);
-    document.querySelector('input[data-key="amp_redirect"]').value = edit_site.amp_redirect ? edit_site.amp_redirect : '';
-    document.querySelector('input[data-key="ld_json"]').value = edit_site.ld_json ? edit_site.ld_json : '';
-    document.querySelector('select[data-key="referer"]').selectedIndex = referer_options.indexOf(edit_site.referer);
-    document.querySelector('select[data-key="random_ip"]').selectedIndex = random_ip_options.indexOf(edit_site.random_ip);
+    var q = (sel) => document.querySelector('#add_site ' + sel);
+    q('input[data-key="title"]').value = title;
+    q('input[data-key="domain"]').value = edit_site.domain;
+    q('input[data-key="useragent"]').checked = (edit_site.googlebot > 0 || edit_site.useragent === 'googlebot');
+    q('input[data-key="allow_cookies"]').checked = (edit_site.allow_cookies > 0);
+    q('input[data-key="block_javascript"]').checked = (edit_site.block_javascript > 0);
+    q('input[data-key="block_javascript_ext"]').checked = (edit_site.block_javascript_ext > 0);
+    q('input[data-key="amp_unhide"]').checked = (edit_site.amp_unhide > 0);
+    q('input[data-key="block_regex"]').value = edit_site.block_regex ? edit_site.block_regex : '';
+    q('input[data-key="amp_redirect"]').value = edit_site.amp_redirect ? edit_site.amp_redirect : '';
+    q('input[data-key="ld_json"]').value = edit_site.ld_json ? edit_site.ld_json : '';
+    q('select[data-key="referer"]').selectedIndex = Math.max(0, referer_options.indexOf(edit_site.referer));
+    q('select[data-key="random_ip"]').selectedIndex = Math.max(0, random_ip_options.indexOf(edit_site.random_ip));
+    if (edit_site.block_javascript_ext > 0 || edit_site.block_regex || edit_site.amp_redirect || edit_site.ld_json || edit_site.referer || edit_site.random_ip)
+      document.querySelector('#add_site details').open = true;
   });
 }
 
@@ -247,62 +247,97 @@ function renderOptions() {
     // add site
     var add_sitesEl = document.getElementById('add_site');
     add_sitesEl.innerHTML = '';
-    var inputEl;
-    var add_checkboxes = {
-      'title': 0,
-      'domain': 0,
-      'allow_cookies': 1,
-      'block_javascript (domain)': 1,
-      'block_javascript_ext': 1,
-      'block_regex': 0,
-      'amp_unhide': 1,
-      'amp_redirect': 0,
-      'ld_json': 0
-    };
-    for (var key in add_checkboxes) {
-      labelEl = document.createElement('label');
-      inputEl = document.createElement('input');
-      inputEl.dataset.key = key.split(' (')[0];
-      labelEl.appendChild(inputEl);
-      if (add_checkboxes[key]) {
-        inputEl.type = 'checkbox';
-        inputEl.dataset.value = 1;
-      } else {
-        let placeholders = {
-          title: 'Example',
-          domain: 'example.com',
-          block_regex: '\\.example\\.com\\/js\\/',
-          amp_redirect: 'div.paywall',
-          ld_json: 'div.paywall|div.article'
-        };
-        if (placeholders[key])
-          inputEl.placeholder = placeholders[key];
-      }
-      labelEl.appendChild(document.createTextNode(' ' + key));
-      add_sitesEl.appendChild(labelEl);
+
+    function textField(key, label, placeholder, parent) {
+      var l = document.createElement('label');
+      l.className = 'field';
+      var span = document.createElement('span');
+      span.textContent = label;
+      var i = document.createElement('input');
+      i.type = 'text';
+      i.dataset.key = key;
+      if (placeholder)
+        i.placeholder = placeholder;
+      l.appendChild(span);
+      l.appendChild(i);
+      parent.appendChild(l);
     }
-    
-    var add_options = {
-      useragent: useragent_options,
-      referer: referer_options,
-      random_ip: random_ip_options
-    };
-    for (let key in add_options) {
-      labelEl = document.createElement('label');
-      labelEl.appendChild(document.createTextNode(key + ' '));
-      inputEl = document.createElement('select');
-      inputEl.dataset.key = key.split(' (')[0];
-      labelEl.appendChild(inputEl);
-      
-      for (let elem of add_options[key]) {
-        let option = document.createElement("option");
+
+    function toggle(key, label, hint, parent, on) {
+      var l = document.createElement('label');
+      l.className = 'toggle';
+      var i = document.createElement('input');
+      i.type = 'checkbox';
+      i.dataset.key = key;
+      if (on)
+        i.dataset.on = on;
+      else
+        i.dataset.value = 1;
+      var s = document.createElement('span');
+      s.className = 'slider round';
+      var t = document.createElement('span');
+      t.className = 'toggle-text';
+      t.textContent = label;
+      if (hint) {
+        var h = document.createElement('small');
+        h.textContent = hint;
+        t.appendChild(h);
+      }
+      var sw = document.createElement('span');
+      sw.className = 'switch';
+      sw.appendChild(i);
+      sw.appendChild(s);
+      l.appendChild(sw);
+      l.appendChild(t);
+      parent.appendChild(l);
+    }
+
+    function selectField(key, label, options, parent) {
+      var l = document.createElement('label');
+      l.className = 'field';
+      var span = document.createElement('span');
+      span.textContent = label;
+      var sel = document.createElement('select');
+      sel.dataset.key = key;
+      for (let elem of options) {
+        let option = document.createElement('option');
         option.value = elem;
-        option.text = elem;
-        inputEl.appendChild(option);
+        option.text = elem === '' ? 'Off' : elem;
+        sel.appendChild(option);
       }
-      add_sitesEl.appendChild(labelEl);
+      l.appendChild(span);
+      l.appendChild(sel);
+      parent.appendChild(l);
     }
-    
+
+    // title is optional (taken from the domain when empty)
+    textField('domain', 'Site', 'example.com', add_sitesEl);
+    textField('title', 'Name (optional)', 'Example', add_sitesEl);
+
+    var togglesEl = document.createElement('div');
+    togglesEl.className = 'toggle-list';
+    toggle('useragent', 'Pretend to be Googlebot', 'Often unlocks articles for search engines', togglesEl, 'googlebot');
+    toggle('block_javascript', 'Block JavaScript', 'Stops the paywall script from running', togglesEl);
+    toggle('amp_unhide', 'Unhide article text (AMP)', 'Shows hidden text on the AMP version', togglesEl);
+    toggle('allow_cookies', 'Keep cookies', 'Stay logged in; cookies are cleared by default', togglesEl);
+    add_sitesEl.appendChild(togglesEl);
+
+    var advEl = document.createElement('details');
+    advEl.className = 'advanced';
+    var sum = document.createElement('summary');
+    sum.textContent = 'Advanced';
+    advEl.appendChild(sum);
+    var advGrid = document.createElement('div');
+    advGrid.className = 'adv-grid';
+    toggle('block_javascript_ext', 'Block external scripts', 'Blocks paywall scripts from other domains', advGrid);
+    selectField('referer', 'Fake referer', referer_options, advGrid);
+    selectField('random_ip', 'Random IP address', random_ip_options, advGrid);
+    textField('block_regex', 'Block URLs matching (regex)', '\\.example\\.com\\/js\\/', advGrid);
+    textField('amp_redirect', 'AMP redirect selector', 'div.paywall', advGrid);
+    textField('ld_json', 'Load text from json (selector)', 'div.paywall|div.article', advGrid);
+    advEl.appendChild(advGrid);
+    add_sitesEl.appendChild(advEl);
+
     // list of custom sites
     var custom_sitesEl = document.getElementById('custom_sites');
     custom_sitesEl.innerHTML = '';
@@ -368,7 +403,15 @@ function renderOptions() {
   });
 }
 
+function filterCustomSites() {
+  var q = document.getElementById('custom_search').value.trim().toLowerCase();
+  document.querySelectorAll('#custom_sites option').forEach(function (opt) {
+    opt.hidden = !!q && !opt.text.toLowerCase().includes(q);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', renderOptions);
+document.getElementById('custom_search').addEventListener('input', filterCustomSites);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('sort').addEventListener('click', sort_options);
 document.getElementById('export').addEventListener('click', export_options);

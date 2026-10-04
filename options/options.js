@@ -73,52 +73,66 @@ function renderOptions() {
         default_sites: false
       }
     };
-    var first = true;
     for (let site_type in site_types) {
-      if (!first)
-        labelEl.appendChild(document.createElement('hr'));
-      else
-        first = false;
-      labelEl = document.createElement('label');
-      labelEl.setAttribute('style', ' font-weight: bold;');
-      labelEl.appendChild(document.createTextNode(site_types[site_type].title));
-      sitesEl.appendChild(labelEl);
+      let sectionEl = document.createElement('section');
+      sectionEl.className = 'site-section';
+      let headEl = document.createElement('h3');
+      let titleText = site_types[site_type].title.replace(/^\* /, '');
+      headEl.appendChild(document.createTextNode(titleText));
+      let countEl = document.createElement('span');
+      countEl.className = 'badge';
+      headEl.appendChild(countEl);
+      sectionEl.appendChild(headEl);
+      let gridEl = document.createElement('div');
+      gridEl.className = 'site-grid';
+      sectionEl.appendChild(gridEl);
       let sites_arr = site_types[site_type].sites;
+      let count = 0;
       for (let key in sites_arr) {
         let domain = sites_arr[key]['domain'];
         if (!domain || (!site_types[site_type].default_sites && (defaultSites.hasOwnProperty(key) || defaultSites_domains.includes(domain))))
           continue;
-        labelEl = document.createElement('label');
+        let labelEl = document.createElement('label');
+        if (domain === '###') {
+          labelEl.className = 'site-divider';
+          labelEl.appendChild(document.createTextNode(key));
+          gridEl.appendChild(labelEl);
+          continue;
+        }
         let inputEl = document.createElement('input');
         inputEl.type = 'checkbox';
         inputEl.dataset.key = key;
         inputEl.dataset.value = domain;
         inputEl.checked = Object.keys(sites).some(title => compareKey(title, key)) && !sites_excluded.includes(domain);
-        if (domain !== '###') {
-          labelEl.appendChild(inputEl);
-        } else {
-          labelEl.appendChild(document.createElement('hr'));
-          labelEl.setAttribute('style', ' font-weight: bold;');
-        }
+        labelEl.appendChild(inputEl);
         labelEl.appendChild(document.createTextNode(' ' + key));
-        sitesEl.appendChild(labelEl);
+        labelEl.dataset.search = (key + ' ' + domain).toLowerCase();
+        labelEl.dataset.section = titleText;
+        gridEl.appendChild(labelEl);
+        count++;
       }
+      countEl.textContent = count;
+      if (count > 0 || site_type === 'default')
+        sitesEl.appendChild(sectionEl);
     }
     // excluded
-    labelEl.appendChild(document.createElement('hr'));
-    labelEl = document.createElement('label');
-    labelEl.setAttribute('style', ' font-weight: bold;');
-    labelEl.appendChild(document.createTextNode('* Excluded Sites (ignored when checked in list)'));
-    sitesEl.appendChild(labelEl);
-    labelEl = document.createElement('label');
-    labelEl.appendChild(document.createTextNode(sites_excluded.join()));
-    sitesEl.appendChild(labelEl);
+    let excludedEl = document.createElement('section');
+    excludedEl.className = 'site-section';
+    let excludedHead = document.createElement('h3');
+    excludedHead.textContent = 'Excluded sites';
+    excludedEl.appendChild(excludedHead);
+    let excludedList = document.createElement('p');
+    excludedList.className = 'muted';
+    excludedList.textContent = sites_excluded.length ? sites_excluded.join(', ') : 'None (ignored when checked in list).';
+    excludedEl.appendChild(excludedList);
+    sitesEl.appendChild(excludedEl);
+    filterSites();
     save_options();
   });
 }
 
 function selectAll() {
-  var inputEls = Array.from(document.querySelectorAll('input'));
+  var inputEls = Array.from(document.querySelectorAll('#bypass_sites input'));
   inputEls = inputEls.filter(function (input) {
       return (!input.dataset.value.match(/^#options_(disable|optin)_/));
     });
@@ -134,10 +148,52 @@ function selectAll() {
 }
 
 function selectNone() {
-  var inputEls = Array.from(document.querySelectorAll('input'));
+  var inputEls = Array.from(document.querySelectorAll('#bypass_sites input'));
   inputEls.forEach(function(inputEl) {
     inputEl.checked = false;
   });
+}
+
+// live search: shows only matching sites and tells if the site is already in the list
+function filterSites() {
+  var q = document.getElementById('site_search').value.trim().toLowerCase()
+    .replace(/^(https?:\/\/)?(www\.)?/, '').replace(/\/.*$/, '');
+  var labels = document.querySelectorAll('#bypass_sites label[data-search]');
+  var matches = [];
+  labels.forEach(function (el) {
+    var hit = !q || el.dataset.search.includes(q);
+    el.hidden = !hit;
+    if (hit && q)
+      matches.push(el);
+  });
+  document.querySelectorAll('#bypass_sites .site-divider').forEach(function (el) {
+    el.hidden = !!q;
+  });
+  document.querySelectorAll('#bypass_sites .site-section').forEach(function (sec) {
+    var grid = sec.querySelector('.site-grid');
+    if (grid)
+      sec.hidden = !!q && !grid.querySelector('label[data-search]:not([hidden])');
+  });
+  var result = document.getElementById('search_result');
+  result.className = 'search-result';
+  result.textContent = '';
+  if (!q)
+    return;
+  if (matches.length) {
+    var exact = matches.find(el => el.querySelector('input').dataset.value === q);
+    var el = exact || matches[0];
+    var enabled = el.querySelector('input').checked;
+    result.textContent = '\u2713 ' + (exact ? q : matches.length + (matches.length > 1 ? ' matches' : ' match')) +
+      ' already in list (' + el.dataset.section + ', ' + (enabled ? 'enabled' : 'not enabled') + ')';
+    result.classList.add('found');
+  } else {
+    var link = document.createElement('a');
+    link.href = 'options_custom.html';
+    link.textContent = 'Add it as a custom site \u2192';
+    result.appendChild(document.createTextNode('Not in list. '));
+    result.appendChild(link);
+    result.classList.add('missing');
+  }
 }
 
 function closeButton() {
@@ -154,6 +210,7 @@ function compareKey(firstStr, secondStr) {
 }
 
 document.addEventListener('DOMContentLoaded', renderOptions);
+document.getElementById('site_search').addEventListener('input', filterSites);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('select-all').addEventListener('click', selectAll);
 document.getElementById('select-none').addEventListener('click', selectNone);
