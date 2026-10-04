@@ -1,3 +1,8 @@
+> **Fork notice:** this is a UI-refresh fork of [Bypass Paywalls Clean](https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean)
+> by **magnolia1234** (MIT). All extension logic and site rules are his work; this fork only changes the popup/options
+> interface, adds a new icon, one-click *Add this site* with local auto-detection, and a site search.
+> The same changes were proposed upstream as a merge request. Please use and support the original project.
+
 # Bypass Paywalls Clean for Chrome
 
 Extension allows you to read articles from (supported) sites that implement a paywall.  
