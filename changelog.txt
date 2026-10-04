@@ -1,0 +1,1314 @@
+
+Changelog Bypass Paywalls Clean - Chrome
+
+Post-release
+Fix LesEchos.fr (refresh)
+Fix Quartz (newsletter)
+
+* v2.7.1.0 (2022-05-29)
+Add Corriere dello Sport
+Add Gazet van Antwerpen
+Add Het Belang van Limburg
+Add Het Nieuwsblad
+Add SlideShare
+Add The Financial Express (India)
+Remove Scribd (fix obsolete)
+Fix El Mercurio (+ regional/opt-in to custom sites)
+Fix Telegraaf.nl
+
+* v2.7.0.0 (2022-05-22)
+Add group ARA.cat
+Add LaVie.fr
+Add Mallorca Zeitung
+Add The Lawyer's Daily (Canada)
+Fix ESPN USA (disable for Watch)
+Fix The Globe and Mail (revert to old fix)
+Fix TheTimes.co.uk (link to archive.is)
+Fix Times of India
+
+* v2.6.9.0 (2022-05-15)
+Add The Star Malaysia
+Add UnHerd (UK)
+Remove The Japan Times (fix obsolete)
+Fix Lequipe.fr (json)
+Fix Live Law (amp)
+Fix Telegraaf.nl
+Fix The Australian (The Oz)
+Fix The Dallas Morning News
+Update block general paywall script (GoogleTagManager)
+
+* v2.6.8.0 (2022-05-08)
+Add De Tijd & L'Echo
+Add Finance.si
+Add group Mediahuis Noord (opt-in to custom sites for unlisted)
+Add The Daily Wire
+Remove DealStreetAsia (fix obsolete)
+Fix Australian Community Media
+Fix Bloomberg (newsletters)
+Fix Knack.be & LeVif.be
+
+* v2.6.7.0 (2022-05-01)
+Add Puck.news
+Add Sportico & WWD (group Penske Media Corporation)
+Fix El Espectador
+Fix eNotes
+Fix Grupo Prensa Iberica (opt-in to custom sites for unlisted)
+Fix Lequipe.fr (json)
+Fix Medium custom domains
+Update badge (site with no fix; X)
+Update block general paywall script (Pico/Wordpress)
+
+* v2.6.6.0 (2022-04-24)
+Add Automobilwoche
+Add Better Nutrition, Gym Climber, Peloton, Podium Runner & Rock and Ice
+Add eNotes
+Add Italia Oggi
+Remove ilManifesto.it (fix obsolete)
+Fix Barron's (continue reading)
+Fix El Pais (amp/video)
+Fix Fortune (magazine)
+Fix The Spectator UK (amp-redirect)
+
+* v2.6.5.0 (2022-04-18)
+Add Aftonbladet.se
+Add Investors' Chronicle (UK)
+Add Nzz.ch Regional (opt-in to custom sites)
+Add Outlook India
+Fix ABC.es (mobile)
+Fix Adweek (free articles only)
+Fix Quartz (newsletter)
+Fix The Athletic (Ink-layout)
+Fix Vogue Business (amp)
+Update block general paywall script (Ensighten)
+Update block general paywall script (Evolok WordPress)
+
+* v2.6.4.0 (2022-04-10)
+Add El Periodico Extremadura
+Add Nuernberger Nachrichten
+Remove Algemeen Dagblad Regional (fix obsolete)
+Remove NK News (fix obsolete)
+Fix Berliner Zeitung (amp)
+Fix The Globe and Mail (sections)
+Fix The Hill Times (text)
+Fix (custom) group-sites (limit identify on image)
+Remove Cors Anywhere (cached articles)
+
+* v2.6.3.0 (2022-04-03)
+Add Diario Cordoba
+Add El Periodico de Aragon
+Add El Periodico de Espana
+Add La Opinion A Coruna
+Add La Opinion de Zamora
+Add RedaktionsNetzwerk Deutschland
+Fix Alma Talent sites (js-ads)
+Fix Australia News Corp (amp)
+Fix Helsingin Sanomat (dynamic-json)
+Fix Madsack Mediengruppe
+Fix NzHerald
+
+* v2.6.2.0 (2022-03-27)
+Add Badische Neueste Nachrichten
+Add iPolitics.ca
+Add LeNouvelEconomiste.fr
+Add Muenstersche Zeitung
+Add NewcastleHerald.com.au
+Add S&P Global
+Add Westdeutsche Zeitung
+Remove HBR Taiwan (fix obsolete)
+Fix Australian Community Media (json)
+
+* v2.6.1.0 (2022-03-20)
+Add Franc-Tireur.fr
+Add group Hearst Communications magazines
+Add Mid-Day (India)
+Add Winnipeg Free Press (Canada)
+Fix Algemeen Dagblad (regional; refresh)
+Fix Folha de S. Paulo
+Fix Funke Mediengruppe (opt-in to custom sites for unlisted)
+Fix Lequipe.fr (refresh)
+Update layout BPC GitLab bio
+
+* v2.6.0.0 (2022-03-13)
+Add Connaissance des Arts (France)
+Add El Tiempo (Colombia)
+Add LaMontagne.fr
+Add Volksstimme.de
+Fix American Affairs (js)
+Fix Bloomberg
+Fix Bloomberg Quint (amp)
+Fix Economist (js typo)
+Fix LaNouvelleRepublique.fr (js)
+Fix LesEchos.fr (investir)
+Fix NHST Media Group
+Update block general paywall script (Weborama.fr)
+
+* v2.5.9.0 (2022-03-06)
+Add Causeur.fr
+Add India Today (magazine)
+Add La Opinion de Malaga
+Add RugbyPass
+Fix Iltalehti.fi (Youtube video/image no source)
+Fix Inkl
+Fix Internazionale.it (menu/images)
+
+* v2.5.8.0 (2022-02-27)
+Add Cycling Tips
+Add Iltalehti.fi
+Add La Opinion de Murcia
+Add Postmedia Network (Canada)
+Remove NewcastleHerald.com.au (fix obsolete)
+Fix Westfalen-Blatt (gallery)
+Fix update check (GitLab CORS issue or BitBucket http error 429)
+Update custom sites (load text from json)
+
+* v2.5.7.0 (2022-02-20)
+Remove Ruhr Nachrichten (fix obsolete)
+Fix Live Law
+Fix NewcastleHerald.com.au
+Fix Lequipe.fr (json)
+Fix Neue Osnabrucker Zeitung (amp)
+Fix Quotidiano.net sites
+Update block general paywall script (Pigeon/Wordpress)
+
+* v2.5.6.0 (2022-02-13)
+Add Condé Nast magazines & Vogue Business
+Add Diario Correo (Grupo El Comercio)
+Add Eastwest (it/en)
+Add Groupe Sud Ouest (France)
+Fix Australian Community Media (images)
+Fix Lequipe.fr & LesEchos.fr (refresh)
+Fix New York Magazine sites (cookies)
+Fix NYTimes (game stats)
+Fix Espresso.repubblica.it (amp)
+Fix SeekingAlpha (captcha)
+Fix TheTimes.co.uk (epaper & archive)
+Update block general paywall script (limit NewsMemory)
+
+* v2.5.5.0 (2022-02-06)
+Remove Iltalehti.fi (fix obsolete)
+Remove The Logic (fix obsolete)
+Fix Australia News Corp (video-still)
+Fix La Tercera (js)
+Fix MIT Technology Review (TinyPass)
+Fix TheTimes.co.uk (epaper)
+Fix Times Literary Supplement (set referer Google)
+Fix WaPo
+
+* v2.5.4.0 (2022-01-30)
+Add group Outside magazines
+Remove L'Orient-Le Jour (fix obsolete)
+Fix Australia News Corp (amp-redirect)
+Fix Faz.net (timing)
+Fix Grupo Prensa Iberica (Piano)
+Fix The Chronicle (amp-redirect)
+Fix The Seattle Times (update)
+Fix The Telegraph (modal)
+Fix The West Australian (regional)
+Fix block inline script (Firefox-synch)
+Update popup (no more version-check)
+
+* v2.5.3.0 (2022-01-23)
+Add Huffingtonpost.it
+Add Outside
+Fix Asia Times
+Fix Cairns Post, Code Sports & The Advertiser
+Fix Challenges.fr
+Fix Clarin
+Fix El Pais (menu subdomains)
+Fix MediaNama (menu)
+Fix MIT Sloan Management Review (refresh)
+Fix The New Yorker (update)
+
+* v2.5.2.0 (2022-01-16)
+Add Mainichi Shimbun (Japan)
+Add TownNews sites (local USA; opt-in to custom sites)
+Remove Aachener Nachrichten/Zeitung (fix obsolete)
+Remove De Tijd & L'Echo (fix obsolete)
+Fix Bloomberg (quotes)
+Fix McClatchy Group (amp-redirect & disable)
+Fix Prospect Magazine (timing)
+Fix Star Tribune (timing)
+Fix The Business of Fashion
+Fix The Jerusalem Post
+Update block general paywall script (Zephr)
+Update popup (domain to clear cookies)
+
+* v2.5.1.0 (2022-01-09)
+Add group Hearst Communications (local USA)
+Fix Bloomberg (timing)
+Fix Handelsblatt (no amp)
+Fix The Indian Express (premium)
+Fix amp: allow amp-consent
+Fix trimmed referer (restrictions)
+
+* v2.5.0.0 (2022-01-02)
+Add Capital Gazette (local USA)
+Add Groupe Nice-Matin (France)
+Add Il Foglio (Italy)
+Add Science (free articles only)
+Add The Independent (UK - archive.today for premium)
+Fix group Tribune Publishing Company (js)
+Fix The New Statesman (Evolok)
+Update popup (permission to clear cookies)
+
+* v2.4.9.0 (2021-12-26)
+Add El Espectador (Colombia)
+Add ESPN USA (news only)
+Add Les Inrockuptibles (France)
+Remove Algemeen Dagblad (now regional only)
+Fix Alma Talent sites (images & search)
+Fix Helsingin Sanomat (dynamic)
+Fix Lequipe.fr (json)
+Fix The Diplomat (cookies)
+Fix Times of India (amp)
+Update custom sites (random ip/amp redirect)
+
+* v2.4.8.0 (2021-12-19)
+Add Aachener-Nachrichten.de
+Add Allgaeuer-Zeitung.de
+Add Lequipe.fr
+Add LaLibre.be
+Add LeVif.be
+Add San Antonio Express-News (local USA)
+Add The Indian Express
+Add Vrij Nederland
+Fix Bloomberg (permission block js)
+Fix National Geographic USA (magazine)
+Remove tabs-permission (Chrome 50+)
+
+* v2.4.7.0 (2021-12-12)
+Add Koelner Stadt-Anzeiger & Koelnische Rundschau
+Add The (New Orleans) Advocate
+Remove Caixin Global (fix obsolete)
+Fix Bloomberg (subscriber-only)
+Fix Bloomberg Quint (bq blue)
+Fix Inkl (images)
+Fix Lecho.be (separate from Groupe Rossel)
+Fix Repubblica sites (no amp)
+Fix amp: ABC.es, elDiario.es & El Espanol
+Fix amp: Artnet, Billboard, Digiday, Fortune, Lee Enterprises Group, Newsday, The Boston Globe, The Dallas Morning News & Vanity Fair
+Fix amp: Los Angeles Times & San Diego Union-Tribune
+Fix amp: USA Today & Gannett Group
+Fix amp: Challenges.fr, Elle.fr, L'Opinion.fr & Science et Vie
+Fix amp: Corriere della Sera, Il Messaggero & Quotidiano.net
+Fix amp: Estadao.com.br, Grupo Abril & Folha de S. Paulo
+Fix amp: ET Prime & LiveMint
+Fix amp: Funke Mediengruppe
+
+* v2.4.6.0 (2021-12-05)
+Add Artnet
+Add Internazionale.it
+Fix Boston Globe
+Fix El Mundo & Groupe EBRA (amp-iframe)
+Fix Gannett Group (permissions for listed sites)
+Fix Live Law (permission)
+Fix The Business of Fashion
+Fix The New Yorker (amp)
+Fix TheTimes.co.uk (only link to archive.today)
+Remove Saechsische Zeitung (fix obsolete)
+Updated sites: check (options) & missing permission (badge)
+
+* v2.4.5.0 (2021-11-21)
+Add Advance Local (local USA)
+Add Code Sports (Australia)
+Add DealStreetAsia
+Add Italian.tech
+Add Spectator World
+Fix Medium (faster)
+Updated sites: add amp-redirect/code to contentScript
+Updated (new) sites: popup-toggle
+
+* v2.4.4.0 (2021-11-14)
+Fix Nikkei Asian Review (cookies)
+Fix Quora+ (banner)
+Fix Repubblica sites (re-enable Googlebot)
+Add rules for new sites (post-release; opt-in to custom sites)
+Check for update version on startup/options (now opt-out)
+Update group rules (post-release)
+
+* v2.4.3.0 (2021-11-07)
+Add Harvard Business Review China
+Add Mitteldeutsche Zeitung
+Remove Liberation.fr (fix obsolete)
+Fix ElMundo.es (amp)
+Fix Lee Enterprises Group
+Fix LesEchos.fr (json)
+Fix WaPo (images)
+Fix WSJ (timing)
+Add allowlist for BPC extension (macOS)
+Check for update rules on startup (opt-in)
+Refactor (custom) site rules
+
+* v2.4.2.0 (2021-10-31)
+Fix Barron's (timing)
+Fix Il Fatto Quotidiano
+Fix Westfaelische Nachrichten & Westfalen-Blatt
+
+* v2.4.1.3 (2021-10-28)
+Fix Repubblica sites (disable Googlebot)
+Fix Stratfor (forecasts)
+Fix The Athletic (timing)
+
+* v2.4.1.0 (2021-10-24)
+Add Elle.fr
+Add Marianne (France)
+Remove Irish Times (fix obsolete)
+Remove Sueddeutsche Zeitung (fix obsolete)
+Fix ABC.es (Evolok)
+Fix Bloomberg (charts)
+Fix Business Standard
+Fix Il Tirreno (GElocal.it)
+Fix Financial Times (amp)
+Fix Knack.be
+Fix La Croix (timing)
+Fix La Stampa (http error 403)
+Fix The Globe and Mail
+Fix The New Yorker (homepage)
+Fix Trouw.nl (timing)
+Fix Wired (amp)
+Update custom sites (block regex for default sites)
+
+* v2.4.0.0 (2021-10-17)
+Add Westfaelische Nachrichten (Germany)
+Remove Australian Provincial Newspapers (obsolete)
+Fix GElocal.it
+Fix National Review
+Fix Ruhr Nachrichten (amp)
+Fix Tech in Asia (visual story)
+Update custom sites (block regex, amp unhide & add imported)
+Update options: enable new sites by default
+
+* v2.3.9.0 (2021-10-10)
+Add Lee Enterprises Group (local USA)
+Fix Chronicle of Higher Education
+Fix El Pais (amp/videos)
+Fix MarketWatch (amp)
+Fix Times Higher Education
+Fix WSJ (Chinese)
+Update block general paywall script (AzureEdge)
+
+* v2.3.8.0 (2021-10-03)
+Add NordLittoral.fr (Groupe Rossel)
+Add Westfalen-Blatt.de
+Remove Gazet van Antwerpen (fix obsolete)
+Remove Republic.ru (fix obsolete)
+Fix Bloomberg (blur)
+Fix Boston Globe
+Fix El Periodico de Catalunya (amp)
+Fix Foreign Affairs (timing)
+Fix Medium (cookies)
+Fix Telerama.fr (mobile)
+Fix VeloNews
+
+* v2.3.7.0 (2021-09-26)
+Add Aachener-Zeitung.de
+Add Grupo Prensa Iberica (Spain)
+Add Tampa Bay Times (local USA)
+Add Telerama.fr
+Add TheMarket.ch
+Fix Challenges.fr (blur)
+Fix LesEchos.fr (json)
+Fix New York Magazine sites
+Fix Repubblica.it & LaStampa.it (videos on Firefox)
+Fix The Australian (option to disable Googlebot; http error 403)
+Fix WSJ & Barron's (amp)
+
+* v2.3.6.0 (2021-09-05)
+Remove WirtschaftsWoche (fix obsolete)
+Fix Estadao.com.br
+Fix Gestion & El Comercio (Peru)
+Fix Handelsblatt (only non-premium articles)
+Fix Il Fatto Quotidiano
+Fix Il Secolo XIX (mobile)
+Fix NyTeknik (images)
+Fix NzHerald
+Fix shz.de & svz.de
+
+* v2.3.5.0 (2021-08-29)
+Add Forbes
+Add Law360 (free articles only)
+Fix Bloomberg (graphics)
+Fix Corriere della Sera (videos)
+Fix Repubblica.it (podcasts)
+
+* v2.3.4.1 (2021-08-23)
+Fix group Crain Communications
+
+* v2.3.4.0 (2021-08-22)
+Add Ad Age & Automotive News (group Crain Communications)
+Add MediaNews Group (local USA)
+Add The Intercept
+Remove Slader (obsolete)
+Fix group Mediahuis Nederland Regional
+Fix Medium (timing)
+Fix The Australian
+Fix The Daily Beast (proper/images)
+
+* v2.3.3.0 (2021-08-15)
+Add Live Law (India)
+Add Sanoma Media Finland (+ aamulehti.fi & regional/opt-in)
+Fix McClatchy Group (unlisted sites)
+Fix MediaNama (modal)
+Fix The Athletic
+Fix The Daily Beast (members-only)
+Fix WaPo (graphics)
+
+* v2.3.2.0 (2021-08-08)
+Add Inc42 (India)
+Add Study.com (no videos)
+Add The Business of Fashion
+Fix Bloomberg (quotes/blurred images)
+Fix San Diego Union-Tribune
+Fix Telegraaf.nl
+
+* v2.3.1.0 (2021-08-01)
+Add Iltalehti.fi (Firefox-only)
+Add Marca (Spain)
+Grouping Quotidiano.net sites (Italy)
+Remove Le Un (fix obsolete)
+Fix Australia Nine sites
+Fix Commentary Magazine (new domain)
+Fix Gestion & El Comercio (Peru)
+Fix Grupo Vocento (Spain)
+Fix Financial News (London)
+Fix The Athletic (podcast)
+Fix WSJ (amp homepage link)
+Update remove cookies (faster)
+
+* v2.3.0.1 (2021-07-26)
+Fix El Mercurio (timing)
+Fix custom sites (no useragent/referer on restart)
+
+* v2.3.0.0 (2021-07-25)
+Add NHST Media Group (TradeWinds)
+Add Southern Weekly (China)
+Fix Alma Talent sites
+Fix Bloomberg
+Fix Nikkei Asian Review (cookies)
+Fix Statista (set referer Google)
+Fix The Daily Telegraph (au)
+Fix Times of India (TOI+ region block)
+Fix WaPo (magazine)
+
+* v2.2.9.0 (2021-07-11)
+Add TradeWinds
+Fix Discover Magazine
+Fix Il Secolo XIX (amp-redirect)
+Fix Miami Herald (McClatchy Group)
+Fix New Left Review (timing)
+Fix WaPo (disable Googlebot & fix amp/interactive)
+Maintenance contentScript (update sanitize html-input)
+
+* v2.2.8.0 (2021-07-04)
+Fix Le Parisien (Googlebot)
+Fix WaPo
+
+* v2.2.7.5 (2021-06-30)
+Fix Augsburger Allgemeine
+Fix National Geographic USA (magazine/link to archive.today)
+Fix Quartz (link to archive.today)
+Maintenance contentScript (sanitize html-input)
+
+* v2.2.7.0 (2021-06-27)
+Remove Finance.si (fix obsolete)
+Fix blocked referer
+Update custom sites (set useragent Bingbot)
+
+* v2.2.6.0 (2021-06-20)
+Add group Mediahuis Nederland Regional
+Remove The Northern Star (obsolete)
+Fix Atlantico.fr
+Fix Boston Globe (no opt-in)
+Fix Foreign Policy
+Fix group Tribune Publishing Company (overlay)
+Fix The Globe and Mail
+Fix The Spectator UK (amp)
+
+* v2.2.5.0 (2021-06-13)
+Add The Wrap
+Fix Atlantico.fr
+Fix Folha de S. Paulo (add blogs)
+Fix La Stampa (amp)
+Fix Los Angeles Times (overlay)
+Fix Medium/Towards Data Science (multimedia)
+Fix TheTimes.co.uk (link to archive.today)
+
+* v2.2.4.0 (2021-06-06)
+Add group Crain's Business
+Add The Atlanta Journal-Constitution (local USA)
+Fix Modern Healthcare
+
+* v2.2.3.0 (2021-05-30)
+Add Grupo Abril (Brazil)
+Add Hindustan Times (India)
+Add Honolulu Star-Advertiser (local USA)
+Fix Atlantico.fr
+Fix Australian Financial Review (videos)
+Fix Exame (domain)
+Fix GElocal.it (social)
+Fix WaPo (comments)
+
+* v2.2.2.0 (2021-05-23)
+Add MediaNama (India)
+Remove Mitteldeutsche Zeitung (fix obsolete)
+Fix Medium/Towards Data Science
+Fix National Geographic USA
+Fix Prensa Iberica
+Fix Saechsische Zeitung (amp)
+Fix The Daily Telegraph (au)
+Fix The Economic Times (mobile/India)
+Fix Valor Economico (Google webcache)
+
+* v2.2.1.0 (2021-05-16)
+Add Las Provincias (Spain)
+Add Times of India
+Fix Barron's (option to disable Googlebot; http error 500)
+Fix Crain's Chicago Business
+Fix GenomeWeb sites
+Fix Knack.be
+Fix LeScienze.it
+Fix Repubblica.it
+Fix South China Morning Post (amp)
+
+* v2.2.0.0 (2021-05-09)
+Add Asia Times
+Add The Economic Times (text/India)
+Add USA Today
+Fix American Banker
+Fix El Mercurio (Chile)
+Fix Reuters
+
+* v2.1.9.0 (2021-05-02)
+Add GenomeWeb, 360Dx & Precision Oncology News
+Add Levante-EMV (Spain)
+Add L'Oeil de la Photographie (fr/en)
+Add The New Atlantis
+Fix Tech in Asia (premium)
+Update custom sites (optional: only permissions for added sites)
+Update badge (notification: update & custom permissions)
+
+* v2.1.8.0 (2021-04-25)
+Add Il Giorno (Italy)
+Add L'Express (France)
+Add La Nazione (Italy)
+Add The Athletic
+Remove Rheinische Post Mediengruppe (fix obsolete)
+Fix Madsack Mediengruppe (opt-in to custom sites for unlisted)
+Fix NyTeknik (images)
+Fix Repubblica.it
+Update block TinyPass (cdn only)
+
+* v2.1.7.0 (2021-04-18)
+Add NyTeknik (Sweden)
+Add Reuters
+Fix Crain's Chicago Business
+Fix The Diplomat (magazine)
+
+* v2.1.6.1 (2021-04-12)
+Bugfix Le Dauphine (plus some French sites)
+
+* v2.1.6.0 (2021-04-11)
+Add Dagens Industri (Sweden)
+Add La Nouvelle Republique du Centre-Ouest (France)
+Add VeloNews
+Fix Business Standard (mobile to desktop)
+Fix El Pais
+Fix National Geographic USA
+Fix Stratfor
+
+* v2.1.5.0 (2021-04-04)
+Add Billboard
+Add La Tribune (France)
+Add Le Telegramme (France)
+Fix Mexico News Daily
+Update options: restore opt-in for custom sites (on reload; Chrome-only)
+
+* v2.1.4.0 (2021-03-28)
+Add Aachener-Zeitung.de (RP-medien)
+Add Apollo Magazine
+Add NK News (not pro)
+Add Nordwest Zeitung (Germany)
+Fix McClatchy Group (opt-in to custom sites for unlisted)
+Fix Wired (Googlebot)
+Fix WSJ (option to disable Googlebot; http error 500)
+
+* v2.1.3.0 (2021-03-21)
+Add Berliner Zeitung
+Add The Dallas Morning News (local USA)
+Add Entrepreneur
+Fix The Saturday Paper
+
+* v2.1.2.0 (2021-03-14)
+Add El Espanol (Spain)
+Add Mitteldeutsche Zeitung (Germany)
+Add Newsday (local USA)
+Add Thueringische Landeszeitung (Germany)
+Fix Australian Community Media (anti-adblock)
+Fix Gannett Group (identify on xhr only)
+Fix Gazet van Antwerpen
+Fix La Stampa
+
+* v2.1.1.0 (2021-03-07)
+Add Atlantico (France)
+Add Politica Exterior (Spain)
+Fix Chronicle of Higher Education (scroll)
+Fix Grupo Vocento (amp)
+Fix New Left Review
+
+* v2.1.0.0 (2021-02-28)
+Add Die Rheinpfalz (Germany)
+Add Gannett Group (local USA Today; opt-in to custom sites)
+Add New York Daily News (local USA)
+Add Rhein-Zeitung.de
+Add The Virginian-Pilot (local USA)
+Add VentureBeat
+Fix El Periodico de Catalunya
+Fix Irish Times (no amp)
+Grouping Tribune Publishing Company
+Remove The News-Gazette (local USA)
+Update options (grouped domains to sites.js)
+
+* v2.0.9.1 (2021-02-22)
+Fix cookie storeId (Kiwi browser)
+
+* v2.0.9.0 (2021-02-21)
+Add Daily Nation (Kenya)
+Add Houston Chronicle (USA)
+Add Schleswig-Holsteinischer Zeitungsverlag (Germany)
+Add Sports Illustrated
+Fix Groupe La Depeche
+Fix La Croix (timing)
+Grouping Repubblica.it sites (rules only)
+Fix incognito window (cookies)
+Update incognito window (Chrome-only split mode)
+
+* v2.0.8.2 (2021-02-16)
+Fix contentScript (Kiwi browser)
+Fix popup (update notification; GitLab CORS issue)
+Update limit contentScript (add image/sub_frame)
+
+* v2.0.8.0 (2021-02-14)
+Add Augsburger-Allgemeine.de
+Add McClatchy Group (USA)
+Add Neue Osnabruecker Zeitung (Germany)
+Add Time Magazine
+Fix Cors Anywhere (link to allow access)
+Fix Il Secolo XIX (amp)
+Fix Medium custom domains (meter)
+Fix Statista (premium)
+Fix TheTimes.co.uk (puzzles)
+Update popup (not closing on switch/clear cookies)
+
+* v2.0.7.0 (2021-02-07)
+Add Diario de Ibiza/Mallorca, Faro de Vigo & La Provincia (Spain)
+Add Finance.si (Slovenia)
+Add Law.com (free articles only)
+Add Le Un (France)
+Add Rheinische Post Mediengruppe (only plus if amp)
+Add The Art Newspaper
+Fix ilManifesto.it
+Fix Madsack Mediengruppe (amp)
+Fix Medium/Towards Data Science (login)
+Fix Medium custom domains (login & in options)
+Fix Stratfor (style; not menu)
+Fix Sud Ouest (decode text)
+Update custom sites (set referer)
+
+* v2.0.6.0 (2021-01-31)
+Add Griffith Review (Australia)
+Add Stratfor
+Add The Hill Times (Canada)
+Add The Jerusalem Post (Israel)
+Fix Adweek (amp for premium)
+Fix El Mercurio (Chile)
+Fix El Pais (premium/images)
+Fix Funke Mediengruppe (OTZ & TA)
+Update custom sites (block Javascript)
+
+* v2.0.5.0 (2021-01-24)
+Add Ambito (Argentina)
+Add Correio da Manha (Portugal)
+Add El Confidencial (Spain)
+Add elDiario.es (Spain)
+Add La Nueva Espana (Spain)
+Add Observador (Portugal)
+Add Prospect Magazine (United Kingdom)
+Add RuhrNachrichten.de
+Add The Point Magazine
+Fix El Pais (Spain)
+Fix Helsingin Sanomat (Finland)
+Fix MarketWatch (premium)
+Fix MIT Sloan Management Review
+Update block TinyPass (all subdomains)
+Update excluded sites (no general block paywall scripts)
+
+* v2.0.4.0 (2021-01-17)
+Add Cicero.de
+Add Il Secolo XIX (Italy)
+Add L'Usine Nouvelle (France)
+Add La Nuova Sardegna (Italy)
+Add Schweriner Volkszeitung (Germany)
+Add Sud Ouest (France)
+Fix Discover Magazine
+Fix Faz.net (Zeitung subdomain)
+Fix Funke Medien (Germany)
+Update block general paywall script (NewsMemory)
+Update set user-agent/referer (limit)
+
+* v2.0.3.0 (2021-01-10)
+Add Curbed (New York Magazine)
+Add group TorStar (Canada)
+Add New Left Review (United Kingdom)
+Fix SeekingAlpha (amp)
+Fix Toronto Star (overlay)
+Update options (excluded sites)
+
+* v2.0.2.0 (2021-01-03)
+Add La Vanguardia (Spain)
+Fix Belfast Telegraph/Independent.ie (amp)
+Fix Gestion & El Comercio (Peru)
+Fix SeekingAlpha (amp)
+Fix Toronto Star (author)
+Grouping Australia Nine sites (rules only)
+Update hold on to consent-cookie
+
+* v2.0.1.0 (2020-12-27)
+Add Expansion (Spain)
+Add FreiePresse.de
+Add L'Obs (France)
+Add Paris Match (France)
+Fix El Mercurio (Chile)
+Fix/restore El Pais (Spain)
+
+* v2.0.0.0 (2020-12-20)
+Add Krautreporter (Germany)
+Add Piqd (Germany)
+Fix Foreign Affairs
+Fix Paris-Normandie.fr (Groupe Rossel)
+Fix Tech in Asia (homepage)
+
+* v1.9.9.0 (2020-12-13)
+Add Berlingske (Denmark)
+Add EUobserver
+Add Funke Mediengruppe (Germany)
+Add Groupe EBRA (France)
+Add Groupe La Depeche (France)
+Add Madsack Mediengruppe (Germany)
+Fix Australian Financial Review (images)
+Fix Bloomberg (inline articles/adblocker)
+Fix El Pais (Spain)
+Fix Funke Medien (obfuscated)
+Update grouped sites (popup-toggle)
+
+* v1.9.8.0 (2020-12-06)
+Add El Comercio, Ideal & La Voz de Cadiz (Spain)
+Add Esprit (France)
+Add Groupe Rossel (France/Belgium)
+Add The Spectator USA
+Remove Aftonbladet.se (fix obsolete)
+Remove NK News (fix obsolete)
+Fix Australia News Corp (amp/video-link)
+Fix CharlieHebdo.fr (captcha)
+Fix Discover Magazine
+Fix El Mercurio & La Segunda (mobile)
+Fix Harper's Magazine
+Fix Mexico News Daily
+Fix Slader
+Fix Telegraph.co.uk (amp pages)
+Fix The New Yorker (embed)
+Limit contentScript (to html, xhr & script)
+Update popup (Twitter)
+
+* v1.9.7.0 (2020-11-27)
+Add Alma Talent sites (Finland)
+Add El Periodico de Catalunya (Spain)
+Add Grupo Vocento (Spain, regional daily)
+Add La Croix (France)
+Add The Hindu BusinessLine (India)
+Fix Corriere della Sera (redirect preview)
+Fix Faz.net (error in json)
+Fix LesEchos.fr (json)
+Fix popup (update notification & close error)
+Update block general paywall script (Pelcro)
+Update grouped sites (init rules)
+
+* v1.9.6.0 (2020-11-20)
+Add Helsingin Sanomat (hs.fi, not paivanlehti)
+Fix La Tercera (Chile)
+Fix LesEchos.fr (timing/banners)
+Fix Newsweek (Pelcro)
+GitLab transfer 
+
+* v1.9.5.0 (2020-11-15)
+Add AlternativesEconomiques.fr
+Add Financial Post (Canada)
+Add La Estrella de Valparaiso (Chile)
+Add Saechsische Zeitung (Germany)
+Fix Folha de S. Paulo (MatherAnalytics)
+Fix Gazet van Antwerpen (video/maps)
+Fix ilMessaggero.it (+ regional sites)
+Fix WSJ (mobile layout)
+Fix error during tabs.get (no tab with id)
+Update custom sites: allow_cookies
+
+* v1.9.4.0 (2020-11-08)
+Add Gazet van Antwerpen (Belgium)
+Add MarketWatch (free articles only)
+Fix Australian Provincial Newspapers
+Fix Deutsche Wirtschafts Nachrichten
+Fix Haaretz/TheMarker (Bingbot)
+Fix LesEchos.fr (first premium article)
+Fix Telegraph.co.uk (overlay)
+Fix Chrome-icon for dark/incognito mode (all permitted sites)
+Fix clearCookies (Chrome .domain cookies)
+Fix updateBadge (grouped sites)
+Update options/popup layout (+ mobile)
+
+* v1.9.3.0 (2020-11-01)
+Add Deutsche Wirtschafts Nachrichten
+Add WirtschaftsWoche (Germany)
+Fix Quartz (newsletter)
+Fix Sueddeutsche Zeitung (+ magazine)
+Fix WSJ (restore Googlebot)
+Fix updateBadge (custom sites disabled)
+Icon for dark/incognito mode (Chrome)
+Save options to storage.local (quota exceeded)
+
+* v1.9.2.0 (2020-10-25)
+Add Foreign Affairs
+Add GElocal.it
+Add Il Resto del Carlino (Italy)
+Add Kurier.at
+Add L'Orient-Le Jour (Lebanon)
+Add The Logic (Canada)
+Add The New York Review of Books
+Fix Australian Provincial Newspapers (Googlebot)
+Fix Funke Medien (TinyPass)
+Fix bug in NY Times (hidden iframe-content)
+Fix Australian Financial Review (images)
+Fix The West Australian (timing)
+Open (custom) options in new tab
+
+* v1.9.1.1 (2020-10-19)
+Hotfix remove cookies (www)
+
+* v1.9.1.0 (2020-10-18)
+Add NYmag-sites Grub Street, The Cut & Vulture
+Add Quotidiano.net (Italy)
+Add The West Australian (+ regional)
+Fix Australia News Corp (amp)
+Fix Inkl (disable newsletter login)
+Fix Toronto Star (external cookie-script)
+Update block general paywall script (Amp-access)
+Update opt-in tab (default settings)
+
+* v1.9.0.2 (2020-10-14)
+Fix MIT Sloan Management Review (modal)
+Default limited permissions (opt-in custom sites)
+Fix Chrome-mismatch permissions .domain cookies
+Option to clear cookies & local storage (of site)
+
+* v1.9.0.0 (2020-10-11)
+Add Slate
+Remove BusinessTimes.com.sg (fix obsolete)
+Fix Australian Provincial Newspapers (now all)
+Fix Bloomberg (overlay)
+Fix Challenges.fr (timing)
+Fix NzHerald
+Fix Toronto Star (map-snippet/footer)
+Fix WaPo (paywall-script)
+
+* v1.8.9.0 (2020-10-04)
+Add Hannoversche Allgemeine Zeitung
+Add Leipziger Volkszeitung
+Add Neue Ruhr Zeitung
+Add Westdeutsche Allgemeine Zeitung
+Add Westfalenpost
+Add Westfaelische Rundschau
+Fix Australian Financial Review (images)
+Fix Domani (Italy)
+Fix El Pais (Spain)
+Fix The Globe and Mail (FF for Android v68)
+Fix The Hindu (menu)
+Fix WSJ
+Add allowlist for BPC extension (Windows)
+Fix custom sites Googlebot-fix (after reload)
+
+* v1.8.8.0 (2020-09-27)
+Add Die Zeit (Germany)
+Add Rolling Stone
+Add StockNews.com
+Add Times Higher Education
+Remove Vrij Nederland (fix obsolete)
+Fix National Review (amp for plus)
+Minor update opt-in UI
+
+* v1.8.7.0 (2020-09-20)
+Add Business Times (Singapore)
+Add Domani (Italy)
+Add Variety
+Fix MIT Technology Review (overlay)
+Fix The Globe and Mail
+
+* v1.8.6.0 (2020-09-14)
+Add Star Tribune
+Fix FT.com (layout)
+Fix contentScript in background tab
+
+* v1.8.5.0 (2020-09-13)
+Add Commentary Magazine
+Add NK News (free articles only)
+Remove Switzer Report (fix obsolete)
+Remove The Athletic (fix obsolete)
+Fix Economist (layout)
+Fix Financial Times (layout)
+Fix Brisbane Times, Sydney Morning Herald, The Age & WAtoday
+Fix The Hindu
+Add opt-in for setCookie (for specific sites)
+Update daily users counter (on page)
+
+* v1.8.4.0 (2020-09-06)
+Add Fresno Bee (USA)
+Fix Bloomberg
+Fix Sacramento Bee (amp for premium)
+Fix The New Yorker
+Fix WSJ (remove refresh)
+Add daily users counter (by counting downloads of empty json-file)
+Add general paywall-script Cxense
+
+* v1.8.3.0 (2020-08-30)
+Add Chronicle of Higher Education
+Add Diario Financiero (Chile)
+Add El Mercurio de Valparaiso (Chile)
+Fix MIT Technology Review
+Remove copy-notice in copied text of Financial Times (ft.com)
+Update show options on update (now optional)
+
+* v1.8.2.0 (2020-08-23)
+Add LimesOnline (it/en)
+Add South China Morning Post
+Add on/off-switch (popup)
+Fix Economist (menu)
+Fix WaPo (Googlebot & block Javascript)
+Fix custom sites (block Javascript)
+Update custom sites: (edit options) & hide double (custom) domain in options
+Maintenance contentScript (replace innerHTML): LesEchos.fr (plus reload), Business-Standard.com & NoordhollandsDagblad.nl
+Prepare subrelease notification (developer mode)
+
+* v1.8.1.0 (2020-08-16)
+Add Australian Provincial Newspapers (daily)
+Add NoordhollandsDagblad.nl
+Fix elMercurio (modals)
+Fix MIT Sloan Management Review (modal)
+Fix TheSaturdayPaper.com.au
+Fix WSJ (disable Chinese amp-redirect)
+Update custom sites (auto-enable in options)
+Update installation instructions
+
+* v1.8.0.0 (2020-07-26)
+Add CharlieHebdo.fr
+Add La Segunda (Chile)
+Add LeSoir.be
+Add Sueddeutsche Zeitung (amp for plus)
+Fix elMercurio Legal (Chile)
+Fix Fd.nl (modal/newsletter query string)
+Fix Inkl (cookies)
+Fix Irish Times (amp for premium)
+Fix LesEchos.fr (lp-version)
+
+* v1.7.9.0 (2020-07-15)
+Fix Clarin (block MatherAnalytics)
+Fix El Mercurio (Chile)
+Fix Neue Zuercher Zeitung
+Fix NY Times (incognito mode)
+Fix The Hindu (cookies)
+Fix ValeursActuelles.fr (Qiota)
+Grouping Australia News Corp sites
+Open options on update (or reload)
+Update paywall scripts: Evolok
+
+* v1.7.8.0 (2020-07-06)
+Add Atavist Magazine
+Add Belfast Telegraph
+Add Business Standard (India)
+Add Geelong Advertiser & Western Advocate (plus grouping Australian sites)
+Add Nautilus
+Add Newsweek
+Fix The Globe and Mail (postfix premium links)
+Update paywall scripts: MatherAnalytics
+
+* v1.7.7.0 (2020-06-28)
+Add ABC.es
+Add Il Fatto Quotidiano (Italy)
+Add Knack.be
+Add Slader
+Fix Quartz (non-premium)
+Fix WSJ (pro & snippet)
+Fix WSJ (close Cxense-banner)
+
+* v1.7.6.0 (2020-06-21)
+Add Follow the Money (Ftm.nl)
+Add Inkl
+Add National Geographic USA
+Remove KleineZeitung.at (fix obsolete)
+Fix Barron's (amp for snippet)
+Fix Estadao.com.br
+Fix Inkl (Dive Deeper links)
+Fix Lc.nl & DvhN.nl (Evolok)
+Fix WSJ (amp for pro/login)
+
+* v1.7.5.0 (2020-06-14)
+Add BBC History Extra
+Add Discover Magazine
+Add Irish Independent
+Add Republic.ru
+Fix Telegraph.co.uk (cookies)
+Fix The Globe and Mail (cleanup)
+Fix TheTimes.co.uk (cookies)
+
+* v1.7.4.0 (2020-06-04)
+Add ElMundo.es (amp for premium)
+Fix Boston Globe
+Fix DeMorgen.be (overlay)
+Fix Medium (banner)
+Fix Medium custom domains
+Fix SeekingAlpha (limit robot-captcha)
+Fix Spectator.co.uk (amp for premium)
+Fix The Globe and Mail (premium-only)
+New option to block external Javascript for custom sites
+Fix support Brave Browser
+Add block general paywall scripts: BlueConic, OneCount, Qiota & TribDss. Remove Outbrain.
+
+* v1.7.3.0 (2020-05-24)
+Add ilManifesto.it
+Fix Gestion & El Comercio (Peru)
+Fix Haaretz.com (anti-adblocker)
+Fix LeJdD.fr
+Limit contentScript on external content
+
+* v1.7.2.0 (2020-05-17)
+Add Globes (Israel)
+Fix Challenges.fr (proper)
+Fix Nzz.ch (banners)
+Fix The Hindu (timing issue)
+Fix WSJ (timing issues)
+Add Limited permissions version
+Simplify blocking of specific paywall-scripts
+
+* v1.7.1.0 (2020-05-02)
+Add Le Journal du Net.fr
+Add Sciences et Avenir.fr
+Fix Challenges.fr
+Fix Economist
+Fix Faz.net (layout)
+Fix LaDepeche.fr
+Fix LesEchos.fr (premium)
+Fix Miami Herald
+Add changelog & update json links (raw)
+Fix mismatch domain with url query string
+Resynch Chrome/Firefox code
+
+* v1.7.0.5 (2020-04-28)
+BitBucket transfer
+
+Add Eureka Report, Intelligent Investor & Switzer Report (Australia)
+Add Frankfurter Allgemeine (Faz.net)
+Add Philosophy Now
+Fix Gestion & El Comercio (Peru)
+Remove LeMonde.fr (fix obsolete)
+Fix ilMessaggero.it
+Fix WSJ (lift restrictions)
+Maintenance Ad.nl (regional)
+Sort-button custom sites
+
+* v1.7.0.2 (2020-04-05)
+Add Gestion (Peru) & fix El Comercio
+Add LeScienze.it
+Add Science & Vie
+Fix Barron's links to sign in/read more articles
+Fix Fd.nl
+Fix LesEchos.fr (url)
+Fix Quora (search)
+Fix Telegraaf.nl (FF meta-refresh)
+
+* v1.7.0.1 (2020-03-29)
+Add El Comercio (Peru)
+Add L'Opinion.fr
+Add LiveMint (India)
+Add Neue Zuercher Zeitung
+Add The New Republic
+Remove ET Prime (fix obsolete)
+Fix Telegraaf.nl
+Fix blocking Javascript for new (custom)sites
+Maintenance contentScript.js
+Synching Chrome/Firefox scripts
+
+* v1.6.4.5 (2020-03-22)
+Add LaDepeche.fr
+Fix Barron's (remove cookies)
+Fix DeMorgen.be
+Fix WSJ (cookie-fix)
+
+* v1.6.4.4 (2020-03-15)
+Add The Athletic UK
+Add Il Messaggero (Italy)
+Fix Financial Times (ft.com)
+Update (custom)options UI
+Fix Corriere della Sera
+Fix custom sites (domains with capitals)
+Update version-check (replace innerHTML)
+
+* v1.6.4.3 (2020-03-08)
+Add Aftonbladet.se
+Fix Australian Community Media newspapers
+Fix Economist (inactive links)
+Fix Corriere della Sera
+Add link to releases (version check)
+Show badge-notification for regional Ad.nl sites
+Prepare release (limited permissions)
+Update custom sites UI (export/import)
+Update refresh tab after save options (Chrome-synch)
+
+* v1.6.4.2 (2020-03-03)
+Add The Port Macquarie News (Australia)
+Remove nknews.org (fix obsolete)
+Fix Lc.nl & DvhN.nl (newsletter)
+Fix Repubblica.it
+Show badge-notification if active on tab
+Update custom sites UI (delete site)
+
+* v1.6.4.1 (2020-02-27)
+Add Humo.be
+Add Seeking Alpha
+Add option for custom sites
+Fix The New Yorker paywall-banner
+Fix LesEchos.fr (hide ads instead of removing)
+Fix Bloomberg paywall-script
+Include sites from local js-file (maintenance)
+Update Options - new release check
+
+* v1.6.3.1 (2020-02-20)
+Add Australian Community Media daily newspapers
+Add Clarin (Argentina)
+Add WAtoday (Australia)
+Fix TheNation paywall-script block
+Refresh tab after saved options
+Fix Leeuwarder Courant
+Fix Corriere della Sera
+
+* v1.6.2.3 (2020-02-12)
+Add CommonWealth Magazine Taiwan
+Add El Mercurio (Chile)
+Add Leeuwarder Courant & Dagblad van het Noorden (Netherlands)
+
+* v1.6.2.2 (2020-02-03)
+Add Fd.nl (Googlebot)
+Add Spectator.com.au & TheCourier.com.au
+Fix Espresso.repubblica.it
+Fix TheAdvocate.com.au
+
+* v1.6.2.1 (2020-01-31)
+Add Harvard Business Review Taiwan
+Add Modern Healthcare
+Add National Review
+Add The Christian Science Monitor
+Add The Daily Beast
+Add World Politics Review
+Fix Boston Globe (proper)
+Fix NYTimes Cooking (images)
+Fix Townsville Bulletin (url)
+Fix Wall Street Journal (blogs)
+
+* v1.6.1.6 (2020-01-26)
+Add regional Ad.nl sites (ADR)
+Add Australian newspapers (FF-synch)
+Add Chemical & Engineering News
+Add KleineZeitung.at
+Add Le Journal du Dimanche (lejdd.fr)
+Add NkNews.org (FF-synch)
+Add Tijd.be (FF-synch)
+Fix Dn.se
+Fix ChicagoBusiness
+Fix London Review of Books (allow cookies)
+
+* v1.6.1.5 (2020-01-19)
+Add Challenges.fr
+Add Digiday
+Add El Pais
+Add Folha de S. Paulo, O Globo, Valor Econômico, O Estado de S. Paulo, Exame (Brazil)
+Add Fortune (magazine)
+Add LaStampa.it
+Add Liberation.fr
+Add Miami Herald
+Add ValeursActuelles.fr
+Fix json-bug at install/options (when not saving options)
+Fix The New Statesman (version US/UK)
+
+* v1.6.1.3 (2020-01-12)
+Add Caixin Global
+Add Newcastle Herald
+Add Scribd (unblur text of documents)
+Add Tech in Asia
+Add The Athletic
+Fix Australian Financial Review (enable javascript)
+Fix Dagens Nyheter (dn.se)
+Fix Economist (Javascript/cookies)
+Fix ET Prime restrictions (only articles)
+Fix Handelsblatt (Googlebot)
+Fix MIT Tech Review
+Fix LeParisien.fr (block TinyPass paywall)
+Fix LesEchos.fr (block TinyPass)
+Fix The Globe and Mail
+Fix Toronto Star (enable Javascript)
+Remove The Athletic trial-banners
+Load sites from json
+Block general paywall scripts (like TinyPass/Piano)
+Remove Google Analytics
+
+* v1.6.1.0 (2019-12-15)
+Add ET Prime
+Fix Foreign Policy (proper)
+Fix Medium content on non-Medium sites
+Fix Philidelphia Inquirer (block paywall-script)
+Fix Spectator.co.uk (block paywall-script)
+Fix The Globe and Mail
+Fix Quartz/qz.com (gdpr)
+Fix WSJ (reformatting & restrictions to only articles)
+Rename thenewsrep to new domain sofrep
+
+* v1.6.0.0 (2019-12-08)
+Add Handelsblatt
+Add London Review of Books
+Add National Post
+Add The Diplomat
+Add Times Literary Supplement
+Add Towards Data Science
+Fix Boston Globe (block paywall-script)
+Fix Haaretz.com (anti-adblocker script)
+Fix sites on Medium platform (remove cookies)
+
+* v1.5.9.0 (2019-11-25)
+Fix Ad.nl/Ed.nl (cookie)
+Fix BizJournals (enable Javascript)
+Fix Bloomberg
+Fix Businessinsider (new option: blocking external scripts)
+Fix Economist (Javascript/cookies)
+Fix SfChronicle (reload loop)
+Fix Telegraaf.nl (timing issue)
+Fix The Atlantic
+
+* v1.5.8.0 (2019-11-12)
+Add LeParisien.fr
+Fix NzHerald
+Fix Quora (read more)
+
+* v1.5.6.0 (2019-10-28)
+Add Le Monde
+Fix Quartz/qz.com
+Fix WaPo (gdpr)
+Fix WSJ (Googlebot & mod=rsswn obsolete)
+
+* v1.5.4.0 (2019-10-01)
+Add Dutch papers: ad.nl, ed.nl (cookie fix), parool.nl, trouw.nl, volkskrant.nl
+Add Dutch magazines: groene.nl, vn.nl
+Fix Dutch papers: parool.nl, trouw.nl, volkskrant.nl (enable) Javascript)

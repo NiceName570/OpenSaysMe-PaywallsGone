@@ -1,0 +1,185 @@
+{
+  "Abqjournal.com": {
+    "allow_cookies": 1,
+    "block_regex": "\\.abqjournal\\.com\\/.+\\/abq-pw-manager\\.js",
+    "domain": "abqjournal.com",
+    "useragent": "googlebot"
+  },
+  "Bauernzeitung.ch": {
+    "allow_cookies": 1,
+    "domain": "bauernzeitung.ch",
+    "useragent": "googlebot"
+  },
+  "Beobachter.ch": {
+    "allow_cookies": 1,
+    "domain": "beobachter.ch",
+    "useragent": "googlebot"
+  },
+  "Brainly.com": {
+    "domain": "brainly.com"
+  },
+  "Capital.bg": {
+    "allow_cookies": 1,
+    "domain": "capital.bg",
+    "useragent": "googlebot"
+  },
+  "Chicago.suntimes.com": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "chicago.suntimes.com"
+  },
+  "Christianitytoday.com": {
+    "allow_cookies": 1,
+    "domain": "christianitytoday.com",
+    "useragent": "googlebot"
+  },
+  "Connexionfrance.com": {
+    "domain": "connexionfrance.com"
+  },
+  "Eluniversal.com.mx": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "eluniversal.com.mx"
+  },
+  "Fnweb.de": {
+    "allow_cookies": 1,
+    "domain": "fnweb.de",
+    "useragent": "googlebot"
+  },
+  "Gazette.com": {
+    "allow_cookies": 1,
+    "block_regex": "loader-cdn\\.azureedge\\.net",
+    "domain": "gazette.com"
+  },
+  "Gplanet.co.il": {
+    "allow_cookies": 1,
+    "domain": "gplanet.co.il",
+    "ld_json": "div.subscription-form|div.content-inner"
+  },
+  "Handelszeitung.ch": {
+    "allow_cookies": 1,
+    "domain": "handelszeitung.ch",
+    "useragent": "googlebot"
+  },
+  "Heraldscotland.com": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "heraldscotland.com"
+  },
+  "Internationalepolitik.de": {
+    "allow_cookies": 1,
+    "domain": "internationalepolitik.de"
+  },
+  "Lindipendente.online": {
+    "allow_cookies": 1,
+    "domain": "lindipendente.online",
+    "useragent": "googlebot"
+  },
+  "Lsa-conso.fr": {
+    "allow_cookies": 1,
+    "domain": "lsa-conso.fr",
+    "useragent": "googlebot"
+  },
+  "Mailplus.co.uk": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "mailplus.co.uk"
+  },
+  "Mannheimer-morgen.de": {
+    "allow_cookies": 1,
+    "domain": "mannheimer-morgen.de",
+    "useragent": "googlebot"
+  },
+  "Marketscreener.com (only free articles)": {
+    "domain": "marketscreener.com"
+  },
+  "Medpagetoday.com": {
+    "domain": "medpagetoday.com"
+  },
+  "Morgenbladet.no": {
+    "allow_cookies": 1,
+    "domain": "morgenbladet.no",
+    "useragent": "googlebot"
+  },
+  "Nationalobserver.com": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "nationalobserver.com"
+  },
+  "Physicsworld.com": {
+    "domain": "physicsworld.com"
+  },
+  "Pressandjournal.co.uk": {
+    "allow_cookies": 1,
+    "domain": "pressandjournal.co.uk",
+    "useragent": "googlebot"
+  },
+  "Pv-digest.de": {
+    "allow_cookies": 1,
+    "domain": "pv-digest.de",
+    "useragent": "googlebot"
+  },
+  "Reviewjournal.com": {
+    "allow_cookies": 1,
+    "block_regex": "js\\.matheranalytics\\.com",
+    "domain": "reviewjournal.com"
+  },
+  "Schweizer-illustrierte.ch": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "schweizer-illustrierte.ch"
+  },
+  "Speld.nl": {
+    "domain": "speld.nl"
+  },
+  "Supchina.com": {
+    "allow_cookies": 1,
+    "domain": "supchina.com"
+  },
+  "The-japan-news.com": {
+    "domain": "the-japan-news.com"
+  },
+  "The-past.com": {
+    "domain": "the-past.com"
+  },
+  "Thebanker.com": {
+    "allow_cookies": 1,
+    "domain": "thebanker.com",
+    "useragent": "googlebot"
+  },
+  "Thecourier.co.uk": {
+    "allow_cookies": 1,
+    "domain": "thecourier.co.uk",
+    "useragent": "googlebot"
+  },
+  "Theepochtimes.com": {
+    "allow_cookies": 1,
+    "block_regex": "subs\\.youmaker\\.com",
+    "domain": "theepochtimes.com"
+  },
+  "Thehill.com": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "thehill.com"
+  },
+  "Thenational.scot": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "thenational.scot"
+  },
+  "Theweek.com": {
+    "allow_cookies": 1,
+    "domain": "theweek.com",
+    "useragent": "googlebot"
+  },
+  "Tijorifinance.com": {
+    "allow_cookies": 1,
+    "domain": "tijorifinance.com",
+    "useragent": "googlebot"
+  },
+  "Toledoblade.com": {
+    "allow_cookies": 1,
+    "block_regex": "\\.tinypass\\.com\\/",
+    "domain": "toledoblade.com"
+  }
+}
