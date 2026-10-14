@@ -10,18 +10,7 @@
   --radius: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14171d;
-    --card: #1d222b;
-    --text: #e8ebf0;
-    --muted: #9aa4b2;
-    --border: #2d3441;
-    --accent: #4f8bff;
-    --accent-hover: #6a9dff;
-    --danger: #f87171;
-  }
-}
+
 
 * { box-sizing: border-box; }
 

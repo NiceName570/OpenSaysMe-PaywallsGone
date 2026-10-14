@@ -6,7 +6,7 @@ function save_options() {
     var sites_excluded = [];
     if (textareaEl.value !== '')
         var sites_excluded = textareaEl.value.split(',').map(function(item) { return item.trim().replace('www.', ''); });
-    ext_api.storage.local.set({
+    bpcStorage.local.set({
         sites_excluded: sites_excluded
     }, function () {
         // Update status to let user know excluded sites were saved.
@@ -30,7 +30,7 @@ function sort_options() {
 }
 
 function renderOptions() {
-    ext_api.storage.local.get({
+    bpcStorage.local.get({
         sites_excluded: []
     }, function (items) {
         var sites_excluded = items.sites_excluded;

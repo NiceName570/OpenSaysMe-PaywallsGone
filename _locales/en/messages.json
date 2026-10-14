@@ -1,0 +1,480 @@
+{
+  "app_description": {
+    "description": "The Description of the App, as it will be shown within the Extension Menu of Chrome",
+    "message": "OpenSaysMe will help you identify legal open access copies of academic articles, using unpaywall.org and other services."
+  },
+  "app_title": {
+    "description": "The name of this app",
+    "message": "OpenSaysMe"
+  },
+  "content_console_001": {
+    "description": "Console Log for DOI Found",
+    "message": "OpenSaysMe (Chrome Extension): found this DOI ($id$): $doi$",
+    "placeholders": {
+      "doi": {
+        "content": "$2",
+        "example": "10.1016/j.something.12345.5.6"
+      },
+      "id": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "content_console_002": {
+    "description": "Console Log for DOI4",
+    "message": "OpenSaysMe (Chrome Extension): support for $provider$ is experimental",
+    "placeholders": {
+      "provider": {
+        "content": "$1",
+        "example": "ProQuest"
+      }
+    }
+  },
+  "content_console_003": {
+    "description": "Console Log for DOI4",
+    "message": "OpenSaysMe (Chrome Extension): This document is offered in full-text at this location (EBSCOhost)"
+  },
+  "content_console_004": {
+    "description": "Console Log for DOI Found",
+    "message": "OpenSaysMe (Chrome Extension): found this Open Access URL ($source$): $url$ $oaversion$",
+    "placeholders": {
+      "oaversion": {
+        "content": "$3",
+        "example": "free access"
+      },
+      "source": {
+        "content": "$1",
+        "example": "some source"
+      },
+      "url": {
+        "content": "$2",
+        "example": "http://www.whathaveyou.com"
+      }
+    }
+  },
+  "content_console_005": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): Open Access Button not possible, as there was an error obtaining pub data"
+  },
+  "content_console_006": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): Open Access Button not possible, as Pub Year > 5 years ago"
+  },
+  "content_console_007": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): did not find any Open Access, but you can try to request from Open Access Button"
+  },
+  "content_console_008": {
+    "description": "Console Log for alternativeOA",
+    "message": "OpenSaysMe (Chrome Extension): we are on a DSPACE respository - there is a chance the document is available here"
+  },
+  "content_console_009": {
+    "description": "Console Log for alternativeOA",
+    "message": "OpenSaysMe (Chrome Extension): no Open Access Found"
+  },
+  "content_console_013": {
+    "description": "Console Log for checking specific publishers",
+    "message": "OpenSaysMe (Chrome Extension): We are checking: $host$ with a web scraper",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "some source"
+      }
+    }
+  },
+  "content_console_014": {
+    "description": "Console Log for checking specific publishers",
+    "message": "OpenSaysMe (Chrome Extension): This article was cited $count$ times, according to OpenCitations.net",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "some source"
+      }
+    }
+  },
+  "content_ill_001": {
+    "description": "title value shown, when user hovers over the blue Open Access Button 'button'",
+    "message": "We didn't find a legal Open Access Version, but you could try and request it via your Library."
+  },
+  "content_ill_002": {
+    "description": "title value shown, when user hovers over the blue Open Access Button 'button'",
+    "message": "Ask your Library!"
+  },
+  "content_oab_001": {
+    "description": "title value shown, when user hovers over the blue Open Access Button 'button'",
+    "message": "We didn't find a legal Open Access Version, but you could try and request it via Open Access Button."
+  },
+  "content_onoa_001": {
+    "description": "Shown when extension is on the Open Access location",
+    "message": "This is the Open Access location!"
+  },
+  "content_times_cited": {
+    "description": "Times Cited: xx",
+    "message": "Times Cited:"
+  },
+  "content_version_acceptedVersion": {
+    "description": "OA Version: Accepted Version",
+    "message": "Accepted Version"
+  },
+  "content_version_publishedVersion": {
+    "description": "OA Version: Published Version",
+    "message": "Published Version"
+  },
+  "content_version_submittedVersion": {
+    "description": "OA Version: Submitted Version",
+    "message": "Submitted Version"
+  },
+  "context_search_label": {
+    "description": "the label \"search\" will be concatencated with service like so: Search _SERVICENAME_:",
+    "message": "Search"
+  },
+  "context_titute_search_label": {
+    "description": "Label for highlight & search when local library is selected as target",
+    "message": "Search your library for"
+  },
+  "ebsco_access": {
+    "descriptin": "the text shown when hovering over the EBSCO access badge",
+    "message": "Access from EBSCO"
+  },
+  "options1_button_save_settings": {
+    "description": "Save Button on Options1 page",
+    "message": "Save"
+  },
+  "options1_button_saveproxy": {
+    "description": "Button Save Proxy",
+    "message": "Save Institute Settings"
+  },
+  "options1_h2_additional_settings": {
+    "description": "Additional Settings Options Group",
+    "message": "Additional Settings"
+  },
+  "options1_h2_proxy": {
+    "description": "Section Heading for Custom Proxy Setup",
+    "message": "Custom Institute Setup"
+  },
+  "options1_intro_001": {
+    "description": "Debug Settings Page Intro",
+    "message": "Settings on this page aren't meant for general use. If you found this page, please handle these settings with care and / or be certain to note the original settings, so that you can easily reset things"
+  },
+  "options1_label_illurl": {
+    "description": "Label for Link Resolver URL",
+    "message": "URL of your Link Resolver / Request Form"
+  },
+  "options1_label_proxyname": {
+    "description": "Input Label Name of Institution",
+    "message": "Name of Institution"
+  },
+  "options1_label_proxyprefix": {
+    "description": "Label for Proxy Login URL",
+    "message": "Proxy Login URL"
+  },
+  "options1_page_subtitle": {
+    "description": "Debug Settings Page Subtitle",
+    "message": "- Please handle these settings with care"
+  },
+  "options1_page_title": {
+    "description": "Debug Settings Page Title",
+    "message": "Debug Settings"
+  },
+  "options1_placeholder_illurl": {
+    "description": "Placeholder",
+    "message": "e.g. https://linkresolver.uni-library.edu/openurl?doi="
+  },
+  "options1_placeholder_proxprefix": {
+    "description": "Placeholder",
+    "message": "e.g. https://proxy.uni-library.edu/login?url="
+  },
+  "options1_placeholder_proxyname": {
+    "description": "Placeholder Name of Institution",
+    "message": "Name of Institution"
+  },
+  "options1_proxy_empty_error": {
+    "description": "name or url is empty warning",
+    "message": "You need to provide both a name AND a url, please."
+  },
+  "options1_settings": {
+    "description": "Settings Label for the Debug Settings Page",
+    "message": "Debug Settings"
+  },
+  "options1_settings_intro_001": {
+    "description": "Additional Settings Intro",
+    "message": "This setting is designed to help you debug the extension, please don't use this for prolonged times, as the debug is rather verbose and thus might 'flood' your Browser Console with superfluous messages"
+  },
+  "options1_settings_intro_002": {
+    "description": "Proxy Setup Intro",
+    "message": "If your institution's Proxy Server is not listed, we would suggest you contact us, so we can set it up for you. However, if you would like to test your own setup, feel free to provide a name and the login URL (up to ?url= or ?qurl=)"
+  },
+  "options1_settings_label_001": {
+    "description": "add console log output for debug",
+    "message": "Add detailed Console Log messages"
+  },
+  "options1_settings_label_telemetry": {
+    "description": "Firefox-only data-collection consent checkbox for weekly telemetry; hidden on browsers/Firefox versions without the data_collection permission framework",
+    "message": "Share anonymous weekly usage statistics to help improve OpenSaysMe"
+  },
+  "options_advanced_settings_link": {
+    "description": "label for advanced settings link",
+    "message": "Advanced Settings (Please contact support)"
+  },
+  "options_button_get_support": {
+    "description": "Button: Get Support",
+    "message": "Get Support"
+  },
+  "options_button_hide_settings": {
+    "description": "Button: Hide Settings",
+    "message": "Hide Settings"
+  },
+  "options_button_instupdate": {
+    "description": "Button: Update Settings (Shown next to the institute search)",
+    "message": "Reload from Server"
+  },
+  "options_button_save_settings": {
+    "description": "Button: Save Settings (shown very bottom of page)",
+    "message": "Save Settings"
+  },
+  "options_button_search": {
+    "description": "Button: Search (Shown next to the institute search)",
+    "message": "Search"
+  },
+  "options_button_show_example": {
+    "description": "Button: show example",
+    "message": "Show Example"
+  },
+  "options_button_show_settings": {
+    "description": "Button: Show Settings",
+    "message": "Show Settings"
+  },
+  "options_button_view_tutorial": {
+    "description": "Button: View tutorial",
+    "message": "View Tutorial"
+  },
+  "options_error_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Unfortunately an error occurred :("
+  },
+  "options_h2_additional_sources": {
+    "description": "Settings Section Label: Additional Open Access Sources",
+    "message": "Alternative Access"
+  },
+  "options_h2_disabledondomain": {
+    "description": "This option will show list of disabled domains",
+    "message": "Disabled Domains"
+  },
+  "options_h2_ezproxy": {
+    "description": "Settings Section Label: Institutional Settings",
+    "message": "Institutional Settings"
+  },
+  "options_h2_nobadge": {
+    "description": "This option will hide the padges",
+    "message": "Hide Badges in Page"
+  },
+  "options_h2_select_search": {
+    "description": "Settings Section Label: Select &amp; Search",
+    "message": "Select &amp; Search"
+  },
+  "options_h2_similar_articles": {
+    "description": "Settings Section Label: Other Services",
+    "message": "Additional Services"
+  },
+  "options_institute_search_bydomain": {
+    "description": "Next to radio button - search by domain",
+    "message": "Search by domain"
+  },
+  "options_institute_search_byname": {
+    "description": "Next to radio button - search by name",
+    "message": "Search by name"
+  },
+  "options_institute_search_placeholder": {
+    "description": "Placeholder Text, shown inside search for for Institutions",
+    "message": "enter institutions domain, e.g. harvard.edu"
+  },
+  "options_intro_001": {
+    "description": "Intro Paragraph 1 on options page",
+    "message": "Please take a moment to adjust the below settings to match your expected extension behavior. Don't worry, if you change your mind, you can reach this page by right-clicking the extension icon and selecting options, or clicking the settings link within the extension popup. Want to learn more? There is a <a href=\"https://www.oahelper.org/tutorial-open-access-helper-for-chrome/\" target=\"_blank\">video tutorial</a> or <a href=\"https://www.oahelper.org\" target=\"_blank\">oahelper.org</a>."
+  },
+  "options_intro_002": {
+    "description": "Intro Paragraph 2 on options page",
+    "message": "If you find utility in this extension please tell others, leave a positive review or simply enjoy it! If you don't like it, or have ideas as to how to make it better, please <a href=\"mailto:info@oahelper.org\">tell&nbsp;me</a>, before you tell others!"
+  },
+  "options_intro_003": {
+    "description": "Apology for translation not needed for EN, DE, NL and FR",
+    "message": ""
+  },
+  "options_link_learn_more": {
+    "description": "Learn more... Link (shown at end of each setting section intro",
+    "message": "Learn&nbsp;more&hellip;"
+  },
+  "options_multi_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Kindly check your search - multiple institutes found"
+  },
+  "options_no_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Unfortunately there were no hits - please <a href=\"https://www.oahelper.org/support/\" target=\"_blank\" rel=\"noopener\">contact support</a>, so we can help you setup your institute!"
+  },
+  "options_options_proxy_saved": {
+    "description": "Save Proxy Option saved, shows for a few seconds",
+    "message": "Your institutional data for {id} {name} was saved."
+  },
+  "options_options_saved": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Your settings were saved"
+  },
+  "options_page_subtitle": {
+    "description": "subtitle on options page",
+    "message": "- I am excited you've found this extension"
+  },
+  "options_page_title": {
+    "description": "Main Title on options page",
+    "message": "Welcome"
+  },
+  "options_proxy_searchtooshort": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Please enter at least 5 characters"
+  },
+  "options_settings": {
+    "description": "translation for the word settings in title",
+    "message": "Settings"
+  },
+  "options_settings_intro_001": {
+    "description": "Section Intro for Additional Open Access Sources",
+    "message": "OpenSaysMe is built around the unpaywall.org API. Configure additional access options below to expand the reach of this extension."
+  },
+  "options_settings_intro_003": {
+    "description": "Section Intro Select & Search",
+    "message": "Found a concept or phrase you want to investigate further? Select the concept/phrase, right-click and send it to an academic search engine of your choice."
+  },
+  "options_settings_intro_004": {
+    "description": "Section Intro EZProxy Settings",
+    "message": "Sometimes, all that's left is to use your Institutional Subscription. If your institution uses EZProxy or OpenAthens, you might be able to benefit from remote access. If your institution has provided us with the URL of their Link Resolver or Document Delivery Form, you'll be able to request access "
+  },
+  "options_settings_intro_005": {
+    "description": "Section Intro No Badge",
+    "message": "If you would like OpenSaysMe to be as \"invisible\" as possible, you can hide all badges on the page. If you elect to do this, please watch out for color changes of the OpenSaysMe icon."
+  },
+  "options_settings_intro_009": {
+    "description": "Section Intro disabled on domain",
+    "message": "Your instiution can request OpenSaysMe to be disabled on certain domains. This listing lets you know which domains were disabled."
+  },
+  "options_settings_label_002": {
+    "description": "Check Box Label for show open access button",
+    "message": "Show Open Access Button"
+  },
+  "options_settings_label_004": {
+    "description": "Check Box Label for Show Citation Count",
+    "message": "Show Citation Count (OpenCitations)"
+  },
+  "options_settings_label_005": {
+    "description": "Disable this feature, shown in Select & Search drop down",
+    "message": "Disable this feature"
+  },
+  "options_settings_label_006": {
+    "description": "Check Box Label for Enable EZProxy Support",
+    "message": "Enable EZProxy / OpenAthens Support"
+  },
+  "options_settings_label_007": {
+    "description": "Check Box Label for hide all badges from host page",
+    "message": "Hide all badges from host page"
+  },
+  "options_settings_label_008": {
+    "description": "Check Box Label for ask your library (will enabled ILL or OpenURL)",
+    "message": "Enable Ask Your Library"
+  },
+  "options_settings_label_009": {
+    "description": "Check Box Label for EBSCO user choice",
+    "message": "Enable EBSCOhost Entitlement API"
+  },
+  "options_settings_label_010": {
+    "description": "Check Box Label for Retraction Watch Data",
+    "message": "Display Retraction Watch Data"
+  },
+  "options_settings_label_011": {
+    "description": "Check Box Label for Open Alex Citation Count",
+    "message": "Show Citation Count (OpenAlex)"
+  },
+  "options_settings_managed_info": {
+    "description": "Informing a user that the institute was pre-selected by their organization",
+    "message": "<strong>For your information:</strong><br>Your organization manages this installation of OpenSaysMe and has pre-selected your institution to ensure you have the best experience possible. You can manage all other settings on your own."
+  },
+  "popup_citationbutton_001": {
+    "description": "Times Cited Group of text and button",
+    "message": "See who cited this paper:<br><button id=\"citationbutton\" data-url=\"{url}\">Times Cited: {citationcount}</button>"
+  },
+  "popup_configuration": {
+    "description": "Word: Settings - links to option page, shown in footer of page",
+    "message": "Settings"
+  },
+  "popup_connection_lost": {
+    "description": "Shown in the popup when the content script on the active tab did not respond (e.g. connection lost after the computer woke from sleep)",
+    "message": "<p class=\"oah_center\">OpenSaysMe lost its connection to this page, so this menu could not load. Please reload the page and try again.</p>"
+  },
+  "popup_disabled_on_domain": {
+    "description": "Shown when no data was found in the page",
+    "message": "<img src=\"../images/opensaysme-disabled-76.png\" id=\"disabledomainicon\"><p class=\"oah_center\">Access to this domain has been disabled based on your individual or institutional configuration settings. Please check your OpenSaysMe preferences or contact your institution for more information.</p>"
+  },
+  "popup_empty_responses": {
+    "description": "Shown when no data was found in the page",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">OpenSaysMe could not find a relevant service and thus is inactive. Consider changing your Settings or if you think this is a mistake, please report a bug!</p><p class=\"oah_center\"><a href=\"#\" id=\"seeexample\">Click here to see an example.</a></p>"
+  },
+  "popup_empty_responses_proxied": {
+    "description": "Shown when no data was found in the page, but you are proxied",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">You are browsing with the library's proxy server or are at a library website!<br><br>OpenSaysMe could not find additional relevant services and thus is inactive. </p><p class=\"oah_center\"><a href=\"#\" id=\"seeexample\">Click here to see an example.</a></p>"
+  },
+  "popup_hidebadge": {
+    "description": "Word: Hide Badges - links to option page, shown in footer of page",
+    "message": "Hide Badges"
+  },
+  "popup_non_http_source": {
+    "description": "Shown when extension is inactive",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">OpenSaysMe will only function on websites that start with http and https</p>"
+  },
+  "popup_oabutton_001": {
+    "description": "Open Access Group of text and button, when Open Access Button shown",
+    "message": "We didn't find an Open Access copy :(<br><button id=\"oabuttonrequest\" data-url=\"{url}\">Request via {buttonlabel}</button>"
+  },
+  "popup_oabutton_002": {
+    "description": "Open Access Group of text and button, when unpaywall.org found",
+    "message": "We found an Open Access copy!<br><button id=\"oabutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_003": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "We didn't find an Open Access copy :(<br><button id=\"oabuttonrequest\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_004": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Still no access? <button id=\"oabuttonrequestlink\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_005": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Still no access?<br><button id=\"oabuttonrequest\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_006": {
+    "description": "Open Access Group of text and button, when unpaywall.org found",
+    "message": "You are at the Open Access Copy!<br><button id=\"oabutton\" class=\"oabuttongreen\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_007": {
+    "description": "Subscription Access was found",
+    "message": "Your institution's subscription:<br><button id=\"ebscobutton\" class=\"ebscobutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_008": {
+    "description": "Subscription Access was found",
+    "message": "Retraction Watch reported this paper as:<br><button id=\"rwbutton\" class=\"rwbutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_popup": {
+    "description": "Title for Popup",
+    "message": "Popup"
+  },
+  "popup_proxybutton_001": {
+    "description": "Proxy resource group of text and button",
+    "message": "Your <em>{institute}</em> Access:<br><button id=\"ezproxybutton\" data-url=\"{url}\">{urltoproxy}</button>"
+  },
+  "popup_proxybutton_001a": {
+    "description": "Proxy resource group of text and button",
+    "message": "Your <em>{institute}</em> Access:<br><button id=\"ezproxybutton\" data-url=\"{url}\">{urltoproxy}</button>"
+  },
+  "popup_support": {
+    "description": "Word: Support - takes users to support page",
+    "message": "Support"
+  }
+}

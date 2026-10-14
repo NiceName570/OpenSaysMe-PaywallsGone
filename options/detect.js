@@ -91,11 +91,12 @@ function buildRule(info, domain) {
 
 function detectSiteRule(tabId, domain, callback) {
   var api = (typeof browser === 'object') ? browser : chrome;
-  api.tabs.executeScript(tabId, {code: '(' + pageProbe.toString() + ')()'}, function (results) {
+  chrome.scripting.executeScript({target: {tabId}, func: pageProbe}).then(entries => {
+    const results = entries.map(entry => entry.result);
     if (api.runtime.lastError || !results || !results[0]) {
       callback(buildRule({vendors: [], scriptPaths: []}, domain));
       return;
     }
     callback(buildRule(results[0], domain));
-  });
+  }).catch(() => callback(buildRule({vendors: [], scriptPaths: []}, domain)));
 }

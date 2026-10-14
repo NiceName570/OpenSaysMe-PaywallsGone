@@ -1,0 +1,196 @@
+#illurl, #proxyurl {
+    margin-left: 1.5em;
+    font-size: 0.75em;;
+    font-family: monospace;
+}
+
+.institutetoadd {
+    cursor: pointer !important;
+}
+
+#breadcrumb1.is-active > a,
+#breadcrumb2.is-active > a,
+#breadcrumb3.is-active > a,
+#breadcrumb4.is-active > a {
+    font-weight: bold;
+}
+
+#statuscontainer {
+    position: relative;
+}
+
+#status {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#status > #optionssaved {
+    z-index: 10000;
+}
+
+a.learnmore {
+    text-decoration: underline;
+}
+
+a.learnmore:hover {
+    text-decoration: none;
+}
+
+a.learnmore:before {
+    content:url('/images/circle_questionmark.svg');
+    width: 0.8em;
+    height: 0.8em;
+    display: inline-block;
+    margin-right: 0.25em;
+    margin-left: 0.5em;
+}
+
+.autoComplete_wrapper {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+  }
+
+ #autoComplete {
+    margin: 0;
+    padding: 0 2rem 0 3.2rem !important;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-size: 1.4rem;
+    text-overflow: ellipsis;
+    color: #3F3F46;
+    outline: none;
+    border: 0.05rem solid #3F3F46;
+    background-image: url(../images/search.svg);
+    background-size: 2rem;
+    background-position: left 1.05rem top 0.75rem;
+    background-repeat: no-repeat;
+    background-origin: border-box;
+    background-color: #fff;
+    transition: all 0.4s ease;
+    -webkit-transition: all -webkit-transform 0.4s ease;
+  }
+
+  #autoComplete::placeholder {
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    -webkit-transition: all -webkit-transform 0.3s ease;
+  }
+
+  #autoComplete:hover::placeholder {
+    transition: all 0.3s ease;
+    -webkit-transition: all -webkit-transform 0.3s ease;
+  }
+
+  #autoComplete:focus::placeholder {
+    padding: 0.1rem 0.6rem;
+    font-size: 1.5rem;
+  }
+
+
+  #autoComplete:hover {
+    color: #3F3F46;
+    transition: all 0.3s ease;
+    -webkit-transition: all -webkit-transform 0.3s ease;
+  }
+
+
+  .autoComplete_wrapper > ul {
+    position: absolute;
+    max-height: 400px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    left: 0;
+    right: 0;
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+    z-index: 1;
+    list-style: none;
+    border-radius: 0.6rem;
+    background-color: #fff;
+    border: 1px solid rgba(33, 33, 33, 0.07);
+    box-shadow: 0 3px 6px rgba(149, 157, 165, 0.15);
+    outline: none;
+    transition: opacity 0.15s ease-in-out;
+    -moz-transition: opacity 0.15s ease-in-out;
+    -webkit-transition: opacity 0.15s ease-in-out;
+  }
+
+  .autoComplete_wrapper > ul[hidden],
+  .autoComplete_wrapper > ul:empty {
+    display: block;
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  .autoComplete_wrapper > ul > li {
+    margin: 0.3rem;
+    padding: 0.3rem 0.5rem;
+    text-align: left;
+    font-size: 1.5rem;
+    color: #212121;
+    border-radius: 0.35rem;
+    background-color: rgba(255, 255, 255, 1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.2s ease;
+  }
+
+  .autoComplete_wrapper > ul > li mark {
+    background-color: transparent;
+    color: #6ec1e4;
+    font-weight: bold;
+  }
+
+  .autoComplete_wrapper > ul > li:hover {
+    cursor: pointer;
+    background-color: #FFE08A;
+  }
+
+  @media only screen and (max-width: 600px) {
+    #autoComplete {
+      width: 18rem;
+    }
+  }
+
+  #autoComplete_list_1 p {
+    margin-left: 1em;
+    margin-top: 0.75em;
+  }
+
+  #selectedinstitute {
+    font-weight: 700;
+    font-size: 1.2em;
+    border: 2px solid #4a4a4a;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    cursor: pointer;
+  }
+
+  #selectedinstitute:after {
+    content: "x";
+    float: right;
+  }
+
+  #selectedinstitute:hover {
+    border: 2px solid #de0a26;
+    color: #de0a26;
+  }
+
+  #selectedinstitute:hover:after {
+    color: #de0a26;
+    content: "Remove Institute";
+  }
+
+  #disableddomain_list_items {
+    list-style: square !important;
+    margin-left: 2em;
+    margin-top: 0.5em;
+  }
+
+  .my-t5 {
+    margin-top: 5rem;
+  }

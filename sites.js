@@ -2040,7 +2040,7 @@ var defaultSites = {
   "Zephr": {
     domain: "zephr.com"
   },
-  "* BPC settings": {
+  "* OpenSaysMe settings": {
     domain: "###"
   },
   "Show options on update": {

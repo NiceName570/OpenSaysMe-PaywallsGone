@@ -1,0 +1,215 @@
+.oahelper_doifound_outer{
+    top: 25% !important;
+    right: -180px !important;
+    z-index: 999999999 !important;
+    position: fixed !important;
+    width: 230px !important;
+    height: 40px !important;
+    border-radius: 20px 0 0 20px !important;
+    background-color: rgb(255, 102, 0) !important;
+}
+
+.oahelper_opencitations_outer, .oahelper_openalexcitation_outer{
+    top: calc(25% + 45px) !important;
+    right: -180px !important;
+    z-index: 999999999 !important;
+    position: fixed !important;
+    width: 230px !important;
+    height: 36px !important;
+    border-radius: 20px 0 0 20px !important;
+    border: 2px solid #000000 !important;
+    border-right: 0 !important;
+    background-color: #FFFFFF !important;
+    box-sizing: content-box !important;
+}
+
+.oahelper_retractionwatch_outer{
+    top: calc(25% + 90px) !important;
+    right: -180px !important;
+    z-index: 999999999 !important;
+    position: fixed !important;
+    width: 230px !important;
+    height: 40px !important;
+    border-radius: 20px 0 0 20px !important;
+    background-color: rgb(205, 14, 6) !important;
+}
+
+#oahelper_oahelpmsg, #oahelper_oahelpmsg1, #oahelper_opencitations_msg, #oahelper_retractionwatch_msg, #oahelper_openalexcitation_msg{
+    display: inline-block !important;
+    font-size: 15px !important;
+    vertical-align: middle !important;
+    line-height: 40px !important;
+}
+
+#oahelper_opencitations_msg, #oahelper_openalexcitation_msg{
+    line-height: 36px !important;
+}
+
+.oahelper_doigreen{
+    background-color: #008f00 !important;
+}
+
+.oahelper_doiblue{
+    background-color: #398bc5 !important;
+}
+
+.oahelper_corecolor{
+    background-color: #b65500 !important;
+}
+
+#oahelper_opencitations_msg, #oahelper_openalexcitation_msg{
+    color: #9931FC !important;
+}
+
+.ebsco_badge{
+    background-color: #002f56 !important;
+    border: 1px solid #6e6e6e !important;
+}
+
+.oahelper_doifound, .oahelper_opencitations, .oahelper_openalexcitation, .oahelper_retractionwatch{
+    font-family:  "Helvetica", "Arial", "sans-serif" !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    color: #FFF !important;
+    width: 230px !important;
+    height: 40px !important;
+}
+
+.oahelper_opencitations, .oahelper_openalexcitation{
+    height: 36px !important;
+}
+
+a#oahelper_doifound, a#oahelper_doifound:active{
+    text-decoration: none !important;
+    color: #FFF !important;
+}
+
+#oahelper_doicheckmark, #oahelper_doicheckmark1{
+    width: 30px !important;
+    height: 30px !important;
+    margin: 5px !important;
+    margin-left: 10px !important;
+}
+
+#oahelper_opencitations_logo, #oahelper_retractionwatch_logo, #oahelper_openalexcitation_logo{
+    width: 30px !important;
+    height: 30px !important;
+    margin: 3px !important;
+    margin-left: 10px !important;
+}
+
+#oahelper_LiveRegion, #oahelper_opencitations_LiveRegion, #oahelper_retractionwatch_LiveRegion, #oahelper_openalexcitation_LiveRegion{
+    position:absolute;
+    left:-1000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+.oah_hidden{
+    display: none;
+}
+
+.oahelper_add_config{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 5px;
+}
+
+.oahelper_add_config_success, .oahelper_add_config_success:hover, .oahelper_add_config_success:active{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 5px;
+    background-color: #43AF11;
+}
+
+.oahelper_add_config_success:before{
+    content: "✔";
+    font-size: 1.25em;
+}
+
+@media (hover: hover) {
+    .oahelper_recommendation_p:hover{
+        background-color: #e5e5e5;
+    }
+    a#oahelper_doifound:hover{
+        text-decoration: none !important;
+        color: #FFF !important;
+    }
+    .oahelper_doifound_outer:hover, .oahelper_opencitations_outer:hover, .oahelper_openalexcitation_outer:hover, .oahelper_retractionwatch_outer:hover{
+        right: 0 !important;
+        -webkit-transition: right 0.5s;
+    }
+}
+
+@keyframes append-animate {
+	from {
+		transform: scale(0);
+		opacity: 0;
+	}
+	to {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+#ebsco_will_open {
+    top: 2rem !important;
+    right: 2rem !important;
+    z-index: 999999999 !important;
+    position: fixed !important;
+    width: 275px !important;
+    height: 80px !important;
+    border-radius: 0.25rem !important;
+    background-color: rgb(0, 0, 0) !important;
+    color: #fafafa;
+    text-align: center !important;;
+    font-weight: 500 !important;;
+    padding: 1rem !important;
+    animation: append-animate .3s linear;
+}
+#oahelper_ebsco > img {
+    width: 25px !important;
+    height: 25px !important;
+    margin: 8px 5px 10px 15px !important;
+}
+
+#oahelper_openathens_404 {
+    margin-top: 2em;
+}
+
+#oahelper_openathens_404 p {
+    margin-bottom: 0.75em;
+}
+
+#oahelper_openathens_404:before {
+    content: "\f118";
+    position: absolute;
+    font-size: 85px;
+    color: #999999;
+    font-family: FontAwesome;
+    left: 20px;
+}
+
+/* OpenSaysMe badges share the app's white surface and blue outline. Scope every
+   rule to extension-owned elements so publisher page styles stay independent. */
+.oahelper_doifound_outer,.oahelper_opencitations_outer,.oahelper_openalexcitation_outer,
+.oahelper_retractionwatch_outer,.oahelper_doigreen,.oahelper_doiblue,.oahelper_corecolor,.ebsco_badge {
+    background-color: #fff !important;
+    border: 2px solid #2563eb !important;
+    border-right: 0 !important;
+    box-shadow: 0 3px 12px #172b4d18 !important;
+}
+.oahelper_doifound,.oahelper_opencitations,.oahelper_openalexcitation,
+.oahelper_retractionwatch,a#oahelper_doifound,a#oahelper_doifound:active,
+a#oahelper_doifound:hover,#oahelper_opencitations_msg,#oahelper_openalexcitation_msg {
+    color: #1d4ed8 !important;
+    font-family: system-ui,-apple-system,"Segoe UI",sans-serif !important;
+    font-size: 14px !important;
+}
+.oahelper_retractionwatch_outer { border-color: #b42318 !important; }
+.oahelper_retractionwatch,#oahelper_retractionwatch_msg { color: #b42318 !important; }
+#ebsco_will_open { background-color: #eff6ff !important; color: #172b4d !important;
+    border: 1px solid #93b6f5 !important; border-radius: 12px !important;
+    font-family: system-ui,-apple-system,"Segoe UI",sans-serif !important; }

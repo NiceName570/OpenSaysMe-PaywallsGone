@@ -1,0 +1,22 @@
+# Generated browser validation; curated README images live in docs/.
+/artifacts/
+/validation.json
+
+# Local credentials, configuration, dependencies, and caches.
+.env
+.env.*
+!.env.example
+*.local.json
+*.local.js
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.zip
+*.crx
+*.pem

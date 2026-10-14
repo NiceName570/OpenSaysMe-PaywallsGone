@@ -2,16 +2,20 @@
 
 <html>
   <head>
+<script src="../../shared/storage.js"></script>
+<script src="../../shared/mv3-compat.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bypass Paywalls Clean (setCookie/custom sites opt-in)</title>
+    <title>OpenSaysMe · News preferences</title>
     <link rel="stylesheet" href="opt-in.css"/>
     <script src="opt-in.js"></script>
-  </head>
+  <link rel="stylesheet" href="../../shared/theme.css">
+<link rel="icon" href="../../images/opensaysme.svg">
+</head>
 
-  <body>
+  <body class="osm-page"><main class="page"><header class="osm-page-header"><a class="osm-brand" href="../../settings.html"><img src="../../images/opensaysme.svg" alt=""><span><strong>OpenSaysMe</strong><small>News preferences</small></span></a><a href="../../settings.html">All settings</a></header>
     <div id="opt-in-prompt">
-      <p><strong>Bypass Paywalls Clean<br> - setCookie/custom sites opt-in</strong></p>
+      <p><strong>OpenSaysMe<br> - setCookie/custom sites opt-in</strong></p>
       <p><strong>setCookie opt-in</strong></p>
       <p>For some sites (check list in options) a necessary cookie has to be set (this cookie doesn't contain any personal information about the user or device):<br><br>
       Irish Independent<br>
@@ -32,15 +36,7 @@
       </div>
       <p>You can also just request permissions for the <a href="../options_custom.html">custom sites</a> you added yourself.</p>
     </div>
-    <div id="update-prompt">
-      <p><strong>check update opt-in</strong></p>
-      <p>Check for update of version (on startup and when opening options):</br>
-      <p>check update enabled: <span id="update-enabled"></span></p>
-      <div id="update-container">
-        <button id="update-enable">Enable</button>
-        <button id="update-disable">Disable</button>
-      </div>
-    </div>
+    <div id="update-prompt"><strong>OpenSaysMe updates</strong><p>This local build is updated manually.</p><span id="update-enabled" hidden></span><div id="update-container" hidden><button id="update-enable">Enable</button><button id="update-disable">Disable</button></div></div>
 	<p>
   <div style='float:left;padding-bottom:50px'>
     <small><button><a href="../options.html" style="text-decoration:none;color:inherit">Options</a></button></small>
@@ -48,6 +44,6 @@
     <small><button id="button-close">Close</button></small>
   </div>
   </p>
-  </body>
+  </main></body>
 
 </html>

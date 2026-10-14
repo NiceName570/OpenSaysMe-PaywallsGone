@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OpenSaysMe</title><link rel="stylesheet" href="opensaysme.css"><link rel="icon" href="images/opensaysme.svg"></head>
+<body class="popup-shell">
+  <header><a class="osm-brand" href="settings.html" target="_blank"><img src="images/opensaysme.svg" alt=""><span><strong>OpenSaysMe</strong><small id="current-site">News &amp; research access</small></span></a><a href="settings.html" target="_blank" aria-label="Open settings">Settings</a></header>
+  <nav aria-label="Access tools"><button id="news" aria-pressed="true">News tools</button><button id="research" aria-pressed="false">Research papers</button></nav>
+  <p id="rule-status" role="status" hidden></p>
+  <iframe id="tools" src="options/popup.html" title="News access tools"></iframe>
+  <footer>OpenSaysMe · News &amp; research access</footer>
+  <script src="popup.js"></script>
+</body></html>

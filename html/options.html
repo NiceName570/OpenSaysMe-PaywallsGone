@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="../shared/storage.js"></script>
+<script src="../shared/mv3-compat.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>__MSG_app_title__ __MSG_options_settings__</title>
+    <link href="../css/options.css" rel="stylesheet">
+    <link href="../css/bulma.min.css" rel="stylesheet">
+    <script src="../js/autoComplete.js"></script>
+<link rel="stylesheet" href="../shared/theme.css">
+<link rel="icon" href="../images/opensaysme.svg">
+</head>
+<body class="osm-research-settings">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="../images/opensaysme.svg" id="oahelpericon" width="48" height="48" alt=""><a class="osm-nav-title" href="../settings.html">OpenSaysMe<small>Research settings</small></a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+
+                <div class="navbar-end">
+                    <div class="buttons">
+                        <a class="button is-warning" id="showexample" href="https://www.oahelper.org/example/" target="_blank">
+                            __MSG_options_button_show_example__
+                        </a>
+                        <a class="button" id="viewtutorial" href="https://www.oahelper.org/tutorial-open-access-helper-for-chrome/" target="_blank">
+                            __MSG_options_button_view_tutorial__
+                        </a>
+                        <a class="button" id="getsupport" href="https://www.oahelper.org/support/" target="_blank">
+                            __MSG_options_button_get_support__
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section" id="introsection">
+        <div class="container">
+            <h1 class="title is-3">__MSG_options_page_title__</h1>
+            <div class="block" id="intro">
+                <p class="block">__MSG_options_intro_001__</p>
+                <p class="block" id="intro002">__MSG_options_intro_002__</p>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <nav class="breadcrumb has-arrow-separator is-medium mt-6" id="settingsnavbar" aria-label="breadcrumbs">
+                <ul>
+                    <li class="is-active" aria-current="page" id="breadcrumb1"><a id="breadcrumb1a">__MSG_options_h2_ezproxy__</a></li>
+                    <li id="breadcrumb2"><a id="breadcrumb2a">__MSG_options_h2_select_search__</a></li>
+                    <li id="breadcrumb3"><a id="breadcrumb3a">__MSG_options_h2_additional_sources__</a></li>
+                    <li id="breadcrumb4"><a id="breadcrumb4a">__MSG_options_h2_similar_articles__</a></li>
+                    <li id="breadcrumb5"><a id="breadcrumb5a">__MSG_options_h2_nobadge__</a></li>
+                    <li id="breadcrumb6"><a id="breadcrumb6a">__MSG_options_h2_disabledondomain__</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <div class="container" id="statuscontainer">
+        <div id="status"></div>
+    </div>
+    <section class="section hero is-warning" id="settingssection" style="display:none">
+        <div class="container mb-6">
+            <h2 class="title is-3">__MSG_options_h2_additional_sources__</h2>
+            <div class="block settingsgroup">
+                <div class="block settingsintro">
+                    __MSG_options_settings_intro_001__ <a href="https://www.oahelper.org/open-access-helper-chrome-settings/#setting_one" target="_blank" class="learnmore">__MSG_options_link_learn_more__</a>
+                </div>
+                <div class="field">
+                    <label class="checkbox" id="ebscouclabel">
+                        <input type="checkbox" id="ebscouc" name="ebscouc" value="ebscouc">
+                        __MSG_options_settings_label_009__
+                    </label>
+                </div>
+                <div class="buttons is-pulled-right">
+                    <a id="save_additionalsources" class="button is-dark">__MSG_options_button_save_settings__</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-warning" id="similarsection" style="display:none">
+        <div class="container mb-6">
+            <h2 class="title is-3">__MSG_options_h2_similar_articles__</h2>
+            <div class="block settingsgroup">
+                <div class="block settingsintro">
+                    __MSG_options_settings_intro_002__ <a href="https://www.oahelper.org/open-access-helper-chrome-settings/#setting_two" target="_blank" class="learnmore">__MSG_options_link_learn_more__</a>
+                </div>
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" id="opencitation" name="opencitation" value="opencitation">
+                        __MSG_options_settings_label_004__
+                    </label>
+                </div>
+
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" id="openalexcitation" name="openalexcitation" value="openalexcitation">
+                        __MSG_options_settings_label_011__
+                    </label>
+                </div>
+
+                <div class="field">
+                    <label class="checkbox">
+                        <input type="checkbox" id="retractionwatch" name="retractionwatch" value="retractionwatch">
+                        __MSG_options_settings_label_010__
+                    </label>
+                </div>
+                <div class="buttons is-pulled-right">
+                    <a id="save_similar" class="button is-dark">__MSG_options_button_save_settings__</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-warning" id="contextmenusection" style="display:none">
+        <div class="container mb-6">
+            <div id="contextMenuSettingsGroup">
+                <h2 class="title is-3">__MSG_options_h2_select_search__</h2>
+                <div class="block settingsgroup">
+                    <div class="block settingsintro">
+                        __MSG_options_settings_intro_003__ <a href="https://www.oahelper.org/open-access-helper-chrome-settings/#setting_three" target="_blank" class="learnmore">__MSG_options_link_learn_more__</a>
+                    </div>
+                    <div class="select">
+                        <select name="selectsearch" id="selectsearch">
+                            <option value="base">BASE</option>
+                            <option value="core">CORE</option>
+                            <option value="dimensions">Dimensions</option>
+                            <option value="google" id="selectsearch_google">Google Scholar</option>
+                            <option value="openalex">OpenAlex</option>
+                            <option value="semantic">Semantic Scholar</option>
+                            <option value="institute" id="selectsearch_institute">Your Institution's Library</option>
+                            <option value="none">__MSG_options_settings_label_005__</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="buttons is-pulled-right my-4">
+                    <a id="save_contextmenu" class="button is-dark">__MSG_options_button_save_settings__</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section hero is-warning" id="institutesection" style="display:block">
+        <div class="container mb-6">
+            <h2 class="title is-3">__MSG_options_h2_ezproxy__</h2>
+            <div class="settingsgroup">
+                <div class="block settingsintro">
+                    __MSG_options_settings_intro_004__ <a href="https://www.oahelper.org/open-access-helper-chrome-settings/#setting_four" target="_blank" class="learnmore">__MSG_options_link_learn_more__</a>
+                </div>
+                <div class="block" id="settings_managed_info"></div>
+                <div class="buttons is-pulled-right">
+                    <a class="button" id="instituteupdate">
+                        __MSG_options_button_instupdate__
+                    </a>
+                </div>
+                <div class="autoComplete_wrapper control is-expanded" id="autoComplete_wrapper">
+                    <input id="autoComplete" type="text" tabindex="1" class="input">
+                </div>
+                <div id="institutelist" class="my-5"></div>
+                <div id="selectedinstitute" class="my-t5" data-institute="" style="display:none"></div>
+                <div class="control">
+                    <label class="checkbox">
+                        <input type="checkbox" id="ezproxy" name="ezproxy" value="ezproxy">
+                        __MSG_options_settings_label_006__
+                    </label>
+                    <div id="proxyurl"></div>
+                </div>
+                <div class="control">
+                    <label class="checkbox">
+                        <input type="checkbox" id="ill" name="ill" value="ill">
+                        __MSG_options_settings_label_008__
+                    </label>
+                    <div id="illurl"></div>
+                </div>
+                <div class="buttons is-pulled-right">
+                    <a id="save_institute" class="button is-dark">__MSG_options_button_save_settings__</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section hero is-warning" id="nobadgesection" style="display:none">
+        <div class="container">
+            <h2 class="title is-3">__MSG_options_h2_nobadge__</h2>
+            <div class="settingsgroup">
+                <div class="block settingsintro">
+                    __MSG_options_settings_intro_005__ <a href="https://www.oahelper.org/open-access-helper-chrome-settings/#setting_five" target="_blank" class="learnmore">__MSG_options_link_learn_more__</a>
+                </div>
+                <div class="control">
+                    <label class="checkbox">
+                        <input type="checkbox" id="nobadge" name="nobadge" value="nobadge">
+                        __MSG_options_settings_label_007__
+                    </label>
+                </div>
+            </div>
+            <div class="buttons is-pulled-right">
+                <a id="save_badge" class="button is-dark">__MSG_options_button_save_settings__</a>
+            </div>
+        </div>
+    </section>
+
+        <section class="section hero is-warning" id="disabledondomain" style="display:none">
+        <div class="container">
+            <h2 class="title is-3">__MSG_options_h2_disabledondomain__</h2>
+            <div class="settingsgroup">
+                <div class="block settingsintro">
+                    __MSG_options_settings_intro_009__ <a href="https://www.oahelper.org/open-access-helper-chrome-settings/#setting_nine" target="_blank" class="learnmore">__MSG_options_link_learn_more__</a>
+                </div>
+                <div id="disabledondomain_list">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="section">
+        <div class="container">
+            <div class="buttons is-pulled-right">
+                <button id="save" class="button is-success">__MSG_options_button_save_settings__</button>
+            </div>
+        </div>
+    </section> -->
+    <footer class="footer" style="margin-top: 18rem;">
+        <div class="content has-text-centered">
+            <p>
+                Research integration based on the work of <a href="https://www.oahelper.org" target="_blank">Claus Wolf</a>.
+            </p>
+            <p>
+                <a href="options1.html" id="options1link" class="button is-small is-centered">__MSG_options_advanced_settings_link__</a>
+            </p>
+        </div>
+    </footer>
+    <script src="../js/oahelperAutoComplete.js"></script>
+    <script src="../js/oahelperSafeDom.js"></script>
+    <script src="../js/options.js"></script>
+</body>
+</html>

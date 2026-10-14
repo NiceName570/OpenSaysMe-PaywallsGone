@@ -1,0 +1,472 @@
+{
+  "app_description": {
+    "description": "The Description of the App, as it will be shown within the Extension Menu of Chrome",
+    "message": "OpenSaysMe hilft Dir legale Open Access Kopien akademischer Artikel zu finden. Dazu verwenden wir die APIs von unpaywall.org und weiteren Diensten."
+  },
+  "app_title": {
+    "description": "The name of this app",
+    "message": "OpenSaysMe"
+  },
+  "content_console_001": {
+    "description": "Console Log for DOI Found",
+    "message": "OpenSaysMe (Chrome Extension): DOI gefunden ($id$): $doi$",
+    "placeholders": {
+      "doi": {
+        "content": "$2",
+        "example": "10.1016/j.something.12345.5.6"
+      },
+      "id": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "content_console_002": {
+    "description": "Console Log for DOI4",
+    "message": "OpenSaysMe (Chrome Extension): Unterstützung für $provider$ ist experimentel",
+    "placeholders": {
+      "provider": {
+        "content": "$1",
+        "example": "ProQuest"
+      }
+    }
+  },
+  "content_console_003": {
+    "description": "Console Log for DOI4",
+    "message": "OpenSaysMe (Chrome Extension): Der Volltext für dieses Dokument ist hier verfügbar (EBSCOhost)"
+  },
+  "content_console_004": {
+    "description": "Console Log for DOI Found",
+    "message": "OpenSaysMe (Chrome Extension): Open Access URL ($source$) gefunden: $url$ $oaversion$",
+    "placeholders": {
+      "oaversion": {
+        "content": "$3",
+        "example": "free access"
+      },
+      "source": {
+        "content": "$1",
+        "example": "some source"
+      },
+      "url": {
+        "content": "$2",
+        "example": "http://www.whathaveyou.com"
+      }
+    }
+  },
+  "content_console_005": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): Open Access Button nicht möglich, da ein Fehler beim Abruf der Publikationsdaten auftrat"
+  },
+  "content_console_006": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): Open Access Button nicht möglich, da das Veröffentlichungsdatum mehr als 5 Jahre zurückliegt"
+  },
+  "content_console_007": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): konnte keinen Open Access finden, aber sie können Open Access Button probieren"
+  },
+  "content_console_008": {
+    "description": "Console Log for alternativeOA",
+    "message": "OpenSaysMe (Chrome Extension): wir befinden uns auf einem DSPACE Respository - es gibt eine gute Chance, dass das Dokument hier verfügbar ist."
+  },
+  "content_console_009": {
+    "description": "Console Log for alternativeOA",
+    "message": "OpenSaysMe (Chrome Extension): kein Open Access gefunden"
+  },
+  "content_console_013": {
+    "description": "Console Log for checking specific publishers",
+    "message": "OpenSaysMe (Chrome Extension): Wir versuchen spezielle Regeln für $host$ mit einem Web Scraper auszuführen",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "some source"
+      }
+    }
+  },
+  "content_console_014": {
+    "description": "Console Log for checking specific publishers",
+    "message": "OpenSaysMe (Chrome Extension): Laut OpenCitations.net wurde dieser Artikel $count$ mal zitiert",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "some source"
+      }
+    }
+  },
+  "content_ill_001": {
+    "description": "title value shown, when user hovers over the blue Ask your Library button'",
+    "message": "Wir konnten keine legale Open Access Version finden, aber Du kannst versuchen das Dokument bei Deiner Bibliothek anzufragen"
+  },
+  "content_ill_002": {
+    "description": "title value shown, when user hovers over the blue Ask your Library button'",
+    "message": "Die Bibliothek fragen"
+  },
+  "content_oab_001": {
+    "description": "title value shown, when user hovers over the blue Open Access Button 'button'",
+    "message": "Wir konnten keine legale Open Access Version finden, aber Du kannst versuchen den Autor über Open Access Button darum zu bitten."
+  },
+  "content_onoa_001": {
+    "description": "Shown when extension is on the Open Access location",
+    "message": "Das Open Access Dokument ist hier verfügbar!"
+  },
+  "content_times_cited": {
+    "description": "Times Cited: xx",
+    "message": "Anzahl der Zitate:"
+  },
+  "content_version_acceptedVersion": {
+    "description": "OA Version: Accepted Version",
+    "message": "Angenommene Version"
+  },
+  "content_version_publishedVersion": {
+    "description": "OA Version: Published Version",
+    "message": "Veröffentlichte Version"
+  },
+  "content_version_submittedVersion": {
+    "description": "OA Version: Submitted Version",
+    "message": "Eingereichte Version"
+  },
+  "context_search_label": {
+    "descriptin": "the label \"search\" will be concatencated with service like so: Search _SERVICENAME_:",
+    "message": "Suche"
+  },
+  "context_titute_search_label": {
+    "descriptin": "Label for highlight & search when local library is selected as target",
+    "message": "Suche die Bibliothek"
+  },
+  "ebsco_access": {
+    "descriptin": "the text shown when hovering over the EBSCO access badge",
+    "message": "Zugang über EBSCO"
+  },
+  "options1_button_save_settings": {
+    "description": "Save Button on Options1 page",
+    "message": "Speichern"
+  },
+  "options1_button_saveproxy": {
+    "description": "Button Save Proxy",
+    "message": "Institute Einstellungen speichern"
+  },
+  "options1_h2_additional_settings": {
+    "description": "Additional Settings Options Group",
+    "message": "Weitere Einstellungen"
+  },
+  "options1_h2_proxy": {
+    "description": "Section Heading for Custom Proxy Setup",
+    "message": "Eigene Instituts-Einstellungen"
+  },
+  "options1_intro_001": {
+    "description": "Debug Settings Page Intro",
+    "message": "Die Einstellungen auf dieser Seite sind nicht für die Nutzung durch alle Endnutzer gedacht. Wenn Du diese Seite gefunden hast, nutze diese Optionen mit großer Vorsicht. Zu mindestens solltest Du Dir die Grundeinstellungen notieren, damit Du diese später zurücksetzen kannst."
+  },
+  "options1_label_illurl": {
+    "description": "Label for Link Resolver URL",
+    "message": "URL des Link Resolver / Anfrageformular"
+  },
+  "options1_label_proxyname": {
+    "description": "Input Label Name of Institution",
+    "message": "Name Deiner Institution"
+  },
+  "options1_label_proxyprefix": {
+    "description": "Label for Proxy Login URL",
+    "message": "Proxy Login URL"
+  },
+  "options1_page_subtitle": {
+    "description": "Debug Settings Page Subtitle",
+    "message": "- Bitte nutze diese Einstellungen mit großer Vorsicht"
+  },
+  "options1_page_title": {
+    "description": "Debug Settings Page Title",
+    "message": "Debug Einstellungen"
+  },
+  "options1_placeholder_illurl": {
+    "description": "Placeholder",
+    "message": "e.g. https://linkresolver.uni-library.edu/openurl?doi="
+  },
+  "options1_placeholder_proxprefix": {
+    "description": "Placeholder",
+    "message": "z.B. https://proxy.uni-bibliothek.de/login?url="
+  },
+  "options1_placeholder_proxyname": {
+    "description": "Placeholder Name of Institution",
+    "message": "Name Deiner Institution"
+  },
+  "options1_proxy_empty_error": {
+    "descriptin": "name or url is empty warning",
+    "message": "Bitte gibt sowohl einen Namen als auch eine URL an!"
+  },
+  "options1_settings": {
+    "description": "Settings Label for the Debug Settings Page",
+    "message": "Debug Einstellungen"
+  },
+  "options1_settings_intro_001": {
+    "description": "Additional Settings Intro",
+    "message": "Bitte nutze diese Einstellungen nicht für längere Zeit, da diese Deine Browser Entwickler-Konsole mit überflüssigen Nachrichten füllen wird"
+  },
+  "options1_settings_intro_002": {
+    "description": "Proxy Setup Intro",
+    "message": "Wenn der Proxy Deiner Institution noch nicht über die Haupt-Einstellungen verfügbar ist, kontaktiere uns, damit wir diesen einrichten können. Ansonsten, kannst Du diesen hier eingeben. Bei der URL brauchen wir die Proxy Login-URL (inkl. ?url= or ?qurl=)"
+  },
+  "options1_settings_label_001": {
+    "description": "add console log output for debug",
+    "message": "Detaillierte Nachrichten in der Entwickler-Konsole anzeigen"
+  },
+  "options_advanced_settings_link": {
+    "descriptin": "label for advanced settings link",
+    "message": "Erweiterte Einstellungen (Bitte Support kontaktieren)"
+  },
+  "options_button_get_support": {
+    "description": "Button: Get Support",
+    "message": "Technische Unterstützung"
+  },
+  "options_button_hide_settings": {
+    "description": "Button: Hide Settings",
+    "message": "Einstellungen ausblenden"
+  },
+  "options_button_instupdate": {
+    "description": "Button: Update Settings (Shown next to the institute search)",
+    "message": "Reload from Server"
+  },
+  "options_button_save_settings": {
+    "description": "Button: Save Settings (shown very bottom of page)",
+    "message": "Einstellungen speichern"
+  },
+  "options_button_search": {
+    "description": "Button: Search (Shown next to the institute search)",
+    "message": "Suchen"
+  },
+  "options_button_show_example": {
+    "description": "Button: show example",
+    "message": "Ein Beispiel zeigen"
+  },
+  "options_button_show_settings": {
+    "description": "Button: Show Settings",
+    "message": "Einstellungen einblenden"
+  },
+  "options_button_view_tutorial": {
+    "description": "Button: View tutorial",
+    "message": "Tutorial anzeigen"
+  },
+  "options_error_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Leider ist ein Fehler aufgetreten :("
+  },
+  "options_h2_additional_sources": {
+    "description": "Settings Section Label: Additional Open Access Sources",
+    "message": "Alternative Zugänge"
+  },
+  "options_h2_ezproxy": {
+    "description": "Settings Section Label: Institutional Settings",
+    "message": "Institutseinstellungen"
+  },
+  "options_h2_nobadge": {
+    "description": "This option will hide the padges",
+    "message": "Icons in Webseiten nicht einfügen"
+  },
+  "options_h2_select_search": {
+    "description": "Settings Section Label: Select &amp; Search",
+    "message": "Auswählen &amp; Suchen"
+  },
+  "options_h2_similar_articles": {
+    "description": "Settings Section Label: Other Services",
+    "message": "Weitere Dienste"
+  },
+  "options_institute_search_bydomain": {
+    "description": "Next to radio button - search by domain",
+    "message": "Such nach Domain"
+  },
+  "options_institute_search_byname": {
+    "description": "Next to radio button - search by name",
+    "message": "Suche nach Namen"
+  },
+  "options_institute_search_placeholder": {
+    "description": "Placeholder Text, shown inside search for for Institutions",
+    "message": "domain Deiner Institution, z.B. uni-muenchen.de"
+  },
+  "options_intro_001": {
+    "description": "Intro Paragraph 1 on options page",
+    "message": "Bitte nimm Dir einen Moment, um die Einstellungen auf dieser Seite Deinen Erwartungen entsprechend anzupassen. Deine Auswahl kannst Du jederzeit ändern, indem Du mit der rechten Maustaste das Erweiterungs-Icon anklickst und Optionen auswählst, oder den 'Einstellungen' Link im Popup auswählst. Erfahre mehr in unserem <a href=\"https://www.oahelper.org/tutorial-open-access-helper-for-chrome/\" target=\"_blank\">Video-Tutorial</a> oder unter <a href=\"https://www.oahelper.org\" target=\"_blank\">oahelper.org</a>."
+  },
+  "options_intro_002": {
+    "description": "Intro Paragraph 2 on options page",
+    "message": "Wenn Dir diese Erweiterung gefällt, dann sag es bitte weiter, verfasse eine entsprechende Bewertung oder genieße einfach den Mehrwert! Wenn Dir die Erweiterung nicht gefällt, oder du Verbesserungsvorschläge hast, dann <a href=\"mailto:info@oahelper.org\">lass es mich bitte wissen</a>, denn nur so kann ich die Erweiterung verbessern!"
+  },
+  "options_intro_003": {
+    "description": "Apology for translation not needed for EN, DE, NL and FR",
+    "message": ""
+  },
+  "options_link_learn_more": {
+    "description": "Learn more... Link (shown at end of each setting section intro",
+    "message": "Mehr&nbsp;erfahren&hellip;"
+  },
+  "options_multi_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Bitte überprüfe Deine Suche - mehrere Institutionen passten auf die Anfrage"
+  },
+  "options_no_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Leider konnten wir keinen Treffer finden :( <br>Bitte kontaktiere <a href=\"https://www.oahelper.org/support/\" target=\"_blank\" rel=\"noopener\">den Support</a>, damit wir Dir helfen können, Deine Einrichtung hinzuzufügen."
+  },
+  "options_options_proxy_saved": {
+    "description": "Save Proxy Option saved, shows for a few seconds",
+    "message": "Die Daten Ihrer Institution {id} {name} wurden gespeichert."
+  },
+  "options_options_saved": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Einstellungen wurden gespeichert!"
+  },
+  "options_page_subtitle": {
+    "description": "subtitle on options page",
+    "message": "- Ich freue mich, dass Du diese Erweiterung gefunden hast"
+  },
+  "options_page_title": {
+    "description": "Main Title on options page",
+    "message": "Willkommen"
+  },
+  "options_proxy_searchtooshort": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Bitte mindestens 5 Zeichen eingeben"
+  },
+  "options_settings": {
+    "description": "translation for the word settings in title",
+    "message": "Einstellungen"
+  },
+  "options_settings_intro_001": {
+    "description": "Section Intro for Additional Open Access Sources",
+    "message": "OpenSaysMe nutzt die APIs von unpaywall.org. Konfiguriere unten weitere Zugriffsoptionen, um den Funktionsumfang dieser Erweiterung zu erweitern."
+  },
+  "options_settings_intro_003": {
+    "description": "Section Intro Select & Search",
+    "message": "Hast Du ein Konzept oder einen Ausdruck gefunden, den Du weiter verfolgen möchtest? Wähle diesen aus und sende diesen mit einem Rechtsklick an eine akademischen Suchmaschine Deiner Wahl."
+  },
+  "options_settings_intro_004": {
+    "description": "Section Intro EZProxy Settings",
+    "message": "Manchmal kann nur noch der institutionelle Zugang weiterhelfen. Sofern Deine Institution EZProxy oder OpenAthens verwendet, kannst Du die aktuelle Seite über den Proxy aufrufen, um so hoffentlich Zugriff zu bekommen. Sofern Deine Institution die URL des LinkResolvers oder eines Bestellformulars übermittelt hat, kannst Du hierüber versuchen das Dokument zu erreichen."
+  },
+  "options_settings_intro_005": {
+    "description": "Section Intro No Badge",
+    "message": "Wenn Du möchtest, dass OpenSaysMe so \"unsichtbar\", wie möglich, ist, dann kannst Du alle die OpenSaysMe icons ausblenden. Achte in diesem Fall auf die Farbe des Icons im Toolbar."
+  },
+  "options_settings_label_002": {
+    "description": "Check Box Label for show open access button",
+    "message": "Open Access Button zeigen"
+  },
+  "options_settings_label_004": {
+    "description": "Check Box Label for Show Citation Count",
+    "message": "Anzahl der Zitate (OpenCitations) zeigen"
+  },
+  "options_settings_label_005": {
+    "description": "Disable this feature, shown in Select & Search drop down",
+    "message": "Diese Funktion deaktivieren"
+  },
+  "options_settings_label_006": {
+    "description": "Check Box Label for Enable EZProxy Support",
+    "message": "EZProxy / OpenAthens Unterstützung aktivieren"
+  },
+  "options_settings_label_007": {
+    "description": "Check Box Label for hide all badges from host page",
+    "message": "Alle OpenSaysMe Icons in Webseiten ausblenden"
+  },
+  "options_settings_label_008": {
+    "description": "Check Box Label for ask your library (will enabled ILL or OpenURL)",
+    "message": "Frag Deine Bibliothek aktivieren"
+  },
+  "options_settings_label_009": {
+    "description": "Check Box Label for EBSCO user choice",
+    "message": "EBSCOhost Entitlement API aktivieren"
+  },
+  "options_settings_label_010": {
+    "description": "Check Box Label for Retraction Watch Data",
+    "message": "Retraction Watch Daten anzeigen"
+  },
+  "options_settings_label_011": {
+    "description": "Check Box Label for Show Citation Count",
+    "message": "Anzahl der Zitate (OpenAlex) zeigen"
+  },
+  "options_settings_managed_info": {
+    "description": "Informing a user that the institute was pre-selected by their organization",
+    "message": "<strong>Zur Information:</strong><br>Ihre Organisation verwaltet die Installation von OpenSaysMe und hat Ihre Institution vorausgewählt. Sie können alle anderen Einstellungen selbst verwalten."
+  },
+  "popup_citationbutton_001": {
+    "description": "Times Cited Group of text and butotn",
+    "message": "Wer hat diesen Artikel zitiert:<br><button id=\"citationbutton\" data-url=\"{url}\">Zitiert von: {citationcount}</button>"
+  },
+  "popup_configuration": {
+    "description": "Word: Einstellungen - links to option page, shown in footer of page",
+    "message": "Einstellungen"
+  },
+  "popup_connection_lost": {
+    "description": "Shown in the popup when the content script on the active tab did not respond (e.g. connection lost after the computer woke from sleep)",
+    "message": "<p class=\"oah_center\">OpenSaysMe hat die Verbindung zu dieser Seite verloren, daher konnte dieses Menü nicht geladen werden. Bitte lade die Seite neu und versuche es erneut.</p>"
+  },
+  "popup_disabled_on_domain": {
+    "description": "Shown when no data was found in the page",
+    "message": "<img src=\"../images/opensaysme-disabled-76.png\" id=\"disabledomainicon\"><p class=\"oah_center\">Der Zugriff auf diese Domain wurde aufgrund Ihrer individuellen oder institutionellen Konfigurationseinstellungen deaktiviert. Bitte überprüfen Sie Ihre OpenSaysMe-Einstellungen oder wenden Sie sich für weitere Informationen an Ihre Institution.</p>"
+  },
+  "popup_empty_responses": {
+    "description": "Shown when no data was found in the page",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">OpenSaysMe konnte keinen relevanten Dienst finden und ist daher inaktiv. Ändere die Einstellungen oder kontaktiere den Support!</p><p class=\"oah_center\"><a href=\"#\" id=\"seeexample\">Klicke hier, um ein Beispiel zu sehen.</a></p>"
+  },
+  "popup_empty_responses_proxied": {
+    "description": "Shown when no data was found in the page, but you are proxied",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">Du nutzt bereits den Proxy, oder befindest Dich auf einer Institutswebseite.<br><br>OpenSaysMe konnte keinen relevanten Dienst finden und ist daher inaktiv.</p><p class=\"oah_center\"><a href=\"#\" id=\"seeexample\">Klicke hier, um ein Beispiel zu sehen.</a></p>"
+  },
+  "popup_hidebadge": {
+    "description": "Word: Hide Badges - links to option page, shown in footer of page",
+    "message": "Icons entf."
+  },
+  "popup_non_http_source": {
+    "description": "Shown when extension is inactive",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">OpenSaysMe funktioniert nur auf Webseiten, die mit http oder https beginnen</p>"
+  },
+  "popup_oabutton_001": {
+    "description": "Open Access Group of text and button, when Open Access Button shown",
+    "message": "Leider kein Open Access :(<br><button id=\"oabuttonrequest\" data-url=\"{url}\">Über {buttonlabel} anfragen</button>"
+  },
+  "popup_oabutton_002": {
+    "description": "Open Access Group of text and button, when unpaywall.org found",
+    "message": "Open Access Kopie gefunden!<br><button id=\"oabutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_003": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Leider kein Open Access :(<br><button id=\"oabuttonrequest\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_004": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Noch kein Zugang? <button id=\"oabuttonrequestlink\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_005": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Noch kein Zugang?<br><button id=\"oabuttonrequest\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_006": {
+    "description": "Open Access Group of text and button, when unpaywall.org found",
+    "message": "Das Open Access Dokument sollte hier verfügbar sein!<br><button id=\"oabutton\" class=\"oabuttongreen\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_007": {
+    "description": "Subscription Access was found",
+    "message": "Deine Institution hat ein Abo!<br><button id=\"ebscobutton\" class=\"ebscobutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_008": {
+    "description": "Subscription Access was found",
+    "message": "Retraction Watch klassifizierte diesen Artikel als:<br><button id=\"rwbutton\" class=\"rwbutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_popup": {
+    "description": "Title for Popup",
+    "message": "Popup"
+  },
+  "popup_proxybutton_001": {
+    "description": "Proxy resource group of text and button",
+    "message": "Zugang über <em>{institute}</em>:<br><button id=\"ezproxybutton\" data-url=\"{url}\">{urltoproxy}</button>"
+  },
+  "popup_proxybutton_001a": {
+    "description": "Proxy resource group of text and button",
+    "message": "Zugang über <em>{institute}</em>:<br><button id=\"ezproxybutton\" data-url=\"{url}\">{urltoproxy}</button>"
+  },
+  "popup_review": {
+    "description": "Word: Support - takes user to review page",
+    "message": "Bitte gib eine Bewertung ab!"
+  },
+  "popup_support": {
+    "description": "Word: Support - takes users to support page",
+    "message": "Support"
+  }
+}

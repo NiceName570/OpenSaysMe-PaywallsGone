@@ -110,7 +110,7 @@ var updatedSites_domains_new = [];
 var excludedSites = [];
 
 function setDefaultOptions() {
-  ext_api.storage.local.set({
+  bpcStorage.local.set({
     sites: filterObject(defaultSites, function (val, key) {
       return val.domain && !val.domain.match(/^(###$|#options_(disable|optin)_)/)
     },
@@ -122,22 +122,7 @@ function setDefaultOptions() {
   });
 }
 
-function check_sites_updated() {
-  let sites_updated_json = 'https://gitlab.com/magnolia1234/bypass-paywalls-' + url_loc + '-clean/-/raw/master/sites_updated.json';
-  fetch(sites_updated_json)
-  .then(response => {
-    if (response.ok) {
-      response.json().then(json => {
-        expandSiteRules(json, true);
-        ext_api.storage.local.set({
-          sites_updated: json
-        });
-      })
-    }
-  }).catch(function (err) {
-    false;
-  });
-}
+function check_sites_updated() { return osmReloadBpc(); }
 
 function set_rules(sites, sites_updated, sites_custom) {
   initSetRules();
@@ -282,7 +267,7 @@ function set_rules(sites, sites_updated, sites_custom) {
     blockedRegexes['theglobeandmail.com'] = /smartwall\.theglobeandmail\.com\//;
   use_random_ip = Object.keys(random_ip);
   change_headers = use_google_bot.concat(use_bing_bot, use_facebook_referer, use_google_referer, use_twitter_referer, use_random_ip);
-  disableJavascriptOnListedSites();
+  osmScheduleRules();
 }
 
 // add grouped sites to en/disabledSites (and exclude sites)
@@ -301,451 +286,236 @@ function add_grouped_enabled_domains(groups) {
   }
 }
 
-// Get the enabled sites (from local storage) & set_rules for sites
-ext_api.storage.local.get({
-  sites: {},
-  sites_default: Object.keys(defaultSites).filter(x => defaultSites[x].domain && !defaultSites[x].domain.match(/^(#options_|###$)/)),
-  sites_custom: {},
-  sites_updated: {},		 
-  sites_excluded: [],
-  ext_version_old: '2.3.9.0',
-  optIn: false,
-  optInUpdate: true
-}, function (items) {
-  var sites = items.sites;
-  optionSites = sites;
-  var sites_default = items.sites_default;
-  customSites = items.sites_custom;
-  customSites_domains = Object.values(customSites).map(x => x.domain);
-  updatedSites = items.sites_updated;
-  updatedSites_domains_new = Object.values(updatedSites).filter(x => (x.domain && !defaultSites_domains.includes(x.domain) || x.group)).map(x => x.group ? x.group.filter(y => !defaultSites_domains.includes(y)) : x.domain).flat();
-  var ext_version_old = items.ext_version_old;
-  optin_setcookie = items.optIn;
-  optin_update = items.optInUpdate;
-  excludedSites = items.sites_excluded;
 
-  enabledSites = Object.values(sites).filter(function (val) {
-      return (val !== '' && val !== '###');
-    }).map(function (val) {
-      return val.toLowerCase();
-    });
+function filterObject(obj, filterFn, mapFn = function (val, key) {
+  return [key, val];
+}) {
+  return Object.fromEntries(Object.entries(obj).
+    filter(([key, val]) => filterFn(val, key)).map(([key, val]) => mapFn(val, key)));
+}
 
-  // Enable new sites by default (opt-in)
-  updatedSites_new = Object.keys(updatedSites).filter(x => updatedSites[x].domain && !defaultSites_domains.includes(updatedSites[x].domain));
-  for (let site_updated_new of updatedSites_new)
-    defaultSites[site_updated_new] = updatedSites[site_updated_new];
-  if (ext_version > ext_version_old || updatedSites_new.length > 0) {
-    if (enabledSites.includes('#options_enable_new_sites')) {
-      let sites_new = Object.keys(defaultSites).filter(x => defaultSites[x].domain && !defaultSites[x].domain.match(/^(#options_|###$)/) && !sites_default.some(key => compareKey(key, x)));
-      for (let site_new of sites_new)
-        sites[site_new] = defaultSites[site_new].domain;
-      ext_api.storage.local.set({
-        sites: sites
+function compareKey(firstStr, secondStr) {
+  return firstStr.toLowerCase().replace(/\s\(.*\)/, '') === secondStr.toLowerCase().replace(/\s\(.*\)/, '');
+}
+
+function isSiteEnabled(details) {
+  var enabledSite = matchUrlDomain(enabledSites, details.url);
+  if (enabledSite in restrictions) {
+    return restrictions[enabledSite].test(details.url);
+  }
+  return !!enabledSite;
+}
+
+function matchDomain(domains, hostname = '') {
+  var matched_domain = false;
+  if (typeof domains === 'string')
+    domains = [domains];
+  domains.some(domain => (hostname === domain || hostname.endsWith('.' + domain)) && (matched_domain = domain));
+  return matched_domain;
+}
+
+function urlHost(url) {
+  if (url && url.startsWith('http')) {
+    try {
+      return new URL(url).hostname;
+    } catch (e) {
+      console.log(`url not valid: ${url} error: ${e}`);
+    }
+  }
+  return url;
+}
+
+function matchUrlDomain(domains, url) {
+  return matchDomain(domains, urlHost(url));
+}
+
+function getParameterByName(name, url) {
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+  results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+function stripQueryStringAndHashFromPath(url) {
+  return url.split("?")[0].split("#")[0];
+}
+
+function decode_utf8(str) {
+  return decodeURIComponent(escape(str));
+}
+
+function randomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+function randomIP(range_low = 0, range_high = 223) {
+  let rndmIP = [];
+  for (let n = 0; n < 4; n++) {
+    if (n === 0)
+      rndmIP.push(range_low + randomInt(range_high - range_low + 1));
+    else
+      rndmIP.push(randomInt(255) + 1);
+  }
+  return rndmIP.join('.');
+}
+
+// Refresh the current tab
+function refreshCurrentTab() {
+  ext_api.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function (tabs) {
+    if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
+      if (ext_api.runtime.lastError)
+        return;
+      ext_api.tabs.update(tabs[0].id, {
+        url: tabs[0].url
       });
     }
-    sites_default = Object.keys(defaultSites).filter(x => defaultSites[x].domain && !defaultSites[x].domain.match(/^(#options_|###$)/));
-    ext_api.storage.local.set({
-      sites_default: sites_default,
-      ext_version_old: ext_version
-    });
-  }
+  });
+}
 
-  disabledSites = defaultSites_grouped_domains.concat(customSites_domains).filter(x => !enabledSites.includes(x));
-  add_grouped_enabled_domains(grouped_sites);
-  set_rules(sites, updatedSites, customSites);
-  if (enabledSites.includes('#options_optin_update_rules'))
-    check_sites_updated();
-  if (optin_update)
-    check_update();
-});
-
-// Listen for changes to options
-ext_api.storage.onChanged.addListener(function (changes, namespace) {
-  if (namespace === 'sync')
-    return;
-  for (let key in changes) {
-    var storageChange = changes[key];
-    if (key === 'sites') {
-      var sites = storageChange.newValue;
-      optionSites = sites;
-      enabledSites = Object.values(sites).filter(function (val) {
-          return (val !== '' && val !== '###');
-        }).map(function (val) {
-          return val.toLowerCase();
-        });
-      disabledSites = defaultSites_grouped_domains.concat(customSites_domains).filter(x => !enabledSites.includes(x));
-      add_grouped_enabled_domains(grouped_sites);
-      set_rules(sites, updatedSites, customSites);
-    }
-    if (key === 'sites_custom') {
-      var sites_custom = storageChange.newValue ? storageChange.newValue : {};
-      var sites_custom_old = storageChange.oldValue ? storageChange.oldValue : {};
-      customSites = sites_custom;
-      customSites_domains = Object.values(sites_custom).map(x => x.domain);
-      
-      // add/remove custom sites in options (not for default site(group))
-      var sites_custom_added = Object.keys(sites_custom).filter(x => !Object.keys(sites_custom_old).includes(x) && !defaultSites.hasOwnProperty(x) && !defaultSites_domains.includes(sites_custom[x].domain));
-      var sites_custom_removed = Object.keys(sites_custom_old).filter(x => !Object.keys(sites_custom).includes(x) && !defaultSites.hasOwnProperty(x) && !defaultSites_domains.includes(sites_custom_old[x].domain));
-      
-      ext_api.storage.local.get({
-        sites: {}
-      }, function (items) {
-        var sites = items.sites;
-        if (sites_custom_added.concat(sites_custom_removed).length > 0) {
-          for (let key of sites_custom_added)
-            sites[key] = sites_custom[key].domain;
-          for (let key of sites_custom_removed)
+function site_switch() {
+  ext_api.tabs.query({
+    active: true,
+    currentWindow: true
+  }, function (tabs) {
+    if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
+      let currentUrl = tabs[0].url;
+      let isDefaultSite = matchUrlDomain(defaultSites_grouped_domains, currentUrl);
+      if (!isDefaultSite) {
+        let isDefaultSiteGroup = matchUrlDomain(defaultSites_domains, currentUrl);
+        if (isDefaultSiteGroup)
+          isDefaultSite = Object.keys(grouped_sites).find(key => grouped_sites[key].includes(isDefaultSiteGroup));
+      }
+      if (!isDefaultSite) {
+        let sites_updated_domains_new = Object.values(updatedSites).filter(x => x.domain && !defaultSites_domains.includes(x.domain));
+        let isUpdatedSite = matchUrlDomain(sites_updated_domains_new, currentUrl);
+        if (isUpdatedSite)
+          isDefaultSite = isUpdatedSite;
+      }
+      let defaultSite_title = isDefaultSite ? Object.keys(defaultSites).find(key => defaultSites[key].domain === isDefaultSite) : '';
+      let isCustomSite = matchUrlDomain(Object.values(customSites_domains), currentUrl);
+      let customSite_title = isCustomSite ? Object.keys(customSites).find(key => customSites[key].domain === isCustomSite) : '';
+      let site_title = defaultSite_title || customSite_title;
+      let domain = isDefaultSite || isCustomSite;
+      if (domain && site_title) {
+        let added_site = [];
+        let removed_site = [];
+        if (enabledSites.includes(domain))
+          removed_site.push(site_title);
+        else
+          added_site.push(site_title);
+        bpcStorage.local.get({
+          sites: {}
+        }, function (items) {
+          var sites = items.sites;
+          for (let key of added_site)
+            sites[key] = domain;
+          for (let key of removed_site) {
+            key = Object.keys(sites).find(sites_key => compareKey(sites_key, key));
             delete sites[key];
-          
-          ext_api.storage.local.set({
+          }
+          bpcStorage.local.set({
             sites: sites
           }, function () {
             true;
           });
-        } else
-          set_rules(sites, updatedSites, customSites);
-      });
-    }
-    if (key === 'sites_updated') {
-      var sites_updated = storageChange.newValue ? storageChange.newValue : {};
-      updatedSites = sites_updated;
-      updatedSites_domains_new = Object.values(updatedSites).filter(x => (x.domain && !defaultSites_domains.includes(x.domain) || x.group)).map(x => x.group ? x.group.filter(y => !defaultSites_domains.includes(y)) : x.domain).flat();
-      updatedSites_new = Object.keys(updatedSites).filter(x => updatedSites[x].domain && !defaultSites_domains.includes(updatedSites[x].domain));
-      if (updatedSites_new.length > 0) {
-        if (enabledSites.includes('#options_enable_new_sites')) {
-          for (let site_updated_new of updatedSites_new)
-            optionSites[site_updated_new] = updatedSites[site_updated_new].domain;
-          ext_api.storage.local.set({
-            sites: optionSites
-          });
-        }
-      } else
-        set_rules(optionSites, updatedSites, customSites);
-    }											
-    if (key === 'sites_excluded') {
-      var sites_excluded = storageChange.newValue ? storageChange.newValue : [];
-      var sites_excluded_old = storageChange.oldValue ? storageChange.oldValue : [];
-      excludedSites = sites_excluded;
-
-      // add/remove excluded sites in en/disabledSites
-      var sites_excluded_added = sites_excluded.filter(x => !sites_excluded_old.includes(x));
-      var sites_excluded_removed = sites_excluded_old.filter(x => !sites_excluded.includes(x));
-
-      for (let site of sites_excluded_added) {
-        if (enabledSites.includes(site)) {
-          enabledSites.splice(enabledSites.indexOf(site), 1);
-          disabledSites.push(site);
-        }
-      }
-      for (let site of sites_excluded_removed) {
-        if (disabledSites.includes(site)) {
-          disabledSites.splice(disabledSites.indexOf(site), 1);
-          enabledSites.push(site);
-        }
+        });
       }
     }
-    if (key === 'ext_version_new') {
-      ext_version_new = storageChange.newValue;
-    }
-    if (key === 'optIn') {
-      optin_setcookie = storageChange.newValue;
-    }
-    if (key === 'optInUpdate') {
-      optin_update = storageChange.newValue;
-    }
-    // reset disableJavascriptOnListedSites eventListener
-    ext_api.webRequest.onBeforeRequest.removeListener(disableJavascriptOnListedSites);
-    ext_api.webRequest.handlerBehaviorChanged();
+  });
+}
 
-    // Refresh the current tab
+
+var chrome_scheme = 'light';
+ext_api.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  if (message.request === 'clear_cookies') {
+    clear_cookies().then(() => sendResponse({ok: true})).catch(error => sendResponse({error: error.message}));
+    return true;
+  }
+  // clear cookies for domain
+  if (message.domain) {
+    remove_cookies_fn(message.domain).then(() => sendResponse({ok: true})).catch(error => sendResponse({error: error.message}));
+    return true;
+  }
+  if (message.request === 'site_switch') {
+    site_switch();
+  }
+  if (message.request === 'check_sites_updated') {
+    check_sites_updated();
+  }
+  if (message.request === 'popup_show_toggle') {
+    ext_api.tabs.query({
+      active: true,
+      currentWindow: true
+    }, function (tabs) {
+      if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
+        let currentUrl = tabs[0].url;
+        let domain;
+        let isExcludedSite = matchUrlDomain(excludedSites, currentUrl);
+        if (!isExcludedSite) {
+          let isDefaultSiteGrouped = matchUrlDomain(defaultSites_domains, currentUrl);
+          let isDefaultSite = matchUrlDomain(defaultSites_domains, currentUrl);
+          let isCustomSite = matchUrlDomain(Object.values(customSites_domains), currentUrl);
+          domain = isDefaultSiteGrouped || (!isDefaultSite && isCustomSite);
+        }
+        ext_api.runtime.sendMessage({
+          msg: "popup_show_toggle",
+          data: {
+            domain: domain,
+            enabled: enabledSites.includes(domain)
+          }
+        });
+      }
+    });
+  }
+  if (message.request === 'refreshCurrentTab') {
     refreshCurrentTab();
   }
-});
-
-// Set and show default options on install
-ext_api.runtime.onInstalled.addListener(function (details) {
-  if (details.reason == "install") {
-    setDefaultOptions();
-  } else if (details.reason == "update") {
-    ext_api.management.getSelf(function (result) {
-      if (enabledSites.includes('#options_on_update') && result.installType !== 'development')
-        ext_api.runtime.openOptionsPage(); // User updated extension (non-developer mode)
-    });
-  }
-});
-
-// repubblica.it bypass
-ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  var updatedUrl = details.url.replace('/pwa/', '/ws/detail/');
-  return { redirectUrl: updatedUrl };
-},
-{urls:["*://*.repubblica.it/pwa/*"], types:["main_frame"]},
-["blocking"]
-);
-
-// inkl bypass
-ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  var updatedUrl = details.url.replace(/etok=[\w]*&/, '');
-  if (details.url.includes('/signin?') && details.url.includes('redirect_to='))
-    updatedUrl = 'https://www.inkl.com' + decodeURIComponent(updatedUrl.split('redirect_to=')[1]);
-  return { redirectUrl: updatedUrl };
-},
-{urls:["*://*.inkl.com/*"], types:["main_frame"]},
-["blocking"]
-);
-
-// m.faz.net set user-agent to mobile
-const faz_uaMobile = "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Mobile Safari/537.36";
-ext_api.webRequest.onBeforeSendHeaders.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  let headers = details.requestHeaders;
-  headers = headers.map(function (header) {
-      if (header.name.toLowerCase() === 'user-agent')
-        header.value = faz_uaMobile;
-      return header;
-    });
-  return {
-    requestHeaders: headers
-  };
-}, {
-  urls: ["*://m.faz.net/*"],
-  types: ["xmlhttprequest"]
-},
-  ["blocking", "requestHeaders"]);
-
-// wap.business-standard.com (mobile) redirect to www (desktop)
-ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  var updatedUrl = details.url.replace('/wap.', '/www.');
-  return { redirectUrl: updatedUrl };
-},
-{urls:["*://wap.business-standard.com/*"], types:["main_frame"]},
-["blocking"]
-);
-
-// www.business-standard.com set user-agent to desktop
-const business_standard_uaDesktop = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.122 Safari/537.36";
-ext_api.webRequest.onBeforeSendHeaders.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  let headers = details.requestHeaders;
-  headers = headers.map(function (header) {
-      if (header.name.toLowerCase() === 'user-agent')
-        header.value = business_standard_uaDesktop;
-      return header;
-    });
-  return {
-    requestHeaders: headers
-  };
-}, {
-  urls: ["*://www.business-standard.com/*"],
-  types: ["main_frame"]
-},
-  ["blocking", "requestHeaders"]);
-
-// economictimes redirect
-ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  var updatedUrl = details.url.split('?')[0].replace('economictimes.indiatimes.com', 'm.economictimes.com');
-  return { redirectUrl: updatedUrl };
-},
-{urls:["*://economictimes.indiatimes.com/*?from=mdr"], types:["main_frame"]},
-["blocking"]
-);
-
-// infzm.com redirect to wap (mobile)
-ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  var updatedUrl = details.url.replace('.com/contents/', '.com/wap/#/content/');
-  return { redirectUrl: updatedUrl };
-},
-{urls:["*://www.infzm.com/contents/*"], types:["main_frame"]},
-["blocking"]
-);
-
-// telegraaf.nl redirect error-page
-ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  let updatedUrl = details.url.split('&')[0].replace('error?ref=/', '');;
-  return { redirectUrl: updatedUrl };
-},
-{urls:["*://www.telegraaf.nl/error?ref=/*"], types:["main_frame"]},
-["blocking"]
-);
-
-// Australia News Corp redirect subscribe to amp
-var au_news_corp_subscr = au_news_corp_domains.map(domain => '*://www.' + domain + '/subscribe/*');
-ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-  if (!isSiteEnabled(details) || details.url.includes('/digitalprinteditions') || !(details.url.includes('dest=') && details.url.split('dest=')[1].split('&')[0])) {
-    return;
-  }
-  var updatedUrl = decodeURIComponent(details.url.split('dest=')[1].split('&')[0]);
-  if (!matchUrlDomain('theaustralian.com.au', details.url))
-    updatedUrl += '?amp';
-  else
-    updatedUrl = updatedUrl.replace('www.', 'amp.');
-  return {
-    redirectUrl: updatedUrl
-  };
-}, {
-  urls: au_news_corp_subscr,
-  types: ["main_frame"]
-},
-  ["blocking"]);
-
-// fix nytimes x-frame-options (hidden iframe content)
-ext_api.webRequest.onHeadersReceived.addListener(function (details) {
-  if (!isSiteEnabled(details)) {
-    return;
-  }
-  var headers = details.responseHeaders;
-  headers = headers.map(function (header) {
-      if (header.name === 'x-frame-options')
-        header.value = 'SAMEORIGIN';
-      return header;
-    });
-  return {
-    responseHeaders: headers
-  };
-}, {
-  urls: ["*://*.nytimes.com/*"]
-},
-  ['blocking', 'responseHeaders']);
-
-// block inline script
-var block_js_inline = ["*://*.elpais.com/*", "*://*.theglobeandmail.com/*"];
-if (block_js_inline.length) 
-ext_api.webRequest.onHeadersReceived.addListener(function (details) {
-  let url_path = details.url.split('?')[0];
-  let excluded = (matchUrlDomain('elpais.com', details.url) && (url_path.includes('/elpais.com') || !url_path.includes('.html')))
-  || (matchUrlDomain('theglobeandmail.com', details.url) && (!enabledSites.includes('#options_optin_tgam_premium') || !details.url.includes('?rel=premium')));
-  if (!isSiteEnabled(details) || excluded)
-    return;
-  var headers = details.responseHeaders;
-  headers.push({
-    'name': 'Content-Security-Policy',
-    'value': "script-src *;"
-  });
-  return {
-    responseHeaders: headers
-  };
-}, {
-  'types': ['main_frame', 'sub_frame'],
-  'urls': block_js_inline
-},
-  ['blocking', 'responseHeaders']);
-
-var block_js = [
-  "*://*.blueconic.net/*",
-  "*://*.cxense.com/*",
-  "*://*.evolok.net/*",
-  "*://*.googletagmanager.com/*",
-  "*://*.newsmemory.com/?meter*",
-  "*://*.onecount.net/*",
-  "*://*.piano.io/*",
-  "*://*.poool.fr/*",
-  "*://*.qiota.com/*",
-  "*://*.tribdss.com/*",
-  "*://*.weborama.fr/*",
-  "*://*.zephr.com/zephr-browser/*",
-  "*://*/c/assets/pigeon.js*",
-  "*://*/wp-content/evolok/ev-widgets/ev-widgets.min.js*",
-  "*://*/wp-content/plugins/pico/includes/js/read-more.js*",
-  "*://cdn.ampproject.org/v*/amp-access-*.*js",
-  "*://cdn.ampproject.org/v*/amp-subscriptions-*.*js",
-  "*://cdn.ampproject.org/v*/amp*-ad-*.*js",
-  "*://cdn.ampproject.org/v*/amp-analytics-*.*js",
-  "*://cdn.ampproject.org/v*/amp-fx-flying-carpet-*.*js",
-  "*://cdn.tinypass.com/*",
-  "*://js.matheranalytics.com/*",
-  "*://js.pelcro.com/*",
-  "*://loader-cdn.azureedge.net/prod/*/loader.min.js*",
-  "*://nexus.ensighten.com/*/Bootstrap.js*",
-];
-
-// Disable javascript for these sites/general paywall-scripts
-function disableJavascriptOnListedSites() {
-  ext_api.webRequest.onBeforeRequest.addListener(function (details) {
-    let header_referer = details.originUrl ? details.originUrl : details.initiator;
-    if (!(isSiteEnabled(details)
-         || (['script'].includes(details.type)
-           && ((enabledSites.includes('###_wp_evolok') && details.url.includes('/wp-content/evolok/ev-widgets/ev-widgets.min.js'))
-             || (enabledSites.includes('###_wp_pico') && details.url.includes('/wp-content/plugins/pico/includes/js/read-more.js'))
-             || (enabledSites.includes('###_wp_pigeon') && details.url.includes('/c/assets/pigeon.js')))))
-       || matchUrlDomain(excludedSites.concat(disabledSites, ['asia.nikkei.com', 'cambridge.org', 'japantimes.co.jp']), header_referer)) {
-      return;
-    }
-    return {
-      cancel: true
-    };
-  }, {
-    urls: block_js,
-    types: ["script", "xmlhttprequest"]
-  },
-    ["blocking"]);
-}
-
-if (typeof browser !== 'object') {
-var focus_changed = false;
-ext_api.windows.onFocusChanged.addListener((windowId) => {
-  if (windowId > 0)
-    focus_changed = true;
-});
-}
-
-var extraInfoSpec = ['blocking', 'requestHeaders'];
-if (ext_api.webRequest.OnBeforeSendHeadersOptions.hasOwnProperty('EXTRA_HEADERS'))
-  extraInfoSpec.push('extraHeaders');
-
-ext_api.webRequest.onBeforeSendHeaders.addListener(function(details) {
-  if (details.type === 'main_frame') {
-    let current_date_str = currentDateStr();
-    if (last_date_str < current_date_str) {
-      bpc_count_daily_users(current_date_str);
-      last_date_str = current_date_str;
-    }
-  }
-
-  var requestHeaders = details.requestHeaders;
-
-  var header_referer = '';
-  if (details.originUrl)
-    header_referer = details.originUrl;
-  else {
-    for (let n in requestHeaders) {
-      if (requestHeaders[n].name.toLowerCase() == 'referer') {
-        header_referer = requestHeaders[n].value;
-        break;
+  if (message.request === 'getExtSrc' && message.data && sender.tab) {
+    fetch(message.data.url)
+    .then(response => {
+      if (response.ok) {
+        response.text().then(html => {
+          if (message.data.base64) {
+            html = decode_utf8(atob(html));
+            message.data.selector_source = 'body';
+          }
+          message.data.html = html; // Parse and select in the content script, where DOMParser exists.
+          ext_api.tabs.query({
+            active: true,
+            currentWindow: true
+          }, function (tabs) {
+            if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
+              ext_api.tabs.sendMessage(sender.tab.id, {msg: "showExtSrc", data: message.data});
+            }
+          });
+        });
       }
-    }
-    var blocked_referer_domains = ['foreignaffairs.com', 'timeshighereducation.com'];
-    if (!header_referer && details.initiator) {
-      header_referer = details.initiator;
-      if (!blocked_referer && matchUrlDomain(blocked_referer_domains, details.url) && ['script', 'xmlhttprequest'].includes(details.type)) {
-        for (let domain of blocked_referer_domains)
-          restrictions[domain] = new RegExp('((\\/|\\.)' + domain.replace(/\./g, '\\.') + '($|\\/$)|' + restrictions[domain].toString().replace(/(^\/|\/$)/g, '') + ')');
-        blocked_referer = true;
-      }
-    }
+    }).catch(function (err) {
+      message.data.html = '';
+      ext_api.tabs.query({
+        active: true,
+        currentWindow: true
+      }, function (tabs) {
+        if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
+          ext_api.tabs.sendMessage(sender.tab.id, {msg: "showExtSrc", data: message.data});
+        }
+      });
+    });
   }
+  if (message.csDone) {
+    csDone = true;
+    //console.log('msg.csDone: ' + csDone);
+  }
+});
 
+
+function osmDiscoverBpc(details) {
+  const header_referer = details.documentUrl || details.initiator || "";
   function customAddRules(custom_domains, custom_allow_cookies = '', custom_block_regex = '', custom_useragent = '', custom_referer = '', custom_amp_unhide = false) {
     let custom_domain = urlHost(header_referer).replace(/^(www|m|account|amp|edition|eu)\./, '');
     if (custom_allow_cookies && !allow_cookies.includes(custom_domain))
@@ -776,6 +546,7 @@ ext_api.webRequest.onBeforeSendHeaders.addListener(function(details) {
     custom_domains.push(custom_domain);
     if (!enabledSites.includes(custom_domain))
       enabledSites.push(custom_domain);
+    osmScheduleRules();
     return custom_domains;
   }
 
@@ -903,666 +674,5 @@ ext_api.webRequest.onBeforeSendHeaders.addListener(function(details) {
 
   } // not in excludedSites
 
-  // block external javascript for custom sites (optional)
-  var domain_blockjs_ext = matchUrlDomain(block_js_custom_ext, header_referer);
-  if (domain_blockjs_ext && !matchUrlDomain(domain_blockjs_ext, details.url) && details.type === 'script' && isSiteEnabled({url: header_referer})) {
-    return { cancel: true };
-  }
 
-  // check for blocked regular expression: domain enabled, match regex, block on an internal or external regex
-  var blockedDomains = Object.keys(blockedRegexes);
-  var domain = matchUrlDomain(blockedDomains, header_referer);
-  if (domain && details.url.match(blockedRegexes[domain]) && isSiteEnabled({url: header_referer}))
-    return { cancel: true };
-
-  // load toggleIcon.js (icon for dark or incognito mode in Chrome))
-  if (typeof browser !== 'object' && ['main_frame', 'xmlhttprequest'].includes(details.type)) {
-    ext_api.tabs.query({
-      active: true,
-      currentWindow: true
-    }, function (tabs) {
-      if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-        ext_api.tabs.executeScript({
-          file: 'options/toggleIcon.js',
-          runAt: 'document_start'
-        }, function (res) {
-          if (ext_api.runtime.lastError || res[0]) {
-            return;
-          }
-        });
-      }
-    });
-  }
-
-  let allow_ext_source = medium_custom_domain;
-  let bpc_amp_site = false;
-
-  if (isSiteEnabled({url: header_referer}) && ['script', 'image'].includes(details.type)) {
-    bpc_amp_site = matchUrlDomain('cdn.ampproject.org', details.url);
-    allow_ext_source = allow_ext_source || bpc_amp_site ||
-      (matchUrlDomain('elespanol.com', header_referer) && matchUrlDomain('eestatic.com', details.url)) ||
-      (matchUrlDomain('elmercurio.com', header_referer) && matchUrlDomain('emol.cl', details.url)) ||
-      (matchUrlDomain('epaper.thetimes.co.uk', header_referer) && matchUrlDomain(['prcdn.co'], details.url)) ||
-      (matchUrlDomain('law360.com', header_referer) && matchUrlDomain('law360news.com', details.url)) ||
-      (matchUrlDomain('marketwatch.com', header_referer) && matchUrlDomain('wsj.net', details.url)) ||
-      (matchUrlDomain('nationalgeographic.com', header_referer) && matchUrlDomain('natgeofe.com', details.url)) ||
-      (matchUrlDomain('usatoday.com', header_referer) && matchUrlDomain('gannett-cdn.com', details.url)) ||
-      (matchUrlDomain(it_repubblica_domains, header_referer) && matchUrlDomain(['repstatic.it'], details.url));
-  }
-
-  if (!isSiteEnabled(details) && !allow_ext_source) {
-    return;
-  }
-
-  // block javascript of (sub)domain for custom sites (optional)
-  var domain_blockjs = matchUrlDomain(block_js_custom, details.url);
-  if (domain_blockjs && matchUrlDomain(domain_blockjs, details.url) && details.type === 'script') {
-    return { cancel: true };
-  }
-
-  var tabId = details.tabId;
-
-  var useUserAgentMobile = false;
-  var setReferer = false;
-
-if (matchUrlDomain(change_headers, details.url) && !['font', 'image', 'stylesheet'].includes(details.type)) {
-  var mobile = details.requestHeaders.filter(x => x.name.toLowerCase() === "user-agent" && x.value.toLowerCase().includes("mobile")).length;
-  var googlebotEnabled = matchUrlDomain(use_google_bot, details.url) && 
-    !(matchUrlDomain('abc.es', details.url) && mobile) &&
-    !(matchUrlDomain('barrons.com', details.url) && enabledSites.includes('#options_disable_gb_barrons')) &&
-    !(matchUrlDomain('theaustralian.com.au', details.url) && !details.url.startsWith('https://www.theaustralian.com.au/the-oz/')) &&
-    !(matchUrlDomain('thetimes.co.uk', details.url) && !(details.url.match(/\/epaper\.thetimes\.co\.uk\/article\//) || mobile)) &&
-    !(matchUrlDomain('wsj.com', details.url) && enabledSites.includes('#options_disable_gb_wsj'));
-  var bingbotEnabled = matchUrlDomain(use_bing_bot, details.url) && 
-    !(matchUrlDomain('stratfor.com', details.url) && details.url.match(/(\/(\d){4}-([a-z]||-)+-forecast(-([a-z]|-)+)?|-forecast-(\d){4}-([a-z]|[0-9]||-)+)$/));
-
-  // if referer exists, set it
-  requestHeaders = requestHeaders.map(function (requestHeader) {
-    if (requestHeader.name === 'Referer') {
-      if (googlebotEnabled || matchUrlDomain(use_google_referer, details.url)) {
-        requestHeader.value = 'https://www.google.com/';
-      } else if (matchUrlDomain(use_facebook_referer, details.url)) {
-        requestHeader.value = 'https://www.facebook.com/';
-      } else if (matchUrlDomain(use_twitter_referer, details.url)) {
-        requestHeader.value = 'https://t.co/';
-      }
-      setReferer = true;
-    }
-    if (requestHeader.name === 'User-Agent') {
-      useUserAgentMobile = requestHeader.value.toLowerCase().includes("mobile") && !matchUrlDomain(['telerama.fr'].concat(it_repubblica_domains), details.url);
-    }
-    return requestHeader;
-  });
-
-  // otherwise add it
-  if (!setReferer) {
-    if (googlebotEnabled || matchUrlDomain(use_google_referer, details.url)) {
-      requestHeaders.push({
-        name: 'Referer',
-        value: 'https://www.google.com/'
-      });
-    } else if (matchUrlDomain(use_facebook_referer, details.url)) {
-      requestHeaders.push({
-        name: 'Referer',
-        value: 'https://www.facebook.com/'
-      });
-    } else if (matchUrlDomain(use_twitter_referer, details.url)) {
-      requestHeaders.push({
-        name: 'Referer',
-        value: 'https://t.co/'
-      });
-    }
-  }
-
-  // override User-Agent to use Googlebot
-  if (googlebotEnabled) {
-    requestHeaders.push({
-      "name": "User-Agent",
-      "value": useUserAgentMobile ? userAgentMobileG : userAgentDesktopG
-    })
-    requestHeaders.push({
-      "name": "X-Forwarded-For",
-      "value": "66.249.66.1"
-    })
-  }
-
-  // override User-Agent to use Bingbot
-  if (bingbotEnabled) {
-    requestHeaders.push({
-      "name": "User-Agent",
-      "value": useUserAgentMobile ? userAgentMobileB : userAgentDesktopB
-    })
-  }
-
-  // random IP for sites in use_random_ip
-  let domain_random;
-  if (domain_random = matchUrlDomain(use_random_ip, details.url)) {
-    let randomIP_val;
-    if (random_ip[domain_random] === 'eu')
-      randomIP_val = randomIP(185, 185);
-    else
-      randomIP_val = randomIP();
-    requestHeaders.push({
-      "name": "X-Forwarded-For",
-      "value": randomIP_val
-    })
-  }
-}
-
-  // remove cookies before page load
-  if (!matchUrlDomain(allow_cookies, details.url)) {
-    requestHeaders = requestHeaders.map(function(requestHeader) {
-      if (requestHeader.name === 'Cookie') {
-        requestHeader.value = '';
-      }
-      return requestHeader;
-    });
-  }
-
-  if (tabId !== -1) {
-    ext_api.tabs.get(tabId, function (currentTab) {
-      if (!ext_api.runtime.lastError && currentTab && (isSiteEnabled(currentTab) || medium_custom_domain)) {
-        if (currentTab.url !== currentTabUrl) {
-          csDone = false;
-          currentTabUrl = currentTab.url;
-        }
-        if ((!['font', 'stylesheet'].includes(details.type) || matchUrlDomain(cs_limit_except, currentTabUrl)) && !csDone) {
-          let lib_file = 'lib/empty.js';
-          if (matchUrlDomain(dompurify_sites, currentTabUrl))
-            lib_file = 'lib/purify.min.js';
-          var bg2csData = {
-            optin_setcookie: optin_setcookie,
-            amp_unhide: matchUrlDomain(amp_unhide, currentTabUrl)
-          };
-          let amp_redirect_domain = '';
-          if (amp_redirect_domain = matchUrlDomain(Object.keys(amp_redirect), currentTabUrl))
-            bg2csData.amp_redirect = amp_redirect[amp_redirect_domain];
-          let cs_code_domain = '';
-          if (cs_code_domain = matchUrlDomain(Object.keys(cs_code), currentTabUrl))
-            bg2csData.cs_code = cs_code[cs_code_domain];
-          let ld_json_domain = '';
-          if (ld_json_domain = matchUrlDomain(Object.keys(ld_json), currentTabUrl))
-            bg2csData.ld_json = ld_json[ld_json_domain];
-          ext_api.tabs.executeScript(tabId, {
-            code: 'var bg2csData = ' + JSON.stringify(bg2csData) + ';'
-          }, function () {
-            ext_api.tabs.executeScript(tabId, {
-              file: lib_file,
-              runAt: 'document_start'
-            }, function () {
-              ext_api.tabs.executeScript(tabId, {
-                file: 'contentScript.js',
-                runAt: 'document_start'
-              }, function (res) {
-                if (ext_api.runtime.lastError || res[0]) {
-                  return;
-                }
-              })
-            });
-          });
-        }
-      }
-    });
-  } else { //El Mercurio Regionales, lequipe.fr
-    ext_api.tabs.query({
-      active: true,
-      currentWindow: true
-    }, function (tabs) {
-      if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-        let currentTab = tabs[0];
-        if (isSiteEnabled(currentTab)) {
-          let lib_file = 'lib/empty.js';
-          if (matchUrlDomain(['lequipe.fr'], currentTab.url))
-            lib_file = 'lib/purify.min.js';
-          ext_api.tabs.executeScript({
-            file: lib_file,
-            runAt: 'document_start'
-          }, function () {
-            ext_api.tabs.executeScript({
-              file: 'contentScript.js',
-              runAt: 'document_start'
-            }, function (res) {
-              if (ext_api.runtime.lastError || res[0]) {
-                return;
-              }
-            })
-          });
-        }
-      }
-    });
-  }
-
-  return { requestHeaders: requestHeaders };
-}, {
-  urls: ['<all_urls>']
-}, extraInfoSpec);
-// extraInfoSpec is ['blocking', 'requestHeaders'] + possible 'extraHeaders'
-
-ext_api.tabs.onUpdated.addListener(function (tabId, info, tab) { updateBadge(tab); });
-ext_api.tabs.onActivated.addListener(function (activeInfo) { if (activeInfo.tabId) ext_api.tabs.get(activeInfo.tabId, updateBadge); });
-
-function updateBadge(activeTab) {
-  if (ext_api.runtime.lastError || !activeTab)
-    return;
-  let badgeText = '';
-  let color = 'red';
-  let currentUrl = activeTab.url;
-  if (currentUrl) {
-    if (isSiteEnabled({url: currentUrl})) {
-      badgeText = 'ON';
-      color = 'red';
-    } else if (matchUrlDomain(enabledSites, currentUrl)) {
-      badgeText = 'ON-';
-      color = 'orange';
-    } else if (matchUrlDomain(disabledSites, currentUrl)) {
-      badgeText = 'OFF';
-      color = 'blue';
-    } else if (matchUrlDomain(nofix_sites, currentUrl)) {
-      badgeText = 'X';
-      color = 'gray';
-    }
-    if (ext_version_new)
-      badgeText = '^' + badgeText;
-    let isDefaultSite = matchUrlDomain(defaultSites_domains, currentUrl);
-    let isCustomSite = matchUrlDomain(customSites_domains, currentUrl);
-    let isUpdatedSite = matchUrlDomain(updatedSites_domains_new, currentUrl);
-    if (!isDefaultSite && (isCustomSite || isUpdatedSite)) {
-      ext_api.permissions.contains({
-        origins: ['*://*.' + (isCustomSite || isUpdatedSite) + '/*']
-      }, function (result) {
-        if (!result)
-          badgeText = enabledSites.includes(isCustomSite || isUpdatedSite) ? 'C' : '';
-        if (color && badgeText)
-          ext_api.browserAction.setBadgeBackgroundColor({color: color});
-        ext_api.browserAction.setBadgeText({text: badgeText});
-      });
-    } else {
-      if (color && badgeText)
-        ext_api.browserAction.setBadgeBackgroundColor({color: color});
-      ext_api.browserAction.setBadgeText({text: badgeText});
-    }
-  } else
-      ext_api.browserAction.setBadgeText({text: badgeText});
-}
-
-var ext_version_new;
-function check_update() {
-  let manifest_new = 'https://gitlab.com/magnolia1234/bypass-paywalls-' + url_loc + '-clean/raw/master/manifest.json';
-  fetch(manifest_new)
-  .then(response => {
-    if (response.ok) {
-      response.json().then(json => {
-        ext_api.management.getSelf(function (result) {
-          var installType = result.installType;
-          var ext_version_len = (installType === 'development') ? 7 : 5;
-          ext_version_new = json['version'];
-          if (ext_version_new.substring(0, ext_version_len) <= ext_version.substring(0, ext_version_len))
-            ext_version_new = '';
-          ext_api.storage.local.set({
-            ext_version_new: ext_version_new
-          });
-        });
-      })
-    }
-  }).catch(function (err) {
-    false;
-  });
-}
-
-function site_switch() {
-  ext_api.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function (tabs) {
-    if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-      let currentUrl = tabs[0].url;
-      let isDefaultSite = matchUrlDomain(defaultSites_grouped_domains, currentUrl);
-      if (!isDefaultSite) {
-        let isDefaultSiteGroup = matchUrlDomain(defaultSites_domains, currentUrl);
-        if (isDefaultSiteGroup)
-          isDefaultSite = Object.keys(grouped_sites).find(key => grouped_sites[key].includes(isDefaultSiteGroup));
-      }
-      if (!isDefaultSite) {
-        let sites_updated_domains_new = Object.values(updatedSites).filter(x => x.domain && !defaultSites_domains.includes(x.domain));
-        let isUpdatedSite = matchUrlDomain(sites_updated_domains_new, currentUrl);
-        if (isUpdatedSite)
-          isDefaultSite = isUpdatedSite;
-      }
-      let defaultSite_title = isDefaultSite ? Object.keys(defaultSites).find(key => defaultSites[key].domain === isDefaultSite) : '';
-      let isCustomSite = matchUrlDomain(Object.values(customSites_domains), currentUrl);
-      let customSite_title = isCustomSite ? Object.keys(customSites).find(key => customSites[key].domain === isCustomSite) : '';
-      let site_title = defaultSite_title || customSite_title;
-      let domain = isDefaultSite || isCustomSite;
-      if (domain && site_title) {
-        let added_site = [];
-        let removed_site = [];
-        if (enabledSites.includes(domain))
-          removed_site.push(site_title);
-        else
-          added_site.push(site_title);
-        ext_api.storage.local.get({
-          sites: {}
-        }, function (items) {
-          var sites = items.sites;
-          for (let key of added_site)
-            sites[key] = domain;
-          for (let key of removed_site) {
-            key = Object.keys(sites).find(sites_key => compareKey(sites_key, key));
-            delete sites[key];
-          }
-          ext_api.storage.local.set({
-            sites: sites
-          }, function () {
-            true;
-          });
-        });
-      }
-    }
-  });
-}
-
-function remove_cookies_fn(domainVar, exclusions = false) {
-  ext_api.cookies.getAllCookieStores(function (cookieStores) {
-    ext_api.tabs.query({
-      active: true,
-      currentWindow: true
-    }, function (tabs) {
-      if (!ext_api.runtime.lastError && tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-        let tabId = tabs[0].id;
-        let storeId = '0';
-        for (let store of cookieStores) {
-          if (store.tabIds.includes(tabId))
-            storeId = store.id;
-        }
-        storeId = storeId.toString();
-        if (domainVar === 'asia.nikkei.com')
-          domainVar = 'nikkei.com';
-        var cookie_get_options = {
-          domain: domainVar
-        };
-        if (storeId !== 'null')
-          cookie_get_options.storeId = storeId;
-        var cookie_remove_options = {};
-        ext_api.cookies.getAll(cookie_get_options, function (cookies) {
-          for (let cookie of cookies) {
-            if (exclusions) {
-              var rc_domain = cookie.domain.replace(/^(\.?www\.|\.)/, '');
-              // hold specific cookie(s) from remove_cookies domains
-              if ((rc_domain in remove_cookies_select_hold) && remove_cookies_select_hold[rc_domain].includes(cookie.name)) {
-                continue; // don't remove specific cookie
-              }
-              // drop only specific cookie(s) from remove_cookies domains
-              if ((rc_domain in remove_cookies_select_drop) && !(remove_cookies_select_drop[rc_domain].includes(cookie.name))) {
-                continue; // only remove specific cookie
-              }
-              // hold on to consent-cookie
-              if (cookie.name.match(/(consent|^optanon)/i)) {
-                continue;
-              }
-            }
-            cookie.domain = cookie.domain.replace(/^\./, '');
-            cookie_remove_options = {
-              url: (cookie.secure ? "https://" : "http://") + cookie.domain + cookie.path,
-              name: cookie.name
-            };
-            if (storeId !== 'null')
-              cookie_remove_options.storeId = storeId;
-            ext_api.cookies.remove(cookie_remove_options);
-          }
-        });
-      }
-    });
-  })
-}
-
-// remove cookies after page load
-ext_api.webRequest.onCompleted.addListener(function (details) {
-  let domain = matchUrlDomain(remove_cookies, details.url);
-  let types = ['main_frame', 'sub_frame', 'xmlhttprequest', 'other'];
-  if (['medium.com'].concat(medium_custom_domains).includes(domain))
-    types = ['main_frame', 'image'];
-  if (domain && types.includes(details.type) && enabledSites.includes(domain)) {
-    remove_cookies_fn(domain, true);
-  }
-}, {
-  urls: ["<all_urls>"]
-});
-
-function clear_cookies() {
-  ext_api.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function (tabs) {
-    if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-      ext_api.tabs.executeScript({
-        file: 'options/clearCookies.js',
-        runAt: 'document_start'
-      }, function (res) {
-        if (ext_api.runtime.lastError || res[0]) {
-          return;
-        }
-      });
-      ext_api.tabs.update(tabs[0].id, {
-        url: tabs[0].url
-      });
-    }
-  });
-}
-
-var chrome_scheme = 'light';
-ext_api.runtime.onMessage.addListener(function (message, sender) {
-  if (message.request === 'clear_cookies') {
-    clear_cookies();
-  }
-  // clear cookies for domain
-  if (message.domain) {
-    remove_cookies_fn(message.domain);
-  }
-  if (message.request === 'site_switch') {
-    site_switch();
-  }
-  if (message.request === 'check_sites_updated') {
-    check_sites_updated();
-  }
-  if (message.request === 'popup_show_toggle') {
-    ext_api.tabs.query({
-      active: true,
-      currentWindow: true
-    }, function (tabs) {
-      if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-        let currentUrl = tabs[0].url;
-        let domain;
-        let isExcludedSite = matchUrlDomain(excludedSites, currentUrl);
-        if (!isExcludedSite) {
-          let isDefaultSiteGrouped = matchUrlDomain(defaultSites_domains, currentUrl);
-          let isDefaultSite = matchUrlDomain(defaultSites_domains, currentUrl);
-          let isCustomSite = matchUrlDomain(Object.values(customSites_domains), currentUrl);
-          domain = isDefaultSiteGrouped || (!isDefaultSite && isCustomSite);
-        }
-        ext_api.runtime.sendMessage({
-          msg: "popup_show_toggle",
-          data: {
-            domain: domain,
-            enabled: enabledSites.includes(domain)
-          }
-        });
-      }
-    });
-  }
-  if (message.request === 'refreshCurrentTab') {
-    refreshCurrentTab();
-  }
-  if (message.request === 'getExtSrc' && message.data) {
-    fetch(message.data.url)
-    .then(response => {
-      if (response.ok) {
-        response.text().then(html => {
-          if (message.data.base64) {
-            html = decode_utf8(atob(html));
-            message.data.selector_source = 'body';
-          }
-          let parser = new DOMParser();
-          let doc = parser.parseFromString(html, 'text/html');
-          let article_new = doc.querySelector(message.data.selector_source);
-          message.data.html = article_new.outerHTML;
-          ext_api.tabs.query({
-            active: true,
-            currentWindow: true
-          }, function (tabs) {
-            if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-              ext_api.tabs.sendMessage(sender.tab.id, {msg: "showExtSrc", data: message.data});
-            }
-          });
-        });
-      }
-    }).catch(function (err) {
-      message.data.html = '';
-      ext_api.tabs.query({
-        active: true,
-        currentWindow: true
-      }, function (tabs) {
-        if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-          ext_api.tabs.sendMessage(sender.tab.id, {msg: "showExtSrc", data: message.data});
-        }
-      });
-    });
-  }
-  if (message.scheme && (![chrome_scheme, 'undefined'].includes(message.scheme) || focus_changed)) {
-      let icon_path = {path: {'128': 'bypass.png'}};
-      if (message.scheme === 'dark')
-          icon_path = {path: {'128': 'bypass-dark.png'}};
-      ext_api.browserAction.setIcon(icon_path);
-      chrome_scheme = message.scheme;
-      focus_changed = false;
-  }
-  if (message.csDone) {
-    csDone = true;
-    //console.log('msg.csDone: ' + csDone);
-  }
-});
-
-// show the opt-in tab on installation
-ext_api.storage.local.get(["optInShown", "customShown"], function (result) {
-  if (!result.optInShown || !result.customShown) {
-    ext_api.tabs.create({
-      url: "options/optin/opt-in.html"
-    });
-    ext_api.storage.local.set({
-      "optInShown": true,
-      "customShown": true
-    });
-  }
-});
-
-// restore custom sites opt-in on reload (chrome-only, load upacked)
-if (typeof browser !== 'object') {
-  ext_api.storage.local.get({
-    sites: {},
-    customOptIn: false
-  }, function (result) {
-    let options_restore_custom = Object.values(result.sites).includes('#options_restore_custom');
-    if (result.customOptIn && options_restore_custom) {
-      ext_api.permissions.contains({
-        origins: ["<all_urls>"]
-      }, function (result_perm) {
-        if (!result_perm) {
-          ext_api.tabs.create({
-            url: "options/optin/opt-in.html"
-          });
-        }
-      });
-    }
-  });
-}
-
-function filterObject(obj, filterFn, mapFn = function (val, key) {
-  return [key, val];
-}) {
-  return Object.fromEntries(Object.entries(obj).
-    filter(([key, val]) => filterFn(val, key)).map(([key, val]) => mapFn(val, key)));
-}
-
-function compareKey(firstStr, secondStr) {
-  return firstStr.toLowerCase().replace(/\s\(.*\)/, '') === secondStr.toLowerCase().replace(/\s\(.*\)/, '');
-}
-
-function isSiteEnabled(details) {
-  var enabledSite = matchUrlDomain(enabledSites, details.url);
-  if (!ext_name.startsWith('Bypass Paywalls Clean'))
-    enabledSite = '';
-  if (enabledSite in restrictions) {
-    return restrictions[enabledSite].test(details.url);
-  }
-  return !!enabledSite;
-}
-
-function matchDomain(domains, hostname = '') {
-  var matched_domain = false;
-  if (typeof domains === 'string')
-    domains = [domains];
-  domains.some(domain => (hostname === domain || hostname.endsWith('.' + domain)) && (matched_domain = domain));
-  return matched_domain;
-}
-
-function urlHost(url) {
-  if (url && url.startsWith('http')) {
-    try {
-      return new URL(url).hostname;
-    } catch (e) {
-      console.log(`url not valid: ${url} error: ${e}`);
-    }
-  }
-  return url;
-}
-
-function matchUrlDomain(domains, url) {
-  return matchDomain(domains, urlHost(url));
-}
-
-function getParameterByName(name, url) {
-  name = name.replace(/[\[\]]/g, '\\$&');
-  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-  results = regex.exec(url);
-  if (!results) return null;
-  if (!results[2]) return '';
-  return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
-
-function stripQueryStringAndHashFromPath(url) {
-  return url.split("?")[0].split("#")[0];
-}
-
-function decode_utf8(str) {
-  return decodeURIComponent(escape(str));
-}
-
-function randomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-function randomIP(range_low = 0, range_high = 223) {
-  let rndmIP = [];
-  for (let n = 0; n < 4; n++) {
-    if (n === 0)
-      rndmIP.push(range_low + randomInt(range_high - range_low + 1));
-    else
-      rndmIP.push(randomInt(255) + 1);
-  }
-  return rndmIP.join('.');
-}
-
-// Refresh the current tab
-function refreshCurrentTab() {
-  ext_api.tabs.query({
-    active: true,
-    currentWindow: true
-  }, function (tabs) {
-    if (tabs && tabs[0] && tabs[0].url && tabs[0].url.startsWith('http')) {
-      if (ext_api.runtime.lastError)
-        return;
-      ext_api.tabs.update(tabs[0].id, {
-        url: tabs[0].url
-      });
-    }
-  });
 }

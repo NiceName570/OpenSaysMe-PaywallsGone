@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>OpenSaysMe · News tools</title>
+<script src="../shared/storage.js"></script>
+<script src="../shared/mv3-compat.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="../shared/theme.css">
+<link rel="icon" href="../images/opensaysme.svg">
 </head>
-<body class="popup">
+<body class="popup osm-tool-popup">
   <div class="popup-head">
-    <img src="../bypass.png" alt="">
-    <div class="title"><strong>Bypass Paywalls Clean</strong><small id="version"></small></div>
+    <img src="../images/opensaysme.svg" alt="">
+    <div class="title"><strong>News tools</strong><small id="version"></small></div>
     <span id="site_switch_span"></span>
   </div>
   <div class="popup-links">
@@ -19,12 +24,7 @@
   </div>
   <div id="add_status" class="popup-status"></div>
   <div id="version_new"></div>
-  <div class="popup-foot">
-    <a href="options_custom.html" target="_blank">Custom sites</a> ·
-    <a href="https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean/-/blob/master/README.md" target="_blank">GitLab</a> ·
-    <a href="https://gitlab.com/magnolia1234/bypass-paywalls-chrome-clean/-/raw/master/changelog.txt" target="_blank">Changelog</a> ·
-    <a href="https://twitter.com/Magnolia1234B" target="_blank">Twitter</a>
-  </div>
+  <div class="popup-foot"><a href="../settings.html" target="_blank">All settings</a> · <a href="options_custom.html" target="_blank">Custom sites</a></div>
 <script src="../sites.js"></script>
 <script id="popup" src="version.js"></script>
 <script src="detect.js"></script>

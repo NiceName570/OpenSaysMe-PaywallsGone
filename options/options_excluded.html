@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="../shared/storage.js"></script>
+<script src="../shared/mv3-compat.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bypass Paywalls Clean Options Excluded</title>
+  <title>OpenSaysMe · Excluded sites</title>
   <style>
     #excluded_sites label {
       display: block;
@@ -15,8 +17,10 @@
       box-sizing: border-box;
     }
   </style>
+<link rel="stylesheet" href="../shared/theme.css">
+<link rel="icon" href="../images/opensaysme.svg">
 </head>
-<body>
+<body class="osm-page"><main class="page"><header class="osm-page-header"><a class="osm-brand" href="../settings.html"><img src="../images/opensaysme.svg" alt=""><span><strong>OpenSaysMe</strong><small>Excluded sites</small></span></a><a href="../settings.html">All settings</a></header>
   <h2>Excluded Sites</h2>
   <div style="width:90%;">
     Add excluded sites/domains (for your subscriptions) as a comma-separated list (www.-prefix and spaces are removed).<br>
@@ -39,5 +43,5 @@
   </span>
 
  <script src="options_excluded.js"></script>
-</body>
+</main></body>
 </html>

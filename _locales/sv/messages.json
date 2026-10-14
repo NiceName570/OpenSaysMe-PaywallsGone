@@ -1,0 +1,472 @@
+{
+  "app_description": {
+    "description": "The Description of the App, as it will be shown within the Extension Menu of Chrome",
+    "message": "OpenSaysMe hjälper dig att identifiera lagliga kopior av akademiska artiklar med öppen tillgång, med hjälp av unpaywall.org med mera."
+  },
+  "app_title": {
+    "description": "The name of this app",
+    "message": "OpenSaysMe"
+  },
+  "content_console_001": {
+    "description": "Console Log for DOI Found",
+    "message": "OpenSaysMe (Chrome Extension): hittade denna DOI ($id$): $doi$",
+    "placeholders": {
+      "doi": {
+        "content": "$2",
+        "example": "10.1016/j.something.12345.5.6"
+      },
+      "id": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "content_console_002": {
+    "description": "Console Log for DOI4",
+    "message": "OpenSaysMe (Chrome Extension): stöd för $provider$ är experimentellt",
+    "placeholders": {
+      "provider": {
+        "content": "$1",
+        "example": "ProQuest"
+      }
+    }
+  },
+  "content_console_003": {
+    "description": "Console Log for DOI4",
+    "message": "OpenSaysMe (Chrome Extension): Detta dokument erbjuds i fulltext på denna plats (EBSCOhost)"
+  },
+  "content_console_004": {
+    "description": "Console Log for DOI Found",
+    "message": "OpenSaysMe (Chrome Extension): hittade denna Open Access URL ($source$): $url$ $oaversion$",
+    "placeholders": {
+      "oaversion": {
+        "content": "$3",
+        "example": "free access"
+      },
+      "source": {
+        "content": "$1",
+        "example": "some source"
+      },
+      "url": {
+        "content": "$2",
+        "example": "http://www.whathaveyou.com"
+      }
+    }
+  },
+  "content_console_005": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): Open Access-knappen är inte möjlig, eftersom det var ett fel att hämta pubdata."
+  },
+  "content_console_006": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): Open Access-knappen är inte möjlig, eftersom Pub Year &gt; 5 år sedan"
+  },
+  "content_console_007": {
+    "description": "Console Log for requestDocument",
+    "message": "OpenSaysMe (Chrome Extension): hittade ingen Open Access, men du kan försöka begära från Open Access-knappen."
+  },
+  "content_console_008": {
+    "description": "Console Log for alternativeOA",
+    "message": "OpenSaysMe (Chrome Extension): vi är på ett DSPACE-arkiv - det finns en chans att dokumentet finns tillgängligt här."
+  },
+  "content_console_009": {
+    "description": "Console Log for alternativeOA",
+    "message": "OpenSaysMe (Chrome Extension): ingen Open Access hittad"
+  },
+  "content_console_013": {
+    "description": "Console Log for checking specific publishers",
+    "message": "OpenSaysMe (Chrome Extension): Vi kontrollerar: $host$ med en web scraper",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "some source"
+      }
+    }
+  },
+  "content_console_014": {
+    "description": "Console Log for checking specific publishers",
+    "message": "OpenSaysMe (Chrome Extension): Den här artikeln har citerats $count$ gånger, enligt OpenCitations.net.",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "some source"
+      }
+    }
+  },
+  "content_ill_001": {
+    "description": "title value shown, when user hovers over the blue Open Access Button 'button'",
+    "message": "Vi hittade ingen laglig Open Access-version, men du kan försöka begära den via ditt bibliotek."
+  },
+  "content_ill_002": {
+    "description": "title value shown, when user hovers over the blue Open Access Button 'button'",
+    "message": "Fråga ditt bibliotek!"
+  },
+  "content_oab_001": {
+    "description": "title value shown, when user hovers over the blue Open Access Button 'button'",
+    "message": "Vi hittade ingen laglig Open Access-version, men du kan försöka begära den via Open Access-knappen."
+  },
+  "content_onoa_001": {
+    "description": "Shown when extension is on the Open Access location",
+    "message": "Detta är platsen för öppen tillgång!"
+  },
+  "content_times_cited": {
+    "description": "Times Cited: xx",
+    "message": "Citerade gånger:"
+  },
+  "content_version_acceptedVersion": {
+    "description": "OA Version: Accepted Version",
+    "message": "Godkänd version"
+  },
+  "content_version_publishedVersion": {
+    "description": "OA Version: Published Version",
+    "message": "Publicerad version"
+  },
+  "content_version_submittedVersion": {
+    "description": "OA Version: Submitted Version",
+    "message": "Inlämnad version"
+  },
+  "context_search_label": {
+    "descriptin": "the label \"search\" will be concatencated with service like so: Search _SERVICENAME_:",
+    "message": "Sök på"
+  },
+  "context_titute_search_label": {
+    "descriptin": "Label for highlight & search when local library is selected as target",
+    "message": "Sök i ditt bibliotek efter"
+  },
+  "ebsco_access": {
+    "descriptin": "the text shown when hovering over the EBSCO access badge",
+    "message": "Tillgång från EBSCO"
+  },
+  "options1_button_save_settings": {
+    "description": "Save Button on Options1 page",
+    "message": "Spara"
+  },
+  "options1_button_saveproxy": {
+    "description": "Button Save Proxy",
+    "message": "Spara institutets inställningar"
+  },
+  "options1_h2_additional_settings": {
+    "description": "Additional Settings Options Group",
+    "message": "Ytterligare inställningar"
+  },
+  "options1_h2_proxy": {
+    "description": "Section Heading for Custom Proxy Setup",
+    "message": "Anpassad institutskonfiguration"
+  },
+  "options1_intro_001": {
+    "description": "Debug Settings Page Intro",
+    "message": "Inställningarna på den här sidan är inte avsedda för allmän användning. Om du hittade den här sidan ska du hantera dessa inställningar med försiktighet och/eller notera de ursprungliga inställningarna så att du enkelt kan återställa dem."
+  },
+  "options1_label_illurl": {
+    "description": "Label for Link Resolver URL",
+    "message": "URL till din länkupplösare/förfrågningsformulär"
+  },
+  "options1_label_proxyname": {
+    "description": "Input Label Name of Institution",
+    "message": "Institutionens namn"
+  },
+  "options1_label_proxyprefix": {
+    "description": "Label for Proxy Login URL",
+    "message": "URL för proxyinloggning"
+  },
+  "options1_page_subtitle": {
+    "description": "Debug Settings Page Subtitle",
+    "message": "- Var försiktig när du hanterar dessa inställningar"
+  },
+  "options1_page_title": {
+    "description": "Debug Settings Page Title",
+    "message": "Inställningar för felsökning"
+  },
+  "options1_placeholder_illurl": {
+    "description": "Placeholder",
+    "message": "t.ex. https://linkresolver.uni-library.edu/openurl?doi="
+  },
+  "options1_placeholder_proxprefix": {
+    "description": "Placeholder",
+    "message": "t.ex. https://proxy.uni-library.edu/login?url="
+  },
+  "options1_placeholder_proxyname": {
+    "description": "Placeholder Name of Institution",
+    "message": "Institutionens namn"
+  },
+  "options1_proxy_empty_error": {
+    "descriptin": "name or url is empty warning",
+    "message": "Du måste ange både ett namn och en webbadress."
+  },
+  "options1_settings": {
+    "description": "Settings Label for the Debug Settings Page",
+    "message": "Inställningar för felsökning"
+  },
+  "options1_settings_intro_001": {
+    "description": "Additional Settings Intro",
+    "message": "Den här inställningen är utformad för att hjälpa dig att felsöka tillägget, men använd inte den här inställningen under längre tid, eftersom felsökningen är ganska utförlig och därför kan \"översvämma\" webbläsarkonsolen med överflödiga meddelanden."
+  },
+  "options1_settings_intro_002": {
+    "description": "Proxy Setup Intro",
+    "message": "Om din institutions proxyserver inte finns med i listan föreslår vi att du kontaktar oss så att vi kan konfigurera den åt dig. Men om du vill testa din egen installation kan du gärna ange ett namn och inloggningsadressen (upp till ?url= eller ?qurl=)."
+  },
+  "options1_settings_label_001": {
+    "description": "add console log output for debug",
+    "message": "Lägg till detaljerade meddelanden i konsolloggen"
+  },
+  "options_advanced_settings_link": {
+    "descriptin": "label for advanced settings link",
+    "message": "Avancerade inställningar (kontakta supporten)"
+  },
+  "options_button_get_support": {
+    "description": "Button: Get Support",
+    "message": "Få stöd"
+  },
+  "options_button_hide_settings": {
+    "description": "Button: Hide Settings",
+    "message": "Dölj inställningar"
+  },
+  "options_button_instupdate": {
+    "description": "Button: Update Settings (Shown next to the institute search)",
+    "message": "Reload from Server"
+  },
+  "options_button_save_settings": {
+    "description": "Button: Save Settings (shown very bottom of page)",
+    "message": "Spara inställningar"
+  },
+  "options_button_search": {
+    "description": "Button: Search (Shown next to the institute search)",
+    "message": "Sök på"
+  },
+  "options_button_show_example": {
+    "description": "Button: show example",
+    "message": "Visa exempel"
+  },
+  "options_button_show_settings": {
+    "description": "Button: Show Settings",
+    "message": "Visa inställningar"
+  },
+  "options_button_view_tutorial": {
+    "description": "Button: View tutorial",
+    "message": "Visa handledning"
+  },
+  "options_error_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Tyvärr inträffade ett fel :("
+  },
+  "options_h2_additional_sources": {
+    "description": "Settings Section Label: Additional Open Access Sources",
+    "message": "Alternativ tillgång"
+  },
+  "options_h2_ezproxy": {
+    "description": "Settings Section Label: Institutional Settings",
+    "message": "Institutionella miljöer"
+  },
+  "options_h2_nobadge": {
+    "description": "This option will hide the padges",
+    "message": "Dölja märken på sidan"
+  },
+  "options_h2_select_search": {
+    "description": "Settings Section Label: Select &amp; Search",
+    "message": "Välj och sök"
+  },
+  "options_h2_similar_articles": {
+    "description": "Settings Section Label: Other Services",
+    "message": "Övriga tjänster"
+  },
+  "options_institute_search_bydomain": {
+    "description": "Next to radio button - search by domain",
+    "message": "Sök efter domän"
+  },
+  "options_institute_search_byname": {
+    "description": "Next to radio button - search by name",
+    "message": "Sök efter namn"
+  },
+  "options_institute_search_placeholder": {
+    "description": "Placeholder Text, shown inside search for for Institutions",
+    "message": "ange institutionernas domän, t.ex. harvard.edu"
+  },
+  "options_intro_001": {
+    "description": "Intro Paragraph 1 on options page",
+    "message": "Vänligen ta en stund för att justera inställningarna nedan så att de stämmer överens med det förväntade beteendet hos ditt tillägg. Oroa dig inte, om du ändrar dig kan du nå den här sidan genom att högerklicka på tilläggsikonen och välja alternativ, eller genom att klicka på inställningslänken i popup-fönstret för tillägget. Vill du veta mer? Det finns en <a href=\"https://www.oahelper.org/tutorial-open-access-helper-for-chrome/\" target=\"_blank\">videohandledning</a> eller <a href=\"https://www.oahelper.org\" target=\"_blank\">oahelper.org</a>."
+  },
+  "options_intro_002": {
+    "description": "Intro Paragraph 2 on options page",
+    "message": "Om du tycker att det här tillägget är användbart, berätta för andra, lämna en positiv recension eller bara njut av det! Om du inte gillar det eller har idéer om hur det kan förbättras, <a href=\"mailto:info@oahelper.org\">säg det till mig</a> innan du berättar för andra!"
+  },
+  "options_intro_003": {
+    "description": "Apology for translation not needed for EN, DE, NL and FR",
+    "message": "<p><b>Pardon my Swedish!</b> This translation was created using machine translation - <a href=\"mailto:info@oahelper.org\">please contact me to report errors</a>.</p>"
+  },
+  "options_link_learn_more": {
+    "description": "Learn more... Link (shown at end of each setting section intro",
+    "message": "Läs mer..."
+  },
+  "options_multi_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Kontrollera din sökning - flera institut har hittats."
+  },
+  "options_no_institutes": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Tyvärr fick du inga träffar - <a href=\"https://www.oahelper.org/support/\" target=\"_blank\" rel=\"noopener\">kontakta supporten</a> så att vi kan hjälpa dig att installera ditt institut!"
+  },
+  "options_options_proxy_saved": {
+    "description": "Save Proxy Option saved, shows for a few seconds",
+    "message": "Dina institutionella uppgifter för {id} {name} sparades."
+  },
+  "options_options_saved": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Dina alternativval sparades"
+  },
+  "options_page_subtitle": {
+    "description": "subtitle on options page",
+    "message": "- Jag är glad att du har hittat denna förlängning"
+  },
+  "options_page_title": {
+    "description": "Main Title on options page",
+    "message": "Välkommen"
+  },
+  "options_proxy_searchtooshort": {
+    "descriptin": "Shows Option Saved Message for a few seconds",
+    "message": "Ange minst 3 tecken"
+  },
+  "options_settings": {
+    "description": "translation for the word settings in title",
+    "message": "Inställningar"
+  },
+  "options_settings_intro_001": {
+    "description": "Section Intro for Additional Open Access Sources",
+    "message": "OpenSaysMe bygger på API:et för unpaywall.org. Konfigurera ytterligare åtkomstalternativ nedan för att utöka räckvidden för det här tillägget."
+  },
+  "options_settings_intro_003": {
+    "description": "Section Intro Select & Search",
+    "message": "Har du hittat ett begrepp eller en fras som du vill undersöka närmare? Välj begreppet/frasen, högerklicka och skicka det till en valfri akademisk sökmotor."
+  },
+  "options_settings_intro_004": {
+    "description": "Section Intro EZProxy Settings",
+    "message": "Ibland är det enda som återstår att använda ditt institutionella abonnemang. Om din institution använder EZProxy eller OpenAthens kan du kanske dra nytta av fjärråtkomst. Om din institution har gett oss URL:en för sin länkupplösare eller sitt dokumentleveransformulär kan du begära åtkomst. "
+  },
+  "options_settings_intro_005": {
+    "description": "Section Intro No Badge",
+    "message": "Om du vill att OpenSaysMe ska vara så \"osynlig\" som möjligt kan du dölja alla märken på sidan. Om du väljer att göra detta, se till att färgen på OpenSaysMe-ikonen ändras."
+  },
+  "options_settings_label_002": {
+    "description": "Check Box Label for show open access button",
+    "message": "Visa knappen för öppen åtkomst"
+  },
+  "options_settings_label_004": {
+    "description": "Check Box Label for Show Citation Count",
+    "message": "Visa antalet citat (OpenCitations)"
+  },
+  "options_settings_label_005": {
+    "description": "Disable this feature, shown in Select & Search drop down",
+    "message": "Inaktivera den här funktionen"
+  },
+  "options_settings_label_006": {
+    "description": "Check Box Label for Enable EZProxy Support",
+    "message": "Aktivera stöd för EZProxy / OpenAthens"
+  },
+  "options_settings_label_007": {
+    "description": "Check Box Label for hide all badges from host page",
+    "message": "Dölja alla märken från värdsidan"
+  },
+  "options_settings_label_008": {
+    "description": "Check Box Label for ask your library (will enabled ILL or OpenURL)",
+    "message": "Aktivera Fråga ditt bibliotek"
+  },
+  "options_settings_label_009": {
+    "description": "Check Box Label for EBSCO user choice",
+    "message": "Aktivera EBSCOhost Entitlement API"
+  },
+  "options_settings_label_010": {
+    "description": "Check Box Label for Retraction Watch Data",
+    "message": "Visa Retraction Watch Data"
+  },
+  "options_settings_label_011": {
+    "description": "Check Box Label for Show Citation Count",
+    "message": "Visa antalet citat (OpenAlex)"
+  },
+  "options_settings_managed_info": {
+    "description": "Informing a user that the institute was pre-selected by their organization",
+    "message": "<strong>För din information:</strong><br>Din organisation hanterade den här installationen av OpenSaysMe och har förvalt din institution för att säkerställa att du får bästa möjliga upplevelse. Du kan hantera alla andra inställningar på egen hand."
+  },
+  "popup_citationbutton_001": {
+    "description": "Times Cited Group of text and button",
+    "message": "Se vem som citerade denna artikel:<br><button id=\"citationbutton\" data-url=\"{url}\">Citerade gånger: {citationcount}</button>"
+  },
+  "popup_configuration": {
+    "description": "Word: Settings - links to option page, shown in footer of page",
+    "message": "Inställningar"
+  },
+  "popup_connection_lost": {
+    "description": "Shown in the popup when the content script on the active tab did not respond (e.g. connection lost after the computer woke from sleep)",
+    "message": "<p class=\"oah_center\">OpenSaysMe förlorade anslutningen till den här sidan, så den här menyn kunde inte laddas. Ladda om sidan och försök igen.</p>"
+  },
+  "popup_disabled_on_domain": {
+    "description": "Shown when no data was found in the page",
+    "message": "<img src=\"../images/opensaysme-disabled-76.png\" id=\"disabledomainicon\"><p class=\"oah_center\">Åtkomsten till denna domän har inaktiverats baserat på dina individuella eller institutionella konfigurationsinställningar. Kontrollera dina inställningar för OpenSaysMe eller kontakta din institution för mer information.</p>"
+  },
+  "popup_empty_responses": {
+    "description": "Shown when no data was found in the page",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">OpenSaysMe kunde inte hitta någon relevant tjänst och är därför inaktiv. Överväg att ändra dina inställningar eller om du tror att det är ett misstag, rapportera ett fel!</p><p class=\"oah_center\"><a href=\"#\" id=\"seeexample\">Klicka här för att se ett exempel.</a></p>"
+  },
+  "popup_empty_responses_proxied": {
+    "description": "Shown when no data was found in the page, but you are proxied",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">Du surfar med bibliotekets proxyserver eller är på en bibliotekswebbplats!<br><br>OpenSaysMe kunde inte hitta fler relevanta tjänster och är därför inaktiv. </p><p class=\"oah_center\"><a href=\"#\" id=\"seeexample\">Klicka här för att se ett exempel.</a></p>"
+  },
+  "popup_hidebadge": {
+    "description": "Word: Hide Badges - links to option page, shown in footer of page",
+    "message": "Dölj märken"
+  },
+  "popup_non_http_source": {
+    "description": "Shown when extension is inactive",
+    "message": "<img src=\"../images/opensaysme.svg\" id=\"sadbabyimg\"><p class=\"oah_center\">OpenSaysMe fungerar endast på webbplatser som börjar med http och https.</p>"
+  },
+  "popup_oabutton_001": {
+    "description": "Open Access Group of text and button, when Open Access Button shown",
+    "message": "Vi hittade ingen Open Access-kopia :(<br><button id=\"oabuttonrequest\" data-url=\"{url}\">Begäran via {buttonlabel}</button>"
+  },
+  "popup_oabutton_002": {
+    "description": "Open Access Group of text and button, when unpaywall.org found",
+    "message": "Vi har hittat ett exemplar med öppen tillgång!<br><button id=\"oabutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_003": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Vi hittade ingen Open Access-kopia :(<br><button id=\"oabuttonrequest\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_004": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Fortfarande ingen tillgång? <button id=\"oabuttonrequestlink\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_005": {
+    "description": "Open Access Group of text and button, when ILL form shown",
+    "message": "Fortfarande ingen åtkomst?<br><button id=\"oabuttonrequest\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_006": {
+    "description": "Open Access Group of text and button, when unpaywall.org found",
+    "message": "Du har kommit till kopian för öppen tillgång!<br><button id=\"oabutton\" class=\"oabuttongreen\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_007": {
+    "description": "Subscription Access was found",
+    "message": "Din institutions prenumeration!<br><button id=\"ebscobutton\" class=\"ebscobutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_oabutton_008": {
+    "description": "Subscription Access was found",
+    "message": "Retraction Watch rapporterade denna tidning som:<br><button id=\"rwbutton\" class=\"rwbutton\" data-url=\"{url}\">{buttonlabel}</button>"
+  },
+  "popup_popup": {
+    "description": "Title for Popup",
+    "message": "Popup"
+  },
+  "popup_proxybutton_001": {
+    "description": "Proxy resource group of text and button",
+    "message": "Ditt <em>{institute}</em> Tillgång:<br><button id=\"ezproxybutton\" data-url=\"{url}\">{urltoproxy}</button>"
+  },
+  "popup_proxybutton_001a": {
+    "description": "Proxy resource group of text and button",
+    "message": "Ditt <em>{institute}</em> Tillgång:<br><button id=\"ezproxybutton\" data-url=\"{url}\">{urltoproxy}</button>"
+  },
+  "popup_review": {
+    "description": "Word: Support - takes user to review page",
+    "message": "Recensera oss!"
+  },
+  "popup_support": {
+    "description": "Word: Support - takes users to support page",
+    "message": "Stöd"
+  }
+}

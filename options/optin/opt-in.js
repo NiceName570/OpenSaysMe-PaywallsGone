@@ -3,12 +3,12 @@ var ext_api = chrome || browser;
 
 window.addEventListener("load", function () {
     var opt_in_enabled = document.getElementById('opt-in-enabled');
-    ext_api.storage.local.get("optIn", function (result) {
+    bpcStorage.local.get("optIn", function (result) {
         opt_in_enabled.innerText = result.optIn ? 'YES' : 'NO';
     });
 
     document.getElementById("optin-enable").addEventListener("click", function () {
-        ext_api.storage.local.set({
+        bpcStorage.local.set({
             "optIn": true,
             "optInShown": true
         });
@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
     });
 
     document.getElementById("optin-disable").addEventListener("click", function () {
-        ext_api.storage.local.set({
+        bpcStorage.local.set({
             "optIn": false,
             "optInShown": true
         });
@@ -24,7 +24,7 @@ window.addEventListener("load", function () {
     });
 
     document.getElementById("button-close").addEventListener("click", function () {
-        ext_api.storage.local.set({
+        bpcStorage.local.set({
             "optInShown": true,
             "customShown": true
         });
@@ -48,13 +48,13 @@ window.addEventListener("load", function () {
         }, function (granted) {
             if (granted) {
                 custom_enabled.innerText = 'YES';
-                ext_api.storage.local.set({
+                bpcStorage.local.set({
                     "customOptIn": true
                 });
             } else {
                 custom_enabled.innerText = 'NO';
             }
-            ext_api.storage.local.set({
+            bpcStorage.local.set({
                 "customShown": true
             });
         });
@@ -66,30 +66,30 @@ window.addEventListener("load", function () {
         }, function (removed) {
             if (removed) {
                 custom_enabled.innerText = 'NO';
-                ext_api.storage.local.set({
+                bpcStorage.local.set({
                     "customOptIn": false
                 });
             }
-            ext_api.storage.local.set({
+            bpcStorage.local.set({
                 "customShown": true
             });
         });
     });
 
     var update_enabled = document.getElementById('update-enabled');
-    ext_api.storage.local.get({optInUpdate: true}, function (result) {
+    bpcStorage.local.get({optInUpdate: true}, function (result) {
         update_enabled.innerText = result.optInUpdate ? 'YES' : 'NO';
     });
 
     document.getElementById("update-enable").addEventListener("click", function () {
-        ext_api.storage.local.set({
+        bpcStorage.local.set({
             "optInUpdate": true
         });
         update_enabled.innerText = 'YES';
     });
 
     document.getElementById("update-disable").addEventListener("click", function () {
-        ext_api.storage.local.set({
+        bpcStorage.local.set({
             "optInUpdate": false
         });
         update_enabled.innerText = 'NO';

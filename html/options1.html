@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="../shared/storage.js"></script>
+<script src="../shared/mv3-compat.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenSaysMe · Advanced research settings</title>
+    <link href="../css/options.css" rel="stylesheet">
+    <link href="../css/bulma.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../shared/theme.css">
+<link rel="icon" href="../images/opensaysme.svg">
+</head>
+<body class="osm-research-settings">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="../images/opensaysme.svg" id="oahelpericon" width="48" height="48" alt=""><a class="osm-nav-title" href="../settings.html">OpenSaysMe<small>Advanced research settings</small></a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+
+                <div class="navbar-end">
+                    <div class="buttons">
+                        <a class="button is-warning" id="showexample" href="https://www.oahelper.org/example/" target="_blank">
+                            __MSG_options_button_show_example__
+                        </a>
+                        <a class="button" id="viewtutorial" href="https://www.oahelper.org/tutorial-open-access-helper-for-chrome/" target="_blank">
+                            __MSG_options_button_view_tutorial__
+                        </a>
+                        <a class="button" id="getsupport" href="https://www.oahelper.org/support/" target="_blank">
+                            __MSG_options_button_get_support__
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-3">__MSG_options1_page_title__</h1>
+            <p class="subtitle is-5">__MSG_options1_page_subtitle__</p>
+            <div id="intro">
+                <p class="block">__MSG_options1_intro_001__</p>
+            </div>
+            <div class="settingsgroup">
+                <div id="status"></div>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <div id="settingssection">
+                <h2 class="title is-4">__MSG_options1_h2_additional_settings__</h2>
+                <div class="settingsgroup">
+                    <div class="settingsintro block">
+                        __MSG_options1_settings_intro_001__
+                    </div>
+                    <input type="checkbox" id="consolelog" name="consolelog" value="consolelog">
+                    <label for="consolelog">__MSG_options1_settings_label_001__</label><br>
+                    <div id="telemetryconsentgroup" style="display: none;">
+                        <input type="checkbox" id="telemetryconsent" name="telemetryconsent" value="telemetryconsent">
+                        <label for="telemetryconsent">__MSG_options1_settings_label_telemetry__</label><br>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <button id="save" class="button is-dark is-pulled-right">__MSG_options1_button_save_settings__</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+            <div class="container">
+                <h2 class="title is-4">__MSG_options1_h2_proxy__</h2>
+                <div id="intro" class="block">
+                    <p>__MSG_options1_settings_intro_002__</p>
+                </div>
+                <div class="settingsgroup block mt-4">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">__MSG_options1_label_proxyname__</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" type="text" id="proxyname" name="proxyname" value="" placeholder="__MSG_options1_placeholder_proxyname__">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">__MSG_options1_label_proxyprefix__</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" type="text" id="proxyprefix" name="proxyprefix" value="" placeholder="__MSG_options1_placeholder_proxprefix__">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">__MSG_options1_label_illurl__</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input" type="text" id="illurl1" name="illurl1" value="" placeholder="__MSG_options1_placeholder_illurl__">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                            <!-- Left empty for spacing -->
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <button id="proxysave" class="button is-dark">
+                                        __MSG_options1_button_saveproxy__
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <footer class="footer" style="margin-top: 18rem;">
+            <div class="content has-text-centered">
+                <p>
+                    Research integration based on the work of <a href="https://www.oahelper.org" target="_blank">Claus Wolf</a>.
+                </p>
+            </div>
+        </footer>
+        <script src="../js/oahelperSafeDom.js"></script>
+        <script src="../js/options1.js"></script>
+    </body>
+    </html>

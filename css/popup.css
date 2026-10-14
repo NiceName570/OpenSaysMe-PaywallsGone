@@ -1,0 +1,15 @@
+/* Research layout; controls and colors come from shared/theme.css. */
+body{margin:0;padding:18px;min-width:0;min-height:0;background:white}
+#header{display:flex;align-items:center;gap:10px;position:relative;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--osm-border);font-size:14px;font-weight:650}
+#oahelpericon{width:34px;height:34px}
+#oah_settings_icon{width:18px;height:18px;margin-left:auto;order:2;cursor:pointer}
+#popupanswer{width:100%}
+#popupanswer button{width:100%;margin:10px 0;display:block;min-height:42px;background:var(--osm-blue);color:white;border-color:var(--osm-blue)}
+#popupanswer button:hover{background:var(--osm-blue-hover)}
+#popupanswer #rwbutton{color:var(--danger);background:#fff0ee;border-color:#f4b9b2}
+#popupanswer #rwbutton:hover{background:#ffe4df}
+#popupanswer #oabuttonrequestlink{display:inline;width:auto;min-height:0;margin:0;padding:0;border:0;background:none;color:var(--osm-blue)}
+#footer{position:static;margin-top:18px;padding-top:14px;border-top:1px solid var(--osm-border);text-align:center;font-size:12px;color:var(--osm-muted)}
+#footer a{color:var(--osm-blue)}
+#sadbabyimg,#disabledomainicon{width:58px;height:58px;display:block;margin:20px auto}
+.oah_center{text-align:center;color:var(--osm-muted);font-size:13px;line-height:1.75}

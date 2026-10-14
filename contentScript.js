@@ -3999,7 +3999,7 @@ function replaceDomElementExt(url, proxy, base64, selector, text_fail = '', sele
   if (proxy) {
     if (!text_fail) {
       if (url.includes('webcache.googleusercontent.com'))
-        text_fail = 'BPC > failed to load from Google webcache: '
+        text_fail = 'OpenSaysMe · failed to load from Google webcache: '
     }
     ext_api.runtime.sendMessage({request: 'getExtSrc', data: {url: url, selector: selector, selector_source: selector_source, base64: base64, text_fail: text_fail}});
   } else {
@@ -4063,7 +4063,7 @@ function archiveLink(url) {
   let text_fail_div = document.createElement('div');
   text_fail_div.id = 'bpc_archive';
   text_fail_div.setAttribute('style', 'margin: 20px; font-weight: bold; color:red;');
-  text_fail_div.appendChild(document.createTextNode('BPC > Full article text:\r\n'));
+  text_fail_div.appendChild(document.createTextNode('OpenSaysMe · Full article text:\r\n'));
   function add_links(domains) {
     for (let domain of domains) {
       let a_link = document.createElement('a');

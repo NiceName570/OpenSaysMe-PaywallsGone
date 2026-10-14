@@ -13,7 +13,7 @@ function popup_show_toggle(domain, enabled) {
     labelEl.appendChild(inputEl);
     let spanEl = document.createElement('span');
     spanEl.setAttribute('class', 'slider round');
-    spanEl.setAttribute('title', 'en/disable current site in BPC');
+    spanEl.setAttribute('title', 'Enable or disable this site in OpenSaysMe');
     labelEl.appendChild(spanEl);
     site_switch_span.appendChild(labelEl);
     document.getElementById("site_switch").addEventListener('click', function () {
@@ -107,7 +107,7 @@ function addCurrentSite() {
         setAddStatus('Permission needed to add this site.', true);
         return;
       }
-      ext_api.storage.local.get({
+      bpcStorage.local.get({
         sites_custom: {}
       }, function (items) {
         let sites_custom = items.sites_custom;
@@ -123,7 +123,7 @@ function addCurrentSite() {
         setAddStatus('Detecting paywall type...');
         detectSiteRule(tabs[0].id, domain, function (res) {
           sites_custom[title] = res.rule;
-          ext_api.storage.local.set({
+          bpcStorage.local.set({
             sites_custom: sites_custom
           }, function () {
             setAddStatus('✓ Added ' + domain + ' (' + res.found.join(', ') + '). Reload the page.');
