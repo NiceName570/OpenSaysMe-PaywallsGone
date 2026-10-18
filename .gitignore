@@ -1,4 +1,8 @@
-# Generated browser validation; curated README images live in docs/.
+# ============================================================================
+# OpenSaysMe - Browser Extension
+# ============================================================================
+# Git ignore file to exclude build artifacts, local credentials, and cached files.
+# Generated browser validation; curated README images live in docs./
 /artifacts/
 /validation.json
 
