@@ -1886,8 +1886,7 @@ var defaultSites = {
   "USA Today": {
     domain: "usatoday.com",
     allow_cookies: 1,
-    block_regex: /cdn\.ampproject\.org\/v\d\/amp-access-.+\.js/,
-    useragent: "googlebot"
+    block_regex: /cdn\.ampproject\.org\/v\d\/amp-access-.+\.js/
   },
   "Valeurs Actuelles": {
     domain: "valeursactuelles.com",
