@@ -1,16 +1,16 @@
 # OpenSaysMe
+![OpenSaysMe blue keyhole icon](assets/opensaysme-128.png)
 
-<img src="images/opensaysme-128.png" width="72" height="72" alt="OpenSaysMe blue keyhole icon">
+**News access. Research discovery.**
 
-**News access tools and open-access research discovery in one browser extension.** OpenSaysMe combines Bypass Paywalls Clean's publisher and custom-site tools with Open Access Helper's research-paper lookup, with one popup and a consistent blue-and-white interface.
-
-> **Use the `opensaysme-integration` branch.** This branch contains OpenSaysMe **1.0.1**. The repository's default `main` branch still contains the original Bypass Paywalls Clean extension.
+**USER-TESTED**  
+Works on Reuters, The Atlantic, Nature, CNN, and Tubi
 
 ## Install from GitHub
 
 No build, terminal commands, Python, Node.js, installer, or administrator access is needed to use the extension.
 
-1. **[Download the OpenSaysMe ZIP](https://github.com/NiceName570/bypass-paywalls-clean-ui/archive/refs/heads/opensaysme-integration.zip).** This link downloads the integration branch. If using GitHub's **Code → Download ZIP** menu instead, first select **`opensaysme-integration`** in the branch selector.
+1. **[Download the OpenSaysMe ZIP](https://github.com/NiceName570/OpenSaysMe-PaywallsGone/archive/refs/heads/opensaysme-integration.zip).** This link downloads the integration branch. If using GitHub's **Code → Download ZIP** menu instead, first select **`opensaysme-integration`** in the branch selector.
 2. **Extract the ZIP** to a permanent folder. On Windows, right-click the ZIP and choose **Extract All**. Open the extracted folder and find **`manifest.json`**. It will normally be inside `bypass-paywalls-clean-ui-opensaysme-integration`. Keep this folder in place after installation.
 3. **Open your browser's extensions page:**
 
@@ -95,6 +95,8 @@ The browser check currently requires Edge at its standard Windows installation p
 
 `scripts/make-icons.py` exports the vector mark and PNG sizes and requires Pillow. `scripts/integrate.py` and `scripts/rebrand.py` record one-time integration/presentation work; they are **not build or installation steps** and can overwrite later edits if rerun.
 
+---
+
 ## Credits and source versions
 
 - **Bypass Paywalls Clean 2.7.1.1**, by magnolia1234, with NiceName570's custom-site UI: [original repository](https://github.com/NiceName570/bypass-paywalls-clean-ui/tree/main), baseline commit `7906e5eb934f064def3aa72e6d9b61c3af9c0429`. Its original MIT notice is preserved in [LICENSE](LICENSE).
@@ -103,3 +105,5 @@ The browser check currently requires Edge at its standard Windows installation p
 - [Chrome's request-blocking migration guide](https://developer.chrome.com/docs/extensions/develop/migrate/blocking-web-requests) and [declarativeNetRequest reference](https://developer.chrome.com/docs/extensions/reference/api/declarativeNetRequest) informed the Manifest V3 port.
 
 OpenSaysMe is a combined integration of those components. Original source attribution and license notices remain applicable to their respective files.
+
+**LarryLangMui (NiceName570) is the creator of this extension and the Rife research paper pipeline that uses Jev (TypeSafe AI's System One model) to give calibrated confidence scores on paper claims against ~10,000 pages of evidence.**
